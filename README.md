@@ -69,7 +69,7 @@ class RKOEnvAbstract(ABC):
     def cost(self, solution, final_solution: bool = False) -> float:
         pass
 
-```python
+```
 
 ## Key Components to Implement
 
@@ -83,11 +83,13 @@ class RKOEnvAbstract(ABC):
 ### 3.2. Verifying Your Environment with `check_env`
 
 ```python
-# from your_utils_file import check_env 
+ from your_utils_file import check_env 
 
-# my_env = YourProblemEnv(...)
-# if check_env(my_env):
-#     print("Environment validated successfully")
+ my_env = YourProblemEnv(...)
+ if check_env(my_env):
+     print("Environment validated successfully")
+
+```
 
 ### 3.3. Instantiating and Running the Solver
 
@@ -120,5 +122,6 @@ if __name__ == "__main__":
     print("\n--- FINAL RESULT ---")
     print(f"Best Objective Value Found: {final_cost}")
     print(f"Time to Find Best Solution: {time_to_best}s")
+```
 
 By following this structure, you can adapt the RKO framework to a wide variety of combinatorial optimization problems, leveraging its powerful, parallel search capabilities with minimal problem-specific coding.
