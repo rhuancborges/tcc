@@ -1,40 +1,39 @@
-# RKO-Python
 RKO - Random-Key Optimizer (Python Framework)
 1. Introduction to the Random-Key Optimizer (RKO)
-The Random-Key Optimizer (RKO) is a versatile and efficient metaheuristic framework designed to address complex combinatorial optimization problems. Its core paradigm is the encoding of solutions as vectors of 
+The Random-Key Optimizer (RKO) is a versatile and efficient metaheuristic framework designed for a wide range of combinatorial optimization problems. Its core paradigm is the encoding of solutions as vectors of random keys—real numbers uniformly distributed in the interval [0, 1). This representation maps the discrete, and often complex, search space of a combinatorial problem to a continuous n-dimensional unit hypercube.
 
-random keys—real numbers uniformly distributed in the interval [0, 1). This representation maps the discrete search space of a combinatorial problem to a continuous n-dimensional unit hypercube.
+The primary strength of the RKO framework lies in its modular architecture, which decouples the search algorithms from the problem-specific logic. This is achieved through a problem-specific decoder, a user-defined function that translates a random-key vector into a feasible solution for the target problem.
 
+This design allows for the seamless integration of multiple classic metaheuristics (e.g., Simulated Annealing, Iterated Local Search, Genetic Algorithms) that can operate independently or in parallel. When executed concurrently, these algorithms share high-quality solutions through a common elite solution pool, fostering a collaborative and robust search process.
 
-The primary strength of the RKO framework lies in its modular architecture, which decouples the search algorithms from the problem-specific logic. This is achieved through a problem-specific 
+2. Framework Architecture
+The Python implementation of RKO is centered around the RKO class, which encapsulates all search operators and metaheuristics.
 
-decoder, a function that translates a random-key vector into a feasible solution for the target problem.
+Core Operators: The framework includes a set of powerful, problem-independent operators that work on the random-key vectors:
 
+shaking: A diversification mechanism to escape local optima by applying controlled perturbations to a solution.
 
-This design allows for the integration of multiple classic metaheuristics—such as Simulated Annealing, Iterated Local Search, and Biased Random-Key Genetic Algorithms—which can operate independently or in parallel. When executed concurrently, these algorithms share high-quality solutions through a common elite solution pool, fostering a collaborative and robust search process.
+RVND (Random Variable Neighborhood Descent): An intensification strategy that systematically explores multiple neighborhood structures (SwapLS, FareyLS, InvertLS, NelderMeadSearch) in a randomized order to find local optima.
 
-2. Using the RKO Python Framework
-The framework is architected for modularity and ease of use. The primary workflow involves three main steps:
+Blending: A crossover operator for population-based methods that combines two parent solutions to generate offspring.
 
-Define the Problem Environment: Implement a Python class that encapsulates all problem-specific logic, including instance data, the solution decoder, and the cost function.
+Parallel Execution: The solve method orchestrates the parallel execution of multiple metaheuristic workers using Python's multiprocessing library. These workers operate on the same problem instance and share their findings through a thread-safe SolutionPool.
 
-Instantiate the RKO Solver: Create an instance of the RKO class, providing your custom environment object during initialization.
+3. How to Use the RKO Framework
+The main workflow consists of three steps:
 
-Execute the Solver: Call the solve() method to initiate the optimization process.
+Define the Problem Environment: Create a Python class that contains all the logic specific to your optimization problem.
 
-Code Structure
-RKO.py: This file contains the main RKO class, which includes the suite of implemented metaheuristics (e.g., BRKGA, SA, ILS, VNS) and the core search operators (shaking, RVND, Blending).
+Instantiate the RKO Solver: Create an instance of the RKO class, providing your custom environment object and a total time limit.
 
-RKOEnvAbstract (Template): An abstract base class is provided to serve as a formal template for creating custom problem environments.
+Execute the Solver: Call the solve() method to begin the optimization.
 
-your_problem_env.py: The user-created file where the custom environment class, inheriting from RKOEnvAbstract, is implemented.
+3.1. The Problem Environment: Your Interface to the RKO
+To make the RKO solver work for your problem, you must create a problem environment class. This class is the bridge between the solver's abstract search methods and the concrete rules of your problem.
 
-3. Instantiating a New Problem Environment
-To adapt the RKO framework for a new optimization problem, the user must implement a problem environment class. This class serves as the interface between the abstract search mechanisms of the RKO solver and the concrete constraints and objectives of the problem.
+It is highly recommended to create a class that implements the structure outlined in the abstract base class RKOEnvAbstract. This ensures all necessary components are correctly defined.
 
-3.1. The RKOEnvAbstract Base Class
-It is highly recommended to inherit from the RKOEnvAbstract class to ensure all necessary components are implemented correctly. This abstract class defines the required structure for any compatible environment.
-
+Abstract Environment Template (RKOEnvAbstract)
 Python
 
 from abc import ABC, abstractmethod
@@ -43,9 +42,7 @@ import numpy as np
 class RKOEnvAbstract(ABC):
     """
     Abstract Base Class for creating a problem environment compatible with the RKO solver.
-    
-    To solve a new problem, create a new class that inherits from this one and implement 
-    all abstract methods and define all required attributes.
+    Inherit from this class and implement all abstract methods and required attributes.
     """
     def __init__(self):
         # --- Required Attributes ---
@@ -54,15 +51,14 @@ class RKOEnvAbstract(ABC):
         self.LS_type: str = 'Best'
         self.dict_best: dict = {}
         self.instance_name: str = "default_instance"
-        
+
         # --- Metaheuristic Parameter Configuration ---
+        # Define the parameter space for each metaheuristic.
+        # - Single-element list for OFFLINE (static) tuning.
+        # - Multi-element list for ONLINE (dynamic) tuning with Q-Learning.
         self.BRKGA_parameters: dict = {'p': [100], 'pe': [0.20], 'pm': [0.10], 'rhoe': [0.70]}
         self.SA_parameters: dict = {'SAmax': [50], 'alphaSA': [0.99], 'betaMin': [0.05], 'betaMax': [0.25], 'T0': [10000]}
-        self.ILS_parameters: dict = {'betaMin': [0.10], 'betaMax': [0.20]}
-        self.VNS_parameters: dict = {'kMax': [5], 'betaMin': [0.05]}
-        self.PSO_parameters: dict = {'PSize': [100], 'c1': [2.05], 'c2': [2.05], 'w': [0.73]}
-        self.GA_parameters: dict = {'sizePop': [100], 'probCros': [0.98], 'probMut': [0.005]}
-        self.LNS_parameters: dict = {'betaMin': [0.10], 'betaMax': [0.30], 'TO': [1000], 'alphaLNS': [0.95]}
+        # ... (define for ILS, VNS, PSO, GA, LNS)
 
         # --- Optional Q-Learning Setting ---
         self.save_q_learning_report: bool = False
@@ -81,71 +77,67 @@ class RKOEnvAbstract(ABC):
         The RKO framework MINIMIZES this value.
         """
         pass
-3.2. Required Attributes and Methods
-Your environment class must define the following:
+Key Components to Implement:
+tam_solution (int): The dimensionality of the random-key vector (e.g., the number of cities in a TSP, the number of items in a knapsack problem).
 
-tam_solution (int): The dimensionality of the random-key vector.
+max_time (int): The maximum execution time in seconds for a single run or restart cycle. This is set by the time_total parameter passed to the solve method.
 
-max_time (int): The maximum execution time in seconds.
+decoder(self, keys) (method): This is the most critical part. You must implement the logic to convert a NumPy array of random keys into a feasible solution for your problem.
 
-LS_type (str): The local search strategy, either 'Best' or 'First'.
+cost(self, solution) (method): This method takes the output of your decoder and returns its numerical objective value. Important: The RKO solver is a minimizer. For maximization problems, you must return a negated value (e.g., return -profit).
 
-dict_best (dict): A dictionary mapping instance names to their best-known values.
+Parameter Dictionaries (e.g., SA_parameters): Define the parameter spaces for each metaheuristic. For static parameters, use a single-element list (e.g., 'p': [100]). For dynamic tuning with Q-Learning, provide multiple values (e.g., 'p': [50, 100, 200]).
 
-instance_name (str): The name of the current instance.
-
-Parameter Dictionaries: Dictionaries for each metaheuristic (e.g., SA_parameters), specifying the parameter space. A list with a single value indicates static (offline) tuning, while multiple values enable dynamic (online) tuning with Q-Learning.
-
-decoder(self, keys) (method): This is the most critical implementation. It must contain the logic to convert a NumPy array of random keys into a feasible solution specific to your problem domain.
-
-cost(self, solution) (method): This method must take the output of your decoder and return a single floating-point number representing its objective value. Important: The RKO framework is a minimizer. If your problem is one of maximization (e.g., maximizing profit), you must return the negative of the objective value (e.g., return -profit).
-
-3.3. Verifying the Environment with check_env
-To ensure your environment class is correctly implemented, use the provided check_env utility function. It will raise errors if any required component is missing or has an incorrect type.
+3.2. Verifying Your Environment with check_env
+After creating your environment class, use the check_env function to validate its structure. This utility checks for the presence and correct types of all required attributes and methods, preventing runtime errors.
 
 Python
 
-def check_env(env_instance):
-    """
-    Verifies that a given environment instance correctly implements the RKOEnvAbstract interface.
-    """
-    # ... (implementation from previous response)
-    return True
+# Assuming check_env is defined as in the previous response
+# from your_utils_file import check_env 
 
-4. Executing the Solver
-Once your environment class is implemented and verified, running the RKO solver is straightforward.
+# my_env = YourProblemEnv(...)
+# if check_env(my_env):
+#     # Proceed with the solver
+3.3. Instantiating and Running the Solver
+Once your environment is ready, the final step is to instantiate and run the RKO solver.
 
 Python
 
 # 1. Import the necessary classes
 from RKO_v2 import RKO
-from your_problem_env import YourProblemEnv # Replace with your file and class name
+from your_problem_env import YourProblemEnv # Your custom environment class
 
 if __name__ == "__main__":
     # 2. Instantiate your problem environment
-    # Pass any required arguments, such as dataset name or time limit.
-    my_environment = YourProblemEnv(dataset='fu', tempo=300)
+    my_environment = YourProblemEnv(dataset_name="my_instance")
 
-    # 3. (Recommended) Verify the environment
-    if not check_env(my_environment):
-        exit()
-
-    # 4. Instantiate the RKO solver
-    rko_solver = RKO(my_environment, print_best=True)
-
-    # 5. Execute the solver
-    # Specify the number of parallel workers for each metaheuristic.
-    final_cost, final_solution, time_to_best = rko_solver.solve(
-        time_total=300,
-        runs=1,
-        restart=1,
-        brkga=1, # 1 worker for BRKGA
-        ils=1,   # 1 worker for ILS
-        vns=1,   # 1 worker for VNS
-        sa=1     # 1 worker for SA
+    # 3. Instantiate the RKO solver
+    # - env: Your custom environment object.
+    # - print_best: Set to True to print updates when a new best solution is found.
+    # - save_directory: Path to a CSV file to log the results of each run.
+    rko_solver = RKO(
+        env=my_environment,
+        print_best=True,
+        save_directory="./results/my_problem_results.csv"
     )
 
-    # 6. Display the results
+    # 4. Execute the solver
+    # - time_total: The overall time limit in seconds for the execution.
+    # - runs: The number of independent runs to perform.
+    # - restart: The fraction of time_total per restart cycle (1.0 means no restarts).
+    # - metaheuristics: Set the number of parallel workers for each algorithm.
+    final_cost, final_solution, time_to_best = rko_solver.solve(
+        time_total=300,
+        runs=5,
+        restart=1.0,
+        brkga=2,  # Run 2 BRKGA workers
+        ils=2,    # Run 2 ILS workers
+        vns=1     # Run 1 VNS worker
+    )
+
+    # 5. Display the final results
     print("\n--- Final Result ---")
     print(f"Best Objective Value Found: {final_cost}")
-    print(f"Time to Best Solution: {time_to_best}s")
+    print(f"Time to Find Best Solution: {time_to_best}s")
+By following this structure, you can adapt the RKO framework to a wide variety of combinatorial optimization problems, leveraging its powerful, parallel search capabilities with minimal problem-specific coding.
