@@ -1,12 +1,12 @@
 # RKO - Random-Key Optimizer (Python Framework)
-# 1. Introduction to the Random-Key Optimizer (RKO)
+## 1. Introduction to the Random-Key Optimizer (RKO)
 The Random-Key Optimizer (RKO) is a versatile and efficient metaheuristic framework designed for a wide range of combinatorial optimization problems. Its core paradigm is the encoding of solutions as vectors of random keys—real numbers uniformly distributed in the interval [0, 1). This representation maps the discrete, and often complex, search space of a combinatorial problem to a continuous n-dimensional unit hypercube.
 
 The primary strength of the RKO framework lies in its modular architecture, which decouples the search algorithms from the problem-specific logic. This is achieved through a problem-specific decoder, a user-defined function that translates a random-key vector into a feasible solution for the target problem.
 
 This design allows for the seamless integration of multiple classic metaheuristics (e.g., Simulated Annealing, Iterated Local Search, Genetic Algorithms) that can operate independently or in parallel. When executed concurrently, these algorithms share high-quality solutions through a common elite solution pool, fostering a collaborative and robust search process.
 
-# 2. Framework Architecture
+## 2. Framework Architecture
 The Python implementation of RKO is centered around the RKO class, which encapsulates all search operators and metaheuristics.
 
 Core Operators: The framework includes a set of powerful, problem-independent operators that work on the random-key vectors:
@@ -19,7 +19,7 @@ Blending: A crossover operator for population-based methods that combines two pa
 
 Parallel Execution: The solve method orchestrates the parallel execution of multiple metaheuristic workers using Python's multiprocessing library. These workers operate on the same problem instance and share their findings through a thread-safe SolutionPool.
 
-# 3. How to Use the RKO Framework
+## 3. How to Use the RKO Framework
 The main workflow consists of three steps:
 
 Define the Problem Environment: Create a Python class that contains all the logic specific to your optimization problem.
@@ -28,7 +28,7 @@ Instantiate the RKO Solver: Create an instance of the RKO class, providing your 
 
 Execute the Solver: Call the solve() method to begin the optimization.
 
-3.1. The Problem Environment: Your Interface to the RKO
+### 3.1. The Problem Environment: Your Interface to the RKO
 To make the RKO solver work for your problem, you must create a problem environment class. This class is the bridge between the solver's abstract search methods and the concrete rules of your problem.
 
 It is highly recommended to create a class that implements the structure outlined in the abstract base class RKOEnvAbstract. This ensures all necessary components are correctly defined.
@@ -88,7 +88,7 @@ cost(self, solution) (method): This method takes the output of your decoder and 
 
 Parameter Dictionaries (e.g., SA_parameters): Define the parameter spaces for each metaheuristic. For static parameters, use a single-element list (e.g., 'p': [100]). For dynamic tuning with Q-Learning, provide multiple values (e.g., 'p': [50, 100, 200]).
 
-3.2. Verifying Your Environment with check_env
+### 3.2. Verifying Your Environment with check_env
 After creating your environment class, use the check_env function to validate its structure. This utility checks for the presence and correct types of all required attributes and methods, preventing runtime errors.
 
 Python
@@ -99,7 +99,7 @@ Python
 # my_env = YourProblemEnv(...)
 # if check_env(my_env):
 #     # Proceed with the solver
-3.3. Instantiating and Running the Solver
+### 3.3. Instantiating and Running the Solver
 Once your environment is ready, the final step is to instantiate and run the RKO solver.
 
 Python
