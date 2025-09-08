@@ -1,9 +1,7 @@
 # RKO-Python
 RKO - Random-Key Optimizer (Python Framework)
 1. Introduction to the Random-Key Optimizer (RKO)
-The 
-
-Random-Key Optimizer (RKO) is a versatile and efficient metaheuristic framework designed to address complex combinatorial optimization problems. Its core paradigm is the encoding of solutions as vectors of 
+The Random-Key Optimizer (RKO) is a versatile and efficient metaheuristic framework designed to address complex combinatorial optimization problems. Its core paradigm is the encoding of solutions as vectors of 
 
 random keys—real numbers uniformly distributed in the interval [0, 1). This representation maps the discrete search space of a combinatorial problem to a continuous n-dimensional unit hypercube.
 
@@ -13,10 +11,7 @@ The primary strength of the RKO framework lies in its modular architecture, whic
 decoder, a function that translates a random-key vector into a feasible solution for the target problem.
 
 
-This design allows for the integration of multiple classic metaheuristics—such as Simulated Annealing, Iterated Local Search, and Biased Random-Key Genetic Algorithms—which can operate independently or in parallel. When executed concurrently, these algorithms share high-quality solutions through a common 
-
-
-elite solution pool, fostering a collaborative and robust search process.
+This design allows for the integration of multiple classic metaheuristics—such as Simulated Annealing, Iterated Local Search, and Biased Random-Key Genetic Algorithms—which can operate independently or in parallel. When executed concurrently, these algorithms share high-quality solutions through a common elite solution pool, fostering a collaborative and robust search process.
 
 2. Using the RKO Python Framework
 The framework is architected for modularity and ease of use. The primary workflow involves three main steps:
@@ -28,7 +23,7 @@ Instantiate the RKO Solver: Create an instance of the RKO class, providing your 
 Execute the Solver: Call the solve() method to initiate the optimization process.
 
 Code Structure
-RKO_v2.py: This file contains the main RKO class, which includes the suite of implemented metaheuristics (e.g., BRKGA, SA, ILS, VNS) and the core search operators (shaking, RVND, Blending).
+RKO.py: This file contains the main RKO class, which includes the suite of implemented metaheuristics (e.g., BRKGA, SA, ILS, VNS) and the core search operators (shaking, RVND, Blending).
 
 RKOEnvAbstract (Template): An abstract base class is provided to serve as a formal template for creating custom problem environments.
 
@@ -116,14 +111,6 @@ def check_env(env_instance):
     """
     # ... (implementation from previous response)
     return True
-3.4. Example: The SPP2D Environment
-The provided SPP2D class for the 2D Strip Packing Problem is a complete example of a valid environment.
-
-__init__(...): Initializes all required attributes. It sets tam_solution based on the number of pieces and the chosen decoder type. It also defines the parameter spaces for all metaheuristics, enabling online tuning by providing multiple values for some parameters.
-
-decoder(self, keys): Implements multiple decoding schemes (e.g., 'D0_B', 'D2_A'). It interprets the keys vector to determine the sequence of pieces, their rotation, and the placement heuristic to be applied.
-
-cost(self, sol, ...): This function receives the decoded instructions. It simulates the packing process by placing pieces one by one according to the specified heuristics, while respecting geometric constraints (handled by NFP/IFP logic). Finally, it calculates the packing efficiency and returns its negative value to align with the framework's minimization objective.
 
 4. Executing the Solver
 Once your environment class is implemented and verified, running the RKO solver is straightforward.
