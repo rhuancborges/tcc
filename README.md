@@ -69,6 +69,8 @@ class RKOEnvAbstract(ABC):
     def cost(self, solution, final_solution: bool = False) -> float:
         pass
 
+```python
+
 ## Key Components to Implement
 
 - **tam_solution (int):** dimensionality of the random-key vector.  
