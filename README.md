@@ -68,3 +68,55 @@ class RKOEnvAbstract(ABC):
     @abstractmethod
     def cost(self, solution, final_solution: bool = False) -> float:
         pass
+
+## Key Components to Implement
+
+- **tam_solution (int):** dimensionality of the random-key vector.  
+- **decoder(keys):** maps a NumPy array of random keys into a feasible solution.  
+- **cost(solution):** returns the objective function value. *Note: RKO minimizes this value. For maximization problems, return the negated value.*  
+- **Parameter dictionaries:** configure static or dynamic values for each metaheuristic.  
+
+---
+
+### 3.2. Verifying Your Environment with `check_env`
+
+```python
+# from your_utils_file import check_env 
+
+# my_env = YourProblemEnv(...)
+# if check_env(my_env):
+#     print("Environment validated successfully")
+
+### 3.3. Instantiating and Running the Solver
+
+```python
+from RKO import RKO
+from your_problem_env import YourProblemEnv
+
+if __name__ == "__main__":
+    # 1. Instantiate your problem environment
+    my_environment = YourProblemEnv(dataset_name="my_instance")
+
+    # 2. Instantiate the RKO solver
+    rko_solver = RKO(
+        env=my_environment,
+        print_best=True,
+        save_directory="./results/my_problem_results.csv"
+    )
+
+    # 3. Execute the solver
+    final_cost, final_solution, time_to_best = rko_solver.solve(
+        time_total=300,
+        runs=5,
+        restart=1.0,
+        brkga=2,
+        ils=2,
+        vns=1
+    )
+
+    # 4. Display the final results
+    print("\n--- FINAL RESULT ---")
+    print(f"Best Objective Value Found: {final_cost}")
+    print(f"Time to Find Best Solution: {time_to_best}s")
+
+By following this structure, you can adapt the RKO framework to a wide variety of combinatorial optimization problems, leveraging its powerful, parallel search capabilities with minimal problem-specific coding.
