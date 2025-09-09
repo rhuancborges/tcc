@@ -7,7 +7,7 @@ class RKOEnvAbstract(ABC):
 
     This class serves as a template and enforces the implementation of essential
     methods and attributes required by the RKO framework. To solve a new problem,
-    create a new class that inherits from this one and implement all abstract methods
+    create a new class that inherits from this one, implement all abstract methods,
     and define all required attributes.
     """
     def __init__(self):
@@ -44,11 +44,11 @@ class RKOEnvAbstract(ABC):
             'rhoe': [0.70]   # Elite parent inheritance probability
         }
         self.SA_parameters: dict = {
-            'SAmax': [50],       # Iterations per temperature
-            'alphaSA': [0.99],   # Cooling rate
-            'betaMin': [0.05],   # Min shaking intensity
-            'betaMax': [0.25],   # Max shaking intensity
-            'T0': [10000]        # Initial temperature
+            'SAmax': [50],     # Iterations per temperature
+            'alphaSA': [0.99], # Cooling rate
+            'betaMin': [0.05], # Min shaking intensity
+            'betaMax': [0.25], # Max shaking intensity
+            'T0': [10000]      # Initial temperature
         }
         self.ILS_parameters: dict = {
             'betaMin': [0.10],
@@ -59,10 +59,10 @@ class RKOEnvAbstract(ABC):
             'betaMin': [0.05]
         }
         self.PSO_parameters: dict = {
-            'PSize': [100],      # Swarm size
-            'c1': [2.05],        # Cognitive coefficient
-            'c2': [2.05],        # Social coefficient
-            'w': [0.73]          # Inertia weight
+            'PSize': [100],    # Swarm size
+            'c1': [2.05],      # Cognitive coefficient
+            'c2': [2.05],      # Social coefficient
+            'w': [0.73]        # Inertia weight
         }
         self.GA_parameters: dict = {
             'sizePop': [100],
@@ -116,7 +116,7 @@ class RKOEnvAbstract(ABC):
         """
         pass
 
-def check_env(env_instance):
+def check_env(env_instance: RKOEnvAbstract):
     """
     Verifies that a given environment instance correctly implements the RKOEnvAbstract interface.
 
@@ -125,14 +125,20 @@ def check_env(env_instance):
     implementation is missing or incorrect.
 
     Args:
-        env_instance (object): An instance of a class designed to be an RKO environment.
+        env_instance (RKOEnvAbstract): An instance of a class designed to be an RKO environment.
 
     Raises:
+        AssertionError: If the instance does not inherit from RKOEnvAbstract.
         AttributeError: If a required attribute or method is missing.
         TypeError: If an attribute has the wrong type.
-        ValueError: If a parameter dictionary is incorrectly structured.
+        ValueError: If an attribute has an invalid value or a parameter dictionary is incorrectly structured.
     """
     print("--- Starting RKO Environment Check ---")
+    
+    # Check if the class inherits from the abstract base class
+    if not isinstance(env_instance, RKOEnvAbstract):
+        raise AssertionError("The provided environment instance does not inherit from 'RKOEnvAbstract'.")
+    print("✅ Inheritance from RKOEnvAbstract is confirmed.")
 
     # List of required attributes and their expected types
     required_attrs = {
@@ -150,13 +156,20 @@ def check_env(env_instance):
         'PSO_parameters', 'GA_parameters', 'LNS_parameters'
     ]
 
-    # Check for required attributes
+    # Check for required attributes and their types
     for attr, expected_type in required_attrs.items():
         if not hasattr(env_instance, attr):
             raise AttributeError(f"Environment missing required attribute: '{attr}'")
         if not isinstance(getattr(env_instance, attr), expected_type):
             raise TypeError(f"Attribute '{attr}' has incorrect type. Expected {expected_type}, got {type(getattr(env_instance, attr))}.")
     print("✅ Basic attributes are present and have the correct types.")
+
+    # Check specific attribute values
+    if getattr(env_instance, 'tam_solution') <= 0:
+        raise ValueError("Attribute 'tam_solution' must be a positive integer.")
+    if getattr(env_instance, 'LS_type') not in ['Best', 'First']:
+        raise ValueError("Attribute 'LS_type' must be either 'Best' or 'First'.")
+    print("✅ Attribute values are valid.")
 
     # Check for parameter dictionaries
     for param_dict_name in param_dicts:
@@ -174,4 +187,8 @@ def check_env(env_instance):
     required_methods = ['decoder', 'cost']
     for method in required_methods:
         if not hasattr(env_instance, method) or not callable(getattr(env_instance, method)):
-            raise AttributeError(f"Environment missing required method:
+            # This check is somewhat redundant if inheritance is enforced, but good for clarity.
+            raise AttributeError(f"Environment missing required method: '{method}'")
+    print("✅ Required methods ('decoder', 'cost') are implemented.")
+
+    print("\n🎉 --- Environment Check Passed Successfully! --- 🎉")
