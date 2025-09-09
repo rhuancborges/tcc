@@ -123,3 +123,8 @@ if __name__ == "__main__":
 ```
 
 By following this structure, you can adapt the RKO framework to a wide variety of combinatorial optimization problems, leveraging its powerful, parallel search capabilities with minimal problem-specific coding.
+
+### Maintainers
+Felipe Silvestre Cardoso Roberto - [Linkedin](https://www.linkedin.com/in/felipesilvestrecr/)
+
+For any questions regarding the framework, bug reports, or collaboration inquiries, please feel free to contact me on LinkedIn. I welcome any feedback or suggestions for improvement.
