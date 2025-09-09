@@ -76,9 +76,7 @@ class RKOEnvAbstract(ABC):
             'alphaLNS': [0.95]
         }
 
-        # --- Optional Q-Learning Setting ---
-        # Set to True to save a report of the learned policy when using online parameter tuning.
-        self.save_q_learning_report: bool = False
+
 
     @abstractmethod
     def decoder(self, keys: np.ndarray):
