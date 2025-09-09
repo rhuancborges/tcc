@@ -7,7 +7,7 @@ current_directory = os.path.dirname(os.path.abspath(__file__))
 project_root_directory = os.path.dirname(os.path.dirname(current_directory))
 sys.path.append(project_root_directory)
 from RKO import RKO
-from Environment import RKOEnvAbstract
+from Environment import RKOEnvAbstract, check_env
 import matplotlib.pyplot as plt
 
 class TSPProblem(RKOEnvAbstract):
@@ -159,6 +159,7 @@ if __name__ == "__main__":
     # 1. Instantiate the problem environment.
     #    This will automatically generate a new TSP instance with 50 cities.
     env = TSPProblem(num_cities=50)
+    check_env(env)  # Verify the environment implementation
     
     # 2. Instantiate the RKO solver, passing the environment.
     solver = RKO(
