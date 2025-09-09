@@ -58,8 +58,6 @@ class RKOEnvAbstract(ABC):
         self.BRKGA_parameters: dict = {'p': [100], 'pe': [0.20], 'pm': [0.10], 'rhoe': [0.70]}
         self.SA_parameters: dict = {'SAmax': [50], 'alphaSA': [0.99], 'betaMin': [0.05], 'betaMax': [0.25], 'T0': [10000]}
 
-        # Optional Q-Learning setting
-        self.save_q_learning_report: bool = False
 
     @abstractmethod
     def decoder(self, keys: np.ndarray):
