@@ -81,7 +81,7 @@ class RKOEnvAbstract(ABC):
 ### 3.2. Verifying Your Environment with `check_env`
 
 ```python
- from your_utils_file import check_env 
+ from Environment import check_env 
 
  my_env = YourProblemEnv(...)
  if check_env(my_env):
