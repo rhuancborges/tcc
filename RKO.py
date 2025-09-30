@@ -84,7 +84,7 @@ class RKO:
             save_directory (str, optional): Directory path to save reports or logs.
         """
         self.env = env
-        self.__MAX_KEYS = self.env.tam_solution
+        self.__MAX_KEYS = self.env.tam_solucao
         self.LS_type = self.env.LS_type
         self.start_time = time.time()
         self.max_time = self.env.max_time
@@ -1273,7 +1273,7 @@ class RKO:
                 return True
         return False
 
-    def solve(self, time_total, brkga=0, ms=0, sa=0, vns=0, ils=0, lns=0, pso=0, ga=0, restart=1, runs=1):
+    def solve(self, time_total, brkga=1, ms=0, sa=1, vns=1, ils=1, lns=1, pso=0, ga=1, restart=1, runs=1):
         """
         Main execution method to run the RKO framework with parallel metaheuristics.
 

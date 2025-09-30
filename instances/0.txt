@@ -1,0 +1,65 @@
+#begin_instance_info
+family	antwerp
+ID	0
+level_of_number_of_sensors	low
+level_for_selecting_services	low
+fog_to_fog_network_connection_density_level	low
+fog_to_cloud_network_connection_density_level	low
+sensors	1
+fog_nodes	3
+cloud_nodes	2
+services	3
+#end_instance_info
+#begin_sensors
+0	51.25521638105829	4.397247230923992	waste	air	camera
+#end_sensors
+#begin_fog
+0	51.249272529497496	4.405921743885132	7	10	1.0962	HX-CPU-I4309Y
+1	51.27456225412997	4.385248017754405	12	20	1.4094	HX-CPU-I4314
+2	51.21659006509443	4.400445568311498	12	20	1.4094	HX-CPU-I4314
+1
+0 0 2 3	0.064 3674.2074938668025
+#end_fog
+#begin_reach_fog_nodes
+0	0	0	4	0.0092	1168.173780105088
+1	0	1	5	0.0092	2525.985117670011
+#end_reach_fog_nodes
+#begin_cloud
+0	48.92744292889152	2.353369482741328	48.0	192.0	2.94	m5d.12xlarge
+1	48.92744292889152	2.353369482741328	96.0	384.0	8.5	g4dn.metal
+2
+0	1	1	50	0.083	344845.69291986024
+1 2 0 50	0.083 341134.1749410754
+#end_cloud
+#begin_service
+waste	2	5	1000000000	5	0.01
+camera	2	3	5000000000	1	0.01
+air	4	6	2000000000	10	0.01
+#end_service
+#begin_requests
+##time_instant_1
+		0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+##time_instant_2
+		0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+##time_instant_3
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+    0 2 air 10
+#end_requests
