@@ -1,7 +1,7 @@
 import numpy as np
 from Environment import RKOEnvAbstract
 import os 
-from floydWarshall import reconstruir_caminho, processar_caminho, floyd_warshall
+from CMC import reconstruir_caminho, processar_caminho, floyd_warshall
 import RKO, lerInstancia
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -80,14 +80,14 @@ class FogEnv(RKOEnvAbstract):
             if path is None:
                 continue  # Não processa se não há caminho
             # Chama função externa para tentar processar a requisição
-            processed = self.processar_caminho(path, req.service, self.dist, self.grafo)
+            #selecionado, False, arcos, band_tot, custo, motivo
+            _, processed, _, _, _ , _ = self.processar_caminho(path, req.service, self.dist, self.grafo)
             if processed:
                 processed_count += 1
         # Como o RKO minimiza, retornamos o negativo do número de processadas
         return -processed_count
 
-if __name__ == "__main__":
-    grafo, requisicoes, fogs = lerInstancia.run(os.path.join(current_directory,'instances/0.txt'))
+def run(grafo, requisicoes, fogs):
     ## Fazer amostragem de requisições
     amostra = np.random.choice(requisicoes, size=int(len(requisicoes)*0.3), replace=False)
     ###
@@ -95,7 +95,10 @@ if __name__ == "__main__":
     #keys = np.random.random(env.tam_solucao)
     #print(env.decoder(keys))
     solver = RKO.RKO(env, True)
-    cost, solution, time = solver.solve(time_total=60, brkga=1, lns=1, vns=1, ils=1, sa=1, pso=0, ga=0)
-    print("Best cost:", -cost)
-    print("Best solution:", env.decoder(solution))
-    print("Time taken (s):", time)
+    cost, solution, time = solver.solve(time_total=120, brkga=1, lns=1, vns=1, ils=1, sa=1, pso=0, ga=0)
+    print(env.decoder(solution))
+   
+if __name__ == "__main__":
+    instance_file = "0.txt"
+    grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
+    run(grafo, requisicoes, fogs)

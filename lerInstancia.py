@@ -1,4 +1,5 @@
 from estruturas import Grafo, Sensor, FogNode, CloudNode, Service, Request
+import os
 
 def run(pathfile):
     grafo = Grafo()
@@ -103,14 +104,20 @@ def run(pathfile):
 
         requisicoes = []
         i = 0
-        linha = f.readline().strip() # ##time_instant_1
+        linha = f.readline().strip()
         while linha != "#end_requests":
+            instante = int(linha.split("_")[2])
             linha = f.readline().strip()  # Lê uma requisição
             # Lê as requisições daquele instante
                 # sensor ID | service index | type of service | request_lifetime
             while (linha.split("_")[0] != "##time") and (linha != "#end_requests"):
                 linha = linha.split()
                 i += 1
-                requisicoes.append(Request(i, sensores[int(linha[0])], servicos[linha[2]]))
+                requisicoes.append(Request(i, sensores[int(linha[0])], servicos[linha[2]], instante))
                 linha = f.readline().strip()
-        return grafo, requisicoes, fogs
+        # Fim da leitura do arquivo
+        return grafo, requisicoes, fogs, sensores
+    
+if __name__ == "__main__":
+    instance_file = "0.txt"
+    grafo, requisicoes, fogs, sensores = run(os.path.join("instances", instance_file))

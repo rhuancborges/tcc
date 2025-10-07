@@ -85,10 +85,11 @@ class Grafo:
         self.n_arestas += 1
 
 class Request:
-    def __init__(self, ID, sensor, service):
+    def __init__(self, ID, sensor, service, instante):
         self.ID = ID
         self.sensor = sensor
         self.service = service
+        self.instante = instante
     def __repr__(self):
         return f"{self.__class__.__name__}({self.ID})"
 

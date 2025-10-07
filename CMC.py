@@ -1,0 +1,201 @@
+from lerInstancia import run
+import os
+from estruturas import Grafo, Sensor, FogNode, CloudNode, Request, Service
+
+
+# FUNÇÃO FLOYD-WARSHALL - Função para calcular todos os caminhos do grafo, considerando o tempo como peso
+# dist[u][v] - "Qual o tempo gasto para chegar em v no caminho que parte de u?"
+# prev[u][v] - "Qual o nó anterior ao v no caminho que parte de u?"
+def floyd_warshall(grafo):
+    dist = {u: {v: float('inf') for v in grafo.adj.keys()} for u in grafo.adj.keys()}
+    prev = {u: {v: None for v in grafo.adj.keys()} for u in grafo.adj.keys()}
+
+    for u in grafo.adj.keys():
+        dist[u][u] = 0
+        for v, _, _, t in grafo.adj[u]:
+            dist[u][v] = t
+            prev[u][v] = u
+
+    for k in grafo.adj.keys():
+        for i in grafo.adj.keys():
+            for j in grafo.adj.keys():
+                if dist[i][j] > dist[i][k] + dist[k][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+                    prev[i][j] = prev[k][j]
+    return dist, prev
+
+# FUNÇÃO RECONSTRUIR CAMINHO
+# Dada uma origem e um destino, a função utiliza a estrutura prev para reconstruir o caminho desde o destino até a origem
+def reconstruir_caminho(prev, origem, destino):
+    caminho = []
+    atual = destino
+    while atual is not None:
+        caminho.append(atual)
+        atual = prev[origem][atual]
+    caminho.reverse()
+    return caminho
+
+# FUNÇÃO PROCESSAR CAMINHO
+# Dado um caminho no grafo e uma requisição, essa função tenta alocar a requisição em algum nó Fog do caminho
+def processar_caminho(caminho, requisicao, dist, grafo):
+    arcos = []
+    band_tot = 0
+    custo = 0
+    selecionado = None
+    tempo = 0
+    motivo= f"No caminho {caminho}: "
+    # Percorre o caminho por indices
+    for i in range(len(caminho)-1):
+        vertice_atual = caminho[i]
+        vizinho = caminho[i+1]
+        gasto_req = requisicao.number_of_bits/(10**9)
+        tempo += dist[vertice_atual][vizinho]
+        if (gasto_req <= grafo.adj_[f"({vertice_atual},{vizinho})"].largura_banda):
+          if(tempo <= requisicao.lifetime):
+            selecionado = vizinho
+            arcos.append(f"({vertice_atual},{selecionado})")
+            band_tot += gasto_req
+            custo += gasto_req*grafo.adj_[f"({vertice_atual},{selecionado})"].custo
+          else:
+            motivo += f"Requisição estourou o tempo de vida em {vizinho}"
+        else:
+            motivo += f"Requisição estourou a largura de banda indo de {vertice_atual} para {vizinho}"
+
+        # Se não encontrou vizinho válido
+        if selecionado is None:
+            return selecionado, False, arcos, band_tot, custo, motivo
+
+        # Testa se o vizinho selecionado é apto para processar a requisicao, com base na capacidade de processamento e de memória do Nó Fog
+        if(requisicao.processing_demand <= selecionado.processing_capacity):
+            if(requisicao.memory_demand <= selecionado.memory_capacity):
+                selecionado.processing_capacity -= requisicao.processing_demand
+                selecionado.memory_capacity -= requisicao.memory_demand
+                selecionado.requisicoes += 1
+                if(isinstance(selecionado, FogNode)): 
+                    return selecionado, True, arcos, band_tot, custo, motivo
+                else:
+                    motivo += "Requisição foi processada no CloudNode"
+                    return selecionado, False, arcos, band_tot, custo, motivo
+    motivo += "Requisicao percorreu todo o caminho e não foi processada"
+    return selecionado, False, arcos, band_tot, custo, motivo
+
+# FUNÇÃO LER INSTÂNCIA
+# Chamada para cada instância gerada
+# index - índice das instâncias e também dos arquivos de log e mapa
+    # Facilita a correspondência entre os arquivos
+def run(grafo, requisicoes, fogs, index):
+    # Estrutura para controlar a disponibilidade de Processamento e Memória para os nós fog
+    # i: (v,p,m) - Ao instante "i", uma quantidade "p" de processamento e "m" de memória volta a estar disponível no nó "v"
+    temporal = {i: [] for i in range(1, 1001)}
+
+    # Estrutura para controlar a disponibilidade de largura de banda para as arestas
+    # i: (aresta, band) - Ao instante i, uma quantidade "band" de largura de banda volta a estar disponível na aresta "aresta"
+    temporal_arestas = {i: [] for i in range(1, 1002)}
+
+    tot_req = 0
+    quant_req = 0
+    set_arcos = []
+    quant_band = 0
+    quant_custo = 0
+
+    # Chama a função Floyd-Warshall para já deixar pré-processado todos os caminhos do grafo
+    dist, prev = floyd_warshall(grafo)
+
+    # Abre o arquivo log pela primeira vez e adiciona ium cabeçalho
+    with open(f"log_{index}.txt", "w", encoding="utf-8") as l:
+        l.write(f"COMECANDO LOG DA INSTÂNCIA {index}.txt\n")
+
+    # Começa a ler as requisições
+    for req in requisicoes: 
+        instante = req.instante
+        # Faz as atualizações no grafo
+        for (v, p, m) in temporal[instante]:
+            v.processing_capacity += p
+            v.memory_capacity += m
+        for aresta, band in temporal_arestas[instante]:
+            aresta.largura_banda += band
+
+        log_req = "" # String para armazenar no arquivo de log
+        tot_req += 1
+        sensor = req.sensor
+        log_req += f"Requisicao {tot_req} | Sensor {sensor} | "
+
+        # Para um dado sensor, seleciona todos os possíveis Nós fog a serem alcançados, ordenados crescentemente pelo tempo de alcance
+        tempo_dict = dist[sensor]
+        candidatos = sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, FogNode)], key=lambda x: x[1])
+        quant_testados = 1 # Variável para contar o número de caminhos testados até processar uma requisição
+        candidatos += sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, CloudNode)], key=lambda x: x[1])
+        
+
+        # Varre a lista de Nós Fog candidatos, selecionando um por vez como destino do caminho
+        for destino, _ in candidatos:
+
+            if (index <= 15):
+                if (quant_testados > 3):
+                    log_req += f"Testou-se o limite de 3 caminhos\n"
+                    destino = candidatos[-3][0]
+            else:
+                if (quant_testados > 6):
+                    log_req += f"Testou-se o limite de 6 caminhos\n"
+                    destino = candidatos[-3][0]
+
+            # Reconstrói o caminho
+            caminho = reconstruir_caminho(prev, sensor, destino)
+
+            # Tenta processar o caminho
+            selecionado, processou, arcos, band, c, motivo = processar_caminho(caminho, req.service, dist, grafo)
+
+            # Entra no if apenas se a requisicao foi processada no caminho passado como parâmetro
+            if processou:
+                log_req += f"{quant_testados} caminhos testados | Caminho selecionado: {caminho} | Nó selecionado: {selecionado}\n"
+                
+                if(isinstance(selecionado, FogNode)):
+                    quant_req += 1  # Número de requisicoes incrementado
+                
+                set_arcos += arcos # Conjunto de arcos percorridos atualizado
+                
+                for arco in arcos:
+                    grafo.adj_[arco].quantidade_uso += 1 # Uso de arcos incrementado
+                    grafo.adj_[arco].largura_banda -= req.service.number_of_bits/(10**9)
+                    if(instante+1)<=1000:
+                        # Torna a quantidade de largura de banda da requisição "indisponível" à aresta apenas por um instante (visto que o tempo de propagação não é tão significativo)
+                        temporal_arestas[instante+1].append((grafo.adj_[arco], req.service.number_of_bits/(10**9)))
+                
+                quant_band += band # Largura de banda total incrementada
+                quant_custo += c # Custo total incrementado
+
+                # Adicionando na estrutura temporal quando as quantidades de processamento e memória estaraõ disponíveis novamente para o nó em que foi processada a requisição
+                #tX: [(Nó, processing_demand, memory_demand)]
+                if (instante+req.service.lifetime+1) <= 1000:
+                    temporal[instante+req.service.lifetime+1].append((selecionado, req.service.processing_demand, req.service.memory_demand))
+
+                break # Uma vez processada a requisição, não se testa outros caminhos
+            else:
+                log_req += f"{motivo}\n"
+                if(isinstance(destino, CloudNode)):
+                    break
+
+            quant_testados+=1 # Se não foi processada, incrementa a quantidade de caminhos testada
+
+
+            with open(f"log_{index}.txt", "a", encoding="utf-8") as l:
+                l.write(log_req)
+
+    set_arcos = set(set_arcos)
+    quant_arcos = len(set_arcos)
+    print(f"Total de requisições: {tot_req}\n % de requisições processadas: {(quant_req/tot_req)*100.0}% ({quant_req} processadas)\n % de arcos usados: {(quant_arcos/grafo.n_arestas)*100.0}%\n Largura de banda usada: {quant_band}\n Custo gasto: {quant_custo}\n")
+
+   
+    return (quant_req/tot_req)*100.0, (quant_arcos/grafo.n_arestas)*100.0, quant_band, quant_custo
+
+
+
+if __name__=="__main__":
+    instance_file = "0.txt"
+    grafo, requisicoes, fogs, sensores = run(os.path.join("instances", instance_file))
+    perc_req, perc_arcos, largura_banda, custo = run(grafo, requisicoes, fogs, 0)
+    print(f"Percentual de requisições processadas: {perc_req}%")
+    print(f"Percentual de arcos usados: {perc_arcos}%")
+    print(f"Largura de banda total usada: {largura_banda} Gbps")
+    print(f"Custo total: US$ {custo}")
+   
