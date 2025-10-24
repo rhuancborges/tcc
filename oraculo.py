@@ -88,17 +88,16 @@ class FogEnv(RKOEnvAbstract):
         return -processed_count
 
 def run(grafo, requisicoes, fogs):
-    ## Fazer amostragem de requisições
-    amostra = np.random.choice(requisicoes, size=int(len(requisicoes)*0.3), replace=False)
     ###
     env = FogEnv(grafo, requisicoes, fogs)
     #keys = np.random.random(env.tam_solucao)
     #print(env.decoder(keys))
     solver = RKO.RKO(env, True)
     cost, solution, time = solver.solve(time_total=120, brkga=1, lns=1, vns=1, ils=1, sa=1, pso=0, ga=0)
-    print(env.decoder(solution))
+    return env.decoder(solution)
    
 if __name__ == "__main__":
-    instance_file = "0.txt"
+    print('Running oraculo.py main...')
+    '''instance_file = "0.txt"
     grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
-    run(grafo, requisicoes, fogs)
+    run(grafo, requisicoes, fogs)'''

@@ -38,28 +38,28 @@ air	4	6	2000000000	10	0.01
 #end_service
 #begin_requests
 ##time_instant_1
-		0 2 air 10
+		0 2 camera 10
+    0 2 air 10
+    0 2 waste 10
     0 2 air 10
     0 2 air 10
-    0 2 air 10
-    0 2 air 10
-    0 2 air 10
+    0 2 waste 10
 ##time_instant_2
 		0 2 air 10
     0 2 air 10
+    0 2 waste 10
+    0 2 camera 10
     0 2 air 10
     0 2 air 10
-    0 2 air 10
-    0 2 air 10
-    0 2 air 10
+    0 2 waste 10
     0 2 air 10
 ##time_instant_3
+    0 2 camera 10
+    0 2 waste 10
+    0 2 air 10
+    0 2 waste 10
     0 2 air 10
     0 2 air 10
-    0 2 air 10
-    0 2 air 10
-    0 2 air 10
-    0 2 air 10
-    0 2 air 10
+    0 2 camera 10
     0 2 air 10
 #end_requests

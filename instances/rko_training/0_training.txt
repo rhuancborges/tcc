@@ -1,0 +1,6109 @@
+#begin_instance_info
+family	antwerp
+ID	0_training
+level_of_number_of_sensors	low
+level_for_selecting_services	low
+fog_to_fog_network_connection_density_level	low
+fog_to_cloud_network_connection_density_level	low
+sensors	20
+fog_nodes	10
+cloud_nodes	3
+services	3
+#end_instance_info
+#begin_sensors
+0	51.2525116696361	4.381261348575024	air	waste
+1	51.2547076206744	4.369177071229148	air	waste
+2	51.25650906317206	4.361876324048981	camera	waste
+3	51.250630286774076	4.39236311398448	camera
+4	51.224788983711974	4.411498802950773	camera	waste
+5	51.21592401673977	4.399053694849355	waste
+6	51.22385199867813	4.4013834814359285	waste
+7	51.20880923957981	4.39779219907945	waste	waste
+8	51.206495013452646	4.418066475883155	waste	waste
+9	51.21098397829058	4.418999972019458	waste
+10	51.20816544905165	4.409861809615378	waste
+11	51.21349702936675	4.419010229720456	waste	camera
+12	51.194393365911175	4.459521046734291	camera
+13	51.20801411710296	4.460804094526999	air
+14	51.19414138022984	4.451787281553451	air	air
+15	51.209104544590986	4.467651500264986	air	air
+16	51.186036174691786	4.4098268216280685	camera
+17	51.18082115568054	4.408931989713913	waste
+18	51.17976312560452	4.405108355248384	camera	camera
+19	51.18269691316917	4.395686228205754	waste
+#end_sensors
+#begin_fog
+0	51.249468489680375	4.388768631892374	16	256	1.4094	HX-CPU-I4314
+1	51.26276236702537	4.378573664791964	16	256	1.4094	HX-CPU-I4314
+2	51.21147418670257	4.405377280440426	16	256	1.4094	HX-CPU-I4314
+3	51.21543582265615	4.390973938641777	8	256	1.0962	HX-CPU-I4309Y
+4	51.20650656247634	4.4130636471021205	8	256	1.0962	HX-CPU-I4309Y
+5	51.21141021250182	4.421292244988835	16	256	1.4094	HX-CPU-I4314
+6	51.184261092386336	4.46561931176647	16	256	1.4094	HX-CPU-I4314
+7	51.2065584155288	4.464961258185833	8	256	1.0962	HX-CPU-I4309Y
+8	51.17523432541302	4.404053071910466	8	256	1.0962	HX-CPU-I4309Y
+9	51.1793636856859	4.4063133963340855	16	256	1.4094	HX-CPU-I4314
+13
+0	0	1	2	0.078	1859.4240163178176
+1	2	3	3	0.078	1660.7122015510747
+2	4	5	1	0.078	1064.2985258767137
+3	6	7	1	0.064	2472.906399943331
+4	8	9	3	0.078	522.2621524069366
+5	3	9	1	0.064	4347.770150468058
+6	0	5	3	0.078	5557.158410414129
+7	0	6	1	0.064	11193.024498041215
+8	0	7	3	0.046	9716.439341055106
+9	3	8	2	0.064	4688.316764113911
+10	5	6	2	0.046	5775.224401854496
+11	1	5	3	0.064	7414.625855059396
+12	7	9	1	0.064	7184.518766923236
+#end_fog
+#begin_reach_fog_nodes
+0	0	0	0.01	0.0092	900.3775913248493
+1	0	1	0.01	0.046	1175.134167003696
+2	1	0	0.01	0.046	2254.59257555172
+3	1	1	0.01	0.0092	1374.4950408114735
+4	2	1	0.01	0.046	1981.8852246243343
+5	3	0	0.01	0.0092	419.93074986098145
+6	3	1	0.01	0.0092	2039.6788957778
+7	4	2	0.01	0.0092	1625.5367237243356
+8	4	3	0.01	0.0092	2506.7896491057254
+9	4	4	0.01	0.0092	2034.3426324291347
+10	4	5	0.01	0.0092	1840.0716588225378
+11	5	2	0.01	0.0092	858.9551508383395
+12	5	3	0.01	0.046	900.0567833855246
+13	5	4	0.01	0.046	1875.353674812903
+14	5	5	0.01	0.046	2522.941744020051
+15	6	2	0.01	0.046	1442.3551237903262
+16	6	3	0.01	0.0092	1486.7490158085138
+17	6	4	0.01	0.046	2320.523269523358
+18	6	5	0.01	0.0092	2608.3237001795615
+19	7	2	0.01	0.046	893.6750274460652
+20	7	3	0.01	0.046	1055.7223778479968
+21	7	4	0.01	0.046	1717.1901363028505
+22	7	5	0.01	0.0092	2628.9482077434163
+23	8	2	0.01	0.046	1515.1146190528984
+24	8	4	0.01	0.0092	556.2906528131315
+25	8	5	0.01	0.046	652.3769425445864
+26	9	2	0.01	0.046	1515.748812164843
+27	9	4	0.01	0.046	825.9047760595804
+28	9	5	0.01	0.0092	259.2323615962244
+29	10	2	0.01	0.0092	619.0481071947559
+30	10	3	0.01	0.0092	2249.5995869582034
+31	10	4	0.01	0.0092	400.7244617542077
+32	10	5	0.01	0.046	1320.9327132177377
+33	11	2	0.01	0.046	1532.4136735026966
+34	11	4	0.01	0.0092	1018.7467529218187
+35	11	5	0.01	0.0092	343.38411911015015
+36	12	6	0.01	0.046	1312.0543159228448
+37	12	7	0.01	0.046	1478.0501049275538
+38	13	6	0.01	0.0092	2687.0911072752865
+39	13	7	0.01	0.0092	489.6144577557684
+40	14	6	0.01	0.046	1888.2037025392096
+41	14	7	0.01	0.0092	2010.153162208679
+42	15	6	0.01	0.0092	2763.3305437228814
+43	15	7	0.01	0.0092	411.2839093223523
+44	16	2	0.01	0.046	2863.283530426424
+45	16	4	0.01	0.0092	2297.82270440212
+46	16	8	0.01	0.0092	1358.796606735949
+47	16	9	0.01	0.0092	836.5765505717062
+48	17	4	0.01	0.0092	2884.4491491848935
+49	17	8	0.01	0.0092	823.3851650638773
+50	17	9	0.01	0.046	333.0042831302275
+51	18	8	0.01	0.0092	515.6218572741899
+52	18	9	0.01	0.046	141.12273518963127
+53	19	8	0.01	0.046	1245.0184001224607
+54	19	9	0.01	0.046	1238.1228505979389
+#end_reach_fog_nodes
+#begin_cloud
+0	48.92744292889152	2.353369482741328	48.0	192.0	2.94	m5d.12xlarge
+1	48.92744292889152	2.353369482741328	96.0	384.0	8.5	g4dn.metal
+2	48.92744292889152	2.353369482741328	192.0	768.0	10.49	m7i.48xlarge
+4
+0	2	2	50	0.083	341077.5245005714
+1	3	0	50	0.083	340337.7323272389
+2	5	1	50	0.083	342256.9552551402
+3	7	0	50	0.083	345138.4540728818
+#end_cloud
+#begin_service
+waste	0.2125	0.375	296	50	0.01
+camera	0.35	0.475	12000	10	0.01
+air	0.25	0.3125	744	100	0.01
+#end_service
+#begin_requests
+	##time_instant_1
+		2	1	waste	50
+	##time_instant_2
+		3	0	camera	10
+		19	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		5	0	waste	50
+	##time_instant_3
+		7	0	waste	50
+		7	1	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		16	0	camera	10
+		0	1	waste	50
+		9	0	waste	50
+	##time_instant_4
+		9	0	waste	50
+		11	1	camera	10
+		14	0	air	100
+		6	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_5
+		1	0	air	100
+		3	0	camera	10
+		18	0	camera	10
+		0	1	waste	50
+	##time_instant_6
+		2	1	waste	50
+		2	0	camera	10
+		13	0	air	100
+		19	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_7
+		5	0	waste	50
+		17	0	waste	50
+	##time_instant_8
+		5	0	waste	50
+		18	0	camera	10
+	##time_instant_9
+		15	0	air	100
+		0	1	waste	50
+		19	0	waste	50
+	##time_instant_10
+		11	1	camera	10
+		11	0	waste	50
+		8	0	waste	50
+		3	0	camera	10
+		13	0	air	100
+	##time_instant_11
+		12	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		19	0	waste	50
+		16	0	camera	10
+	##time_instant_12
+		18	1	camera	10
+		18	0	camera	10
+		10	0	waste	50
+		8	1	waste	50
+		13	0	air	100
+	##time_instant_13
+		18	0	camera	10
+		4	0	camera	10
+		9	0	waste	50
+	##time_instant_14
+		12	0	camera	10
+		7	1	waste	50
+		18	1	camera	10
+		14	1	air	100
+		10	0	waste	50
+		19	0	waste	50
+	##time_instant_15
+		17	0	waste	50
+		8	0	waste	50
+		3	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		18	1	camera	10
+		19	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+		16	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+	##time_instant_16
+		10	0	waste	50
+		3	0	camera	10
+		6	0	waste	50
+		5	0	waste	50
+		2	1	waste	50
+	##time_instant_17
+		9	0	waste	50
+		16	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_18
+		16	0	camera	10
+		10	0	waste	50
+	##time_instant_19
+		0	1	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		19	0	waste	50
+		15	1	air	100
+		5	0	waste	50
+		18	1	camera	10
+		9	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		10	0	waste	50
+	##time_instant_20
+		5	0	waste	50
+		17	0	waste	50
+		6	0	waste	50
+		1	1	waste	50
+		4	0	camera	10
+	##time_instant_21
+		6	0	waste	50
+		3	0	camera	10
+		18	1	camera	10
+	##time_instant_22
+		2	1	waste	50
+		2	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		14	1	air	100
+		10	0	waste	50
+		4	0	camera	10
+		6	0	waste	50
+		13	0	air	100
+		3	0	camera	10
+	##time_instant_23
+		4	0	camera	10
+		18	1	camera	10
+	##time_instant_24
+		8	1	waste	50
+		8	0	waste	50
+		15	1	air	100
+	##time_instant_25
+		6	0	waste	50
+		14	0	air	100
+		12	0	camera	10
+		3	0	camera	10
+		17	0	waste	50
+		15	1	air	100
+		9	0	waste	50
+	##time_instant_26
+		19	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		13	0	air	100
+	##time_instant_27
+		7	0	waste	50
+		18	1	camera	10
+	##time_instant_28
+		14	0	air	100
+		19	0	waste	50
+	##time_instant_29
+		5	0	waste	50
+		17	0	waste	50
+	##time_instant_30
+		13	0	air	100
+		11	0	waste	50
+		11	1	camera	10
+		15	1	air	100
+		17	0	waste	50
+		4	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+		5	0	waste	50
+	##time_instant_31
+		17	0	waste	50
+	##time_instant_32
+		1	0	air	100
+	##time_instant_33
+		13	0	air	100
+		6	0	waste	50
+	##time_instant_34
+		6	0	waste	50
+		1	0	air	100
+		13	0	air	100
+	##time_instant_35
+		17	0	waste	50
+	##time_instant_36
+		14	1	air	100
+		0	1	waste	50
+		9	0	waste	50
+	##time_instant_37
+		15	0	air	100
+		6	0	waste	50
+	##time_instant_38
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_39
+		16	0	camera	10
+		10	0	waste	50
+		9	0	waste	50
+	##time_instant_40
+		11	0	waste	50
+		5	0	waste	50
+	##time_instant_41
+		6	0	waste	50
+		9	0	waste	50
+		5	0	waste	50
+		16	0	camera	10
+		3	0	camera	10
+		2	1	waste	50
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_42
+		5	0	waste	50
+		11	0	waste	50
+		7	1	waste	50
+		9	0	waste	50
+	##time_instant_43
+		5	0	waste	50
+	##time_instant_44
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_45
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_46
+		8	1	waste	50
+		11	0	waste	50
+		4	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_47
+		6	0	waste	50
+	##time_instant_48
+		8	1	waste	50
+		15	0	air	100
+		15	1	air	100
+		1	1	waste	50
+	##time_instant_49
+		7	1	waste	50
+		7	0	waste	50
+		19	0	waste	50
+		8	1	waste	50
+		12	0	camera	10
+	##time_instant_50
+		19	0	waste	50
+		5	0	waste	50
+	##time_instant_51
+		11	1	camera	10
+		6	0	waste	50
+	##time_instant_52
+		18	1	camera	10
+		18	0	camera	10
+		15	1	air	100
+		15	0	air	100
+	##time_instant_53
+		4	1	waste	50
+		4	0	camera	10
+		1	1	waste	50
+		11	0	waste	50
+	##time_instant_54
+		14	1	air	100
+		14	0	air	100
+		1	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+		9	0	waste	50
+	##time_instant_55
+		4	1	waste	50
+		4	0	camera	10
+		15	0	air	100
+		18	1	camera	10
+		12	0	camera	10
+		19	0	waste	50
+	##time_instant_56
+		0	0	air	100
+		7	0	waste	50
+		7	1	waste	50
+		8	1	waste	50
+		14	0	air	100
+	##time_instant_57
+		13	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		17	0	waste	50
+		15	0	air	100
+		15	1	air	100
+		19	0	waste	50
+		1	0	air	100
+	##time_instant_58
+		4	0	camera	10
+		10	0	waste	50
+		3	0	camera	10
+	##time_instant_59
+		2	1	waste	50
+		4	1	waste	50
+		3	0	camera	10
+		13	0	air	100
+	##time_instant_60
+		9	0	waste	50
+		6	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		2	0	camera	10
+		4	1	waste	50
+	##time_instant_61
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		2	0	camera	10
+		12	0	camera	10
+	##time_instant_62
+		18	0	camera	10
+		14	0	air	100
+		14	1	air	100
+	##time_instant_63
+		13	0	air	100
+		7	1	waste	50
+		1	1	waste	50
+		6	0	waste	50
+	##time_instant_64
+		15	0	air	100
+		10	0	waste	50
+		19	0	waste	50
+		14	1	air	100
+		9	0	waste	50
+		16	0	camera	10
+	##time_instant_65
+		18	1	camera	10
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_66
+		8	1	waste	50
+		12	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		14	1	air	100
+		10	0	waste	50
+	##time_instant_67
+		8	1	waste	50
+	##time_instant_68
+		15	0	air	100
+		18	1	camera	10
+		13	0	air	100
+		5	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		2	1	waste	50
+		14	1	air	100
+		14	0	air	100
+		6	0	waste	50
+		9	0	waste	50
+		10	0	waste	50
+		12	0	camera	10
+		8	1	waste	50
+		16	0	camera	10
+	##time_instant_69
+		3	0	camera	10
+		2	0	camera	10
+		6	0	waste	50
+	##time_instant_70
+		0	0	air	100
+		18	1	camera	10
+		17	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_71
+		16	0	camera	10
+		9	0	waste	50
+		19	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		14	0	air	100
+		14	1	air	100
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_72
+		10	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		14	1	air	100
+		12	0	camera	10
+		3	0	camera	10
+		5	0	waste	50
+	##time_instant_73
+		17	0	waste	50
+		11	1	camera	10
+		13	0	air	100
+	##time_instant_74
+		17	0	waste	50
+	##time_instant_75
+		15	0	air	100
+		15	1	air	100
+		17	0	waste	50
+		3	0	camera	10
+		19	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		12	0	camera	10
+	##time_instant_76
+		2	1	waste	50
+		2	0	camera	10
+		13	0	air	100
+		3	0	camera	10
+	##time_instant_77
+		19	0	waste	50
+		5	0	waste	50
+		0	1	waste	50
+		13	0	air	100
+	##time_instant_78
+		10	0	waste	50
+		6	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		3	0	camera	10
+		4	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		9	0	waste	50
+		18	0	camera	10
+	##time_instant_79
+		3	0	camera	10
+	##time_instant_80
+		13	0	air	100
+	##time_instant_81
+		19	0	waste	50
+		10	0	waste	50
+		5	0	waste	50
+		13	0	air	100
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_82
+		19	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		14	1	air	100
+		14	0	air	100
+		1	0	air	100
+		9	0	waste	50
+		13	0	air	100
+	##time_instant_83
+		6	0	waste	50
+		13	0	air	100
+		12	0	camera	10
+		10	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_84
+		16	0	camera	10
+		7	0	waste	50
+		13	0	air	100
+		18	0	camera	10
+		18	1	camera	10
+		19	0	waste	50
+	##time_instant_85
+		1	0	air	100
+		3	0	camera	10
+		12	0	camera	10
+		9	0	waste	50
+		10	0	waste	50
+	##time_instant_86
+		18	1	camera	10
+		0	0	air	100
+		5	0	waste	50
+	##time_instant_87
+		19	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_88
+		0	1	waste	50
+		3	0	camera	10
+		13	0	air	100
+		8	1	waste	50
+		8	0	waste	50
+		10	0	waste	50
+	##time_instant_89
+		15	0	air	100
+		15	1	air	100
+		11	1	camera	10
+		9	0	waste	50
+		3	0	camera	10
+		10	0	waste	50
+		19	0	waste	50
+		16	0	camera	10
+	##time_instant_90
+		11	0	waste	50
+		18	1	camera	10
+		1	0	air	100
+		3	0	camera	10
+	##time_instant_91
+		2	0	camera	10
+		3	0	camera	10
+		5	0	waste	50
+	##time_instant_92
+		4	0	camera	10
+		4	1	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		7	0	waste	50
+		14	1	air	100
+		14	0	air	100
+	##time_instant_93
+		13	0	air	100
+		2	1	waste	50
+		15	0	air	100
+		15	1	air	100
+		11	0	waste	50
+		11	1	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		0	1	waste	50
+	##time_instant_94
+		17	0	waste	50
+	##time_instant_95
+		11	1	camera	10
+		11	0	waste	50
+		13	0	air	100
+		10	0	waste	50
+		15	1	air	100
+		7	0	waste	50
+		1	0	air	100
+		6	0	waste	50
+	##time_instant_96
+		8	1	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		7	1	waste	50
+		14	0	air	100
+		14	1	air	100
+		17	0	waste	50
+		19	0	waste	50
+		16	0	camera	10
+	##time_instant_97
+		8	0	waste	50
+		8	1	waste	50
+		19	0	waste	50
+		15	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		3	0	camera	10
+		5	0	waste	50
+		11	0	waste	50
+	##time_instant_98
+		6	0	waste	50
+		13	0	air	100
+		1	0	air	100
+		1	1	waste	50
+		12	0	camera	10
+		16	0	camera	10
+	##time_instant_99
+		1	1	waste	50
+		1	0	air	100
+		13	0	air	100
+	##time_instant_100
+		9	0	waste	50
+		3	0	camera	10
+		0	1	waste	50
+		17	0	waste	50
+	##time_instant_101
+		19	0	waste	50
+		10	0	waste	50
+	##time_instant_102
+		2	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+		5	0	waste	50
+		17	0	waste	50
+		15	1	air	100
+		11	1	camera	10
+	##time_instant_103
+		12	0	camera	10
+		14	0	air	100
+		3	0	camera	10
+		16	0	camera	10
+		17	0	waste	50
+		6	0	waste	50
+		19	0	waste	50
+	##time_instant_104
+		17	0	waste	50
+		8	0	waste	50
+		13	0	air	100
+		19	0	waste	50
+		15	0	air	100
+	##time_instant_105
+		13	0	air	100
+		6	0	waste	50
+		10	0	waste	50
+		0	1	waste	50
+		19	0	waste	50
+	##time_instant_106
+		5	0	waste	50
+		0	1	waste	50
+		12	0	camera	10
+	##time_instant_107
+		1	1	waste	50
+		11	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		2	0	camera	10
+		2	1	waste	50
+		12	0	camera	10
+		15	1	air	100
+		0	0	air	100
+		0	1	waste	50
+		3	0	camera	10
+		10	0	waste	50
+	##time_instant_108
+		9	0	waste	50
+		15	0	air	100
+		15	1	air	100
+	##time_instant_109
+		3	0	camera	10
+		14	1	air	100
+	##time_instant_110
+		1	1	waste	50
+		18	0	camera	10
+		12	0	camera	10
+		10	0	waste	50
+		5	0	waste	50
+		19	0	waste	50
+		3	0	camera	10
+	##time_instant_111
+		6	0	waste	50
+		17	0	waste	50
+		19	0	waste	50
+	##time_instant_112
+		3	0	camera	10
+	##time_instant_113
+		4	0	camera	10
+	##time_instant_114
+		3	0	camera	10
+		9	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		12	0	camera	10
+		17	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		5	0	waste	50
+		4	0	camera	10
+		2	1	waste	50
+		11	1	camera	10
+	##time_instant_115
+		10	0	waste	50
+		1	1	waste	50
+		9	0	waste	50
+		4	1	waste	50
+		13	0	air	100
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_116
+		19	0	waste	50
+		7	0	waste	50
+		12	0	camera	10
+	##time_instant_117
+		12	0	camera	10
+		2	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_118
+		9	0	waste	50
+		19	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_119
+		14	1	air	100
+		14	0	air	100
+		12	0	camera	10
+		13	0	air	100
+		9	0	waste	50
+	##time_instant_120
+		19	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		0	0	air	100
+		3	0	camera	10
+	##time_instant_121
+		14	0	air	100
+		7	0	waste	50
+		7	1	waste	50
+		3	0	camera	10
+		0	1	waste	50
+		18	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_122
+		4	1	waste	50
+		11	1	camera	10
+		19	0	waste	50
+		2	0	camera	10
+		10	0	waste	50
+	##time_instant_123
+		9	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		15	1	air	100
+		15	0	air	100
+		8	1	waste	50
+		13	0	air	100
+		11	0	waste	50
+	##time_instant_124
+		6	0	waste	50
+		4	1	waste	50
+		14	0	air	100
+		0	0	air	100
+		11	0	waste	50
+		17	0	waste	50
+	##time_instant_125
+		16	0	camera	10
+		12	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+		10	0	waste	50
+		5	0	waste	50
+		17	0	waste	50
+	##time_instant_126
+		10	0	waste	50
+		18	1	camera	10
+		15	1	air	100
+		0	0	air	100
+		9	0	waste	50
+	##time_instant_127
+		17	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_128
+		4	1	waste	50
+		13	0	air	100
+		1	0	air	100
+	##time_instant_129
+		16	0	camera	10
+		2	1	waste	50
+	##time_instant_130
+		5	0	waste	50
+	##time_instant_131
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_132
+		19	0	waste	50
+		16	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_133
+		3	0	camera	10
+	##time_instant_134
+		3	0	camera	10
+		15	0	air	100
+		17	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		16	0	camera	10
+		5	0	waste	50
+	##time_instant_135
+		5	0	waste	50
+		10	0	waste	50
+		11	1	camera	10
+	##time_instant_136
+		11	1	camera	10
+		11	0	waste	50
+		13	0	air	100
+		0	1	waste	50
+		1	1	waste	50
+		3	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+	##time_instant_137
+		5	0	waste	50
+		14	1	air	100
+		14	0	air	100
+	##time_instant_138
+		14	1	air	100
+		5	0	waste	50
+		8	1	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+		6	0	waste	50
+	##time_instant_139
+		2	1	waste	50
+		14	0	air	100
+		8	0	waste	50
+		3	0	camera	10
+	##time_instant_140
+		8	1	waste	50
+		11	0	waste	50
+		12	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		16	0	camera	10
+	##time_instant_141
+		7	0	waste	50
+		5	0	waste	50
+		19	0	waste	50
+		17	0	waste	50
+		13	0	air	100
+		14	0	air	100
+	##time_instant_142
+		0	0	air	100
+		0	1	waste	50
+		10	0	waste	50
+		6	0	waste	50
+		17	0	waste	50
+		12	0	camera	10
+	##time_instant_143
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_144
+		3	0	camera	10
+		5	0	waste	50
+	##time_instant_145
+		0	1	waste	50
+		12	0	camera	10
+	##time_instant_146
+		13	0	air	100
+		18	1	camera	10
+		9	0	waste	50
+		12	0	camera	10
+	##time_instant_147
+		18	1	camera	10
+		6	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		9	0	waste	50
+		15	0	air	100
+		15	1	air	100
+	##time_instant_148
+		1	1	waste	50
+		1	0	air	100
+		16	0	camera	10
+		13	0	air	100
+		4	1	waste	50
+	##time_instant_149
+		6	0	waste	50
+		5	0	waste	50
+	##time_instant_150
+		16	0	camera	10
+		4	0	camera	10
+	##time_instant_151
+		2	1	waste	50
+		12	0	camera	10
+	##time_instant_152
+		16	0	camera	10
+	##time_instant_153
+		17	0	waste	50
+	##time_instant_154
+		16	0	camera	10
+		12	0	camera	10
+		1	0	air	100
+		8	0	waste	50
+		4	0	camera	10
+	##time_instant_155
+		5	0	waste	50
+		1	1	waste	50
+		7	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_156
+		12	0	camera	10
+		7	1	waste	50
+	##time_instant_157
+		17	0	waste	50
+		7	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_158
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_159
+		16	0	camera	10
+		14	0	air	100
+		6	0	waste	50
+		17	0	waste	50
+		10	0	waste	50
+		8	1	waste	50
+		5	0	waste	50
+	##time_instant_160
+		1	0	air	100
+		9	0	waste	50
+	##time_instant_161
+		17	0	waste	50
+		5	0	waste	50
+		6	0	waste	50
+		4	0	camera	10
+		18	1	camera	10
+		15	0	air	100
+		15	1	air	100
+		7	1	waste	50
+	##time_instant_162
+		3	0	camera	10
+		10	0	waste	50
+	##time_instant_163
+		14	0	air	100
+		6	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		16	0	camera	10
+		18	1	camera	10
+	##time_instant_164
+		9	0	waste	50
+	##time_instant_165
+		18	0	camera	10
+		18	1	camera	10
+		3	0	camera	10
+		4	1	waste	50
+		12	0	camera	10
+		5	0	waste	50
+	##time_instant_166
+		19	0	waste	50
+		15	1	air	100
+		1	1	waste	50
+		1	0	air	100
+		7	1	waste	50
+		10	0	waste	50
+	##time_instant_167
+		12	0	camera	10
+		18	0	camera	10
+		18	1	camera	10
+		6	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_168
+		11	1	camera	10
+		5	0	waste	50
+		19	0	waste	50
+		7	0	waste	50
+		8	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_169
+		10	0	waste	50
+		18	1	camera	10
+		1	0	air	100
+		0	0	air	100
+		3	0	camera	10
+		15	1	air	100
+		15	0	air	100
+	##time_instant_170
+		14	1	air	100
+		14	0	air	100
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_171
+		17	0	waste	50
+		16	0	camera	10
+		10	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		4	1	waste	50
+		4	0	camera	10
+		13	0	air	100
+	##time_instant_172
+		19	0	waste	50
+		16	0	camera	10
+		10	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		6	0	waste	50
+		3	0	camera	10
+	##time_instant_173
+		9	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		19	0	waste	50
+		13	0	air	100
+	##time_instant_174
+		12	0	camera	10
+		15	0	air	100
+		15	1	air	100
+		19	0	waste	50
+	##time_instant_175
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_176
+		12	0	camera	10
+		15	1	air	100
+		17	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		10	0	waste	50
+	##time_instant_177
+		11	1	camera	10
+		11	0	waste	50
+		0	1	waste	50
+	##time_instant_178
+		4	1	waste	50
+		2	0	camera	10
+		2	1	waste	50
+		14	1	air	100
+	##time_instant_179
+		3	0	camera	10
+		12	0	camera	10
+		4	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		10	0	waste	50
+		14	1	air	100
+	##time_instant_180
+		8	0	waste	50
+		8	1	waste	50
+		16	0	camera	10
+		1	0	air	100
+		14	1	air	100
+		14	0	air	100
+		12	0	camera	10
+		6	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_181
+		2	0	camera	10
+		11	0	waste	50
+	##time_instant_182
+		4	0	camera	10
+		9	0	waste	50
+		19	0	waste	50
+		18	1	camera	10
+	##time_instant_183
+		13	0	air	100
+		1	0	air	100
+		1	1	waste	50
+		9	0	waste	50
+		4	1	waste	50
+		7	0	waste	50
+		16	0	camera	10
+		0	1	waste	50
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_184
+		17	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_185
+		18	0	camera	10
+		13	0	air	100
+	##time_instant_186
+		3	0	camera	10
+		10	0	waste	50
+	##time_instant_187
+		19	0	waste	50
+		16	0	camera	10
+		6	0	waste	50
+		5	0	waste	50
+	##time_instant_188
+		5	0	waste	50
+		7	1	waste	50
+	##time_instant_189
+		1	1	waste	50
+	##time_instant_190
+		3	0	camera	10
+		7	1	waste	50
+		5	0	waste	50
+		17	0	waste	50
+		8	1	waste	50
+		14	1	air	100
+		14	0	air	100
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_191
+		9	0	waste	50
+		7	0	waste	50
+	##time_instant_192
+		9	0	waste	50
+		2	1	waste	50
+		17	0	waste	50
+	##time_instant_193
+		10	0	waste	50
+		7	1	waste	50
+		11	1	camera	10
+		9	0	waste	50
+		3	0	camera	10
+		14	0	air	100
+		2	1	waste	50
+		12	0	camera	10
+		15	0	air	100
+		15	1	air	100
+	##time_instant_194
+		16	0	camera	10
+	##time_instant_195
+		4	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		11	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		18	0	camera	10
+		18	1	camera	10
+		12	0	camera	10
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_196
+		16	0	camera	10
+		4	1	waste	50
+		2	1	waste	50
+		3	0	camera	10
+		6	0	waste	50
+		1	0	air	100
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_197
+		13	0	air	100
+		17	0	waste	50
+		3	0	camera	10
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_198
+		10	0	waste	50
+		12	0	camera	10
+		1	1	waste	50
+		1	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+		9	0	waste	50
+		18	1	camera	10
+		2	0	camera	10
+	##time_instant_199
+		19	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_200
+		1	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		14	1	air	100
+		19	0	waste	50
+	##time_instant_201
+		13	0	air	100
+		18	0	camera	10
+		19	0	waste	50
+		0	1	waste	50
+	##time_instant_202
+		12	0	camera	10
+		11	0	waste	50
+		17	0	waste	50
+		5	0	waste	50
+		9	0	waste	50
+	##time_instant_203
+		5	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		17	0	waste	50
+		11	0	waste	50
+		14	0	air	100
+		13	0	air	100
+		19	0	waste	50
+	##time_instant_204
+		3	0	camera	10
+		8	0	waste	50
+		6	0	waste	50
+		5	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		9	0	waste	50
+	##time_instant_205
+		18	0	camera	10
+		4	0	camera	10
+	##time_instant_206
+		2	1	waste	50
+		17	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		19	0	waste	50
+		0	1	waste	50
+		6	0	waste	50
+		9	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		5	0	waste	50
+		8	0	waste	50
+	##time_instant_207
+		8	1	waste	50
+		8	0	waste	50
+		7	1	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		16	0	camera	10
+		15	0	air	100
+		15	1	air	100
+		19	0	waste	50
+		3	0	camera	10
+		6	0	waste	50
+	##time_instant_208
+		12	0	camera	10
+	##time_instant_209
+		5	0	waste	50
+		9	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_210
+		8	1	waste	50
+		7	0	waste	50
+		3	0	camera	10
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_211
+		12	0	camera	10
+		13	0	air	100
+	##time_instant_212
+		15	0	air	100
+		0	1	waste	50
+		3	0	camera	10
+		17	0	waste	50
+		6	0	waste	50
+		4	0	camera	10
+	##time_instant_213
+		18	0	camera	10
+		18	1	camera	10
+		13	0	air	100
+		4	0	camera	10
+		3	0	camera	10
+		9	0	waste	50
+	##time_instant_214
+		16	0	camera	10
+		17	0	waste	50
+		13	0	air	100
+	##time_instant_215
+		6	0	waste	50
+		10	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+		19	0	waste	50
+		9	0	waste	50
+	##time_instant_216
+		15	1	air	100
+		10	0	waste	50
+	##time_instant_217
+		3	0	camera	10
+		13	0	air	100
+		19	0	waste	50
+		17	0	waste	50
+		8	0	waste	50
+		2	1	waste	50
+		9	0	waste	50
+		1	1	waste	50
+	##time_instant_218
+		13	0	air	100
+	##time_instant_219
+		7	1	waste	50
+		9	0	waste	50
+		11	0	waste	50
+		3	0	camera	10
+	##time_instant_220
+		4	0	camera	10
+		4	1	waste	50
+		5	0	waste	50
+	##time_instant_221
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_222
+		16	0	camera	10
+		7	0	waste	50
+	##time_instant_223
+		11	0	waste	50
+	##time_instant_224
+		14	0	air	100
+		12	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_225
+		2	0	camera	10
+	##time_instant_226
+		10	0	waste	50
+	##time_instant_227
+		13	0	air	100
+		10	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		9	0	waste	50
+		4	1	waste	50
+		1	1	waste	50
+		6	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		17	0	waste	50
+		0	0	air	100
+		12	0	camera	10
+	##time_instant_228
+		5	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		10	0	waste	50
+	##time_instant_229
+		18	0	camera	10
+		18	1	camera	10
+		4	1	waste	50
+		17	0	waste	50
+		1	0	air	100
+	##time_instant_230
+		7	0	waste	50
+		7	1	waste	50
+		11	0	waste	50
+		10	0	waste	50
+		15	1	air	100
+		8	0	waste	50
+		19	0	waste	50
+		14	0	air	100
+	##time_instant_231
+		15	1	air	100
+		15	0	air	100
+		8	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		4	0	camera	10
+		4	1	waste	50
+		16	0	camera	10
+		11	1	camera	10
+	##time_instant_232
+		14	1	air	100
+		14	0	air	100
+		8	1	waste	50
+		4	0	camera	10
+		9	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		15	1	air	100
+		19	0	waste	50
+		5	0	waste	50
+		6	0	waste	50
+	##time_instant_233
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_234
+		19	0	waste	50
+		0	1	waste	50
+	##time_instant_235
+		8	1	waste	50
+		5	0	waste	50
+		1	1	waste	50
+	##time_instant_236
+		16	0	camera	10
+		0	0	air	100
+		0	1	waste	50
+		17	0	waste	50
+		6	0	waste	50
+	##time_instant_237
+		8	1	waste	50
+		8	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		17	0	waste	50
+		10	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		6	0	waste	50
+		7	0	waste	50
+		5	0	waste	50
+		16	0	camera	10
+		0	1	waste	50
+		0	0	air	100
+		15	0	air	100
+		15	1	air	100
+		19	0	waste	50
+		3	0	camera	10
+	##time_instant_238
+		1	0	air	100
+		1	1	waste	50
+		16	0	camera	10
+		17	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		0	0	air	100
+		5	0	waste	50
+	##time_instant_239
+		11	1	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		7	1	waste	50
+		9	0	waste	50
+		0	0	air	100
+	##time_instant_240
+		17	0	waste	50
+		15	1	air	100
+	##time_instant_241
+		5	0	waste	50
+		9	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_242
+		8	0	waste	50
+		11	1	camera	10
+		18	1	camera	10
+		18	0	camera	10
+		1	1	waste	50
+	##time_instant_243
+		9	0	waste	50
+		10	0	waste	50
+		1	0	air	100
+		2	0	camera	10
+		2	1	waste	50
+		5	0	waste	50
+		15	1	air	100
+		15	0	air	100
+	##time_instant_244
+		8	1	waste	50
+		12	0	camera	10
+	##time_instant_245
+		6	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		8	0	waste	50
+		8	1	waste	50
+		5	0	waste	50
+	##time_instant_246
+		11	1	camera	10
+		11	0	waste	50
+		1	1	waste	50
+	##time_instant_247
+		0	1	waste	50
+		0	0	air	100
+		11	0	waste	50
+		11	1	camera	10
+		3	0	camera	10
+	##time_instant_248
+		5	0	waste	50
+		10	0	waste	50
+		6	0	waste	50
+		8	1	waste	50
+		2	0	camera	10
+		15	0	air	100
+	##time_instant_249
+		1	1	waste	50
+		14	1	air	100
+		14	0	air	100
+		4	0	camera	10
+		4	1	waste	50
+		17	0	waste	50
+	##time_instant_250
+		6	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		12	0	camera	10
+	##time_instant_251
+		7	0	waste	50
+		5	0	waste	50
+	##time_instant_252
+		18	1	camera	10
+		17	0	waste	50
+		8	0	waste	50
+	##time_instant_253
+		19	0	waste	50
+		18	1	camera	10
+		0	1	waste	50
+		2	1	waste	50
+		9	0	waste	50
+	##time_instant_254
+		15	0	air	100
+		6	0	waste	50
+		14	1	air	100
+		7	1	waste	50
+		7	0	waste	50
+		17	0	waste	50
+		19	0	waste	50
+	##time_instant_255
+		8	0	waste	50
+		14	1	air	100
+		13	0	air	100
+	##time_instant_256
+		8	0	waste	50
+		8	1	waste	50
+		6	0	waste	50
+		5	0	waste	50
+		12	0	camera	10
+		13	0	air	100
+		15	0	air	100
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_257
+		7	0	waste	50
+		6	0	waste	50
+	##time_instant_258
+		0	1	waste	50
+		0	0	air	100
+		2	0	camera	10
+		16	0	camera	10
+	##time_instant_259
+		9	0	waste	50
+		8	0	waste	50
+		6	0	waste	50
+		0	0	air	100
+		12	0	camera	10
+		11	1	camera	10
+		13	0	air	100
+		3	0	camera	10
+	##time_instant_260
+		18	0	camera	10
+		3	0	camera	10
+		11	0	waste	50
+		12	0	camera	10
+		17	0	waste	50
+	##time_instant_261
+		9	0	waste	50
+		13	0	air	100
+	##time_instant_262
+		18	0	camera	10
+		18	1	camera	10
+		17	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		19	0	waste	50
+		7	0	waste	50
+		14	0	air	100
+		5	0	waste	50
+	##time_instant_263
+		3	0	camera	10
+		10	0	waste	50
+		19	0	waste	50
+		12	0	camera	10
+		18	0	camera	10
+		18	1	camera	10
+		14	0	air	100
+		14	1	air	100
+		8	1	waste	50
+	##time_instant_264
+		7	1	waste	50
+		2	0	camera	10
+		19	0	waste	50
+	##time_instant_265
+		14	1	air	100
+		14	0	air	100
+		5	0	waste	50
+		1	0	air	100
+		18	1	camera	10
+		10	0	waste	50
+	##time_instant_266
+		5	0	waste	50
+		12	0	camera	10
+		11	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		16	0	camera	10
+	##time_instant_267
+		5	0	waste	50
+		3	0	camera	10
+		19	0	waste	50
+		6	0	waste	50
+		7	1	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		17	0	waste	50
+		13	0	air	100
+		15	0	air	100
+		15	1	air	100
+		8	1	waste	50
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_268
+		7	1	waste	50
+		7	0	waste	50
+		12	0	camera	10
+		17	0	waste	50
+	##time_instant_269
+		10	0	waste	50
+	##time_instant_270
+		17	0	waste	50
+		19	0	waste	50
+	##time_instant_271
+		10	0	waste	50
+		3	0	camera	10
+	##time_instant_272
+		0	0	air	100
+		13	0	air	100
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_273
+		0	1	waste	50
+		0	0	air	100
+		4	0	camera	10
+		4	1	waste	50
+		8	0	waste	50
+		14	0	air	100
+		12	0	camera	10
+		7	1	waste	50
+	##time_instant_274
+		19	0	waste	50
+		8	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		12	0	camera	10
+		15	1	air	100
+		16	0	camera	10
+	##time_instant_275
+		12	0	camera	10
+		15	0	air	100
+		19	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		8	1	waste	50
+	##time_instant_276
+		13	0	air	100
+		17	0	waste	50
+	##time_instant_277
+		7	1	waste	50
+		9	0	waste	50
+		6	0	waste	50
+	##time_instant_278
+		7	1	waste	50
+		7	0	waste	50
+		0	0	air	100
+		16	0	camera	10
+	##time_instant_279
+		1	1	waste	50
+	##time_instant_280
+		9	0	waste	50
+		5	0	waste	50
+	##time_instant_281
+		18	1	camera	10
+		18	0	camera	10
+		9	0	waste	50
+		8	1	waste	50
+		11	0	waste	50
+	##time_instant_282
+		11	0	waste	50
+		19	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		1	1	waste	50
+	##time_instant_283
+		17	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		4	0	camera	10
+	##time_instant_284
+		4	0	camera	10
+		4	1	waste	50
+		17	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		18	0	camera	10
+	##time_instant_285
+		12	0	camera	10
+		19	0	waste	50
+		7	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		3	0	camera	10
+		2	0	camera	10
+	##time_instant_286
+		17	0	waste	50
+		4	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+		6	0	waste	50
+		0	0	air	100
+	##time_instant_287
+		11	1	camera	10
+		11	0	waste	50
+		0	1	waste	50
+	##time_instant_288
+		10	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		17	0	waste	50
+		12	0	camera	10
+		14	1	air	100
+	##time_instant_289
+		9	0	waste	50
+		3	0	camera	10
+		15	0	air	100
+		15	1	air	100
+		12	0	camera	10
+		17	0	waste	50
+		18	0	camera	10
+		16	0	camera	10
+	##time_instant_290
+		4	1	waste	50
+		4	0	camera	10
+		6	0	waste	50
+		14	0	air	100
+	##time_instant_291
+		7	0	waste	50
+		13	0	air	100
+	##time_instant_292
+		2	0	camera	10
+	##time_instant_293
+		12	0	camera	10
+		18	1	camera	10
+		0	1	waste	50
+		0	0	air	100
+		11	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		5	0	waste	50
+	##time_instant_294
+		4	0	camera	10
+		4	1	waste	50
+		3	0	camera	10
+		17	0	waste	50
+		16	0	camera	10
+		18	0	camera	10
+		18	1	camera	10
+		10	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		5	0	waste	50
+	##time_instant_295
+		17	0	waste	50
+		13	0	air	100
+		3	0	camera	10
+		5	0	waste	50
+		16	0	camera	10
+	##time_instant_296
+		7	0	waste	50
+		7	1	waste	50
+		9	0	waste	50
+	##time_instant_297
+		11	0	waste	50
+		11	1	camera	10
+		13	0	air	100
+	##time_instant_298
+		19	0	waste	50
+		17	0	waste	50
+		1	1	waste	50
+		3	0	camera	10
+		5	0	waste	50
+	##time_instant_299
+		4	0	camera	10
+		8	0	waste	50
+		18	0	camera	10
+	##time_instant_300
+		8	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		10	0	waste	50
+	##time_instant_301
+		16	0	camera	10
+	##time_instant_302
+		19	0	waste	50
+	##time_instant_303
+		7	0	waste	50
+		2	1	waste	50
+		13	0	air	100
+		1	0	air	100
+	##time_instant_304
+		10	0	waste	50
+		7	1	waste	50
+	##time_instant_305
+		8	1	waste	50
+		8	0	waste	50
+		19	0	waste	50
+	##time_instant_306
+		17	0	waste	50
+		13	0	air	100
+	##time_instant_307
+		11	0	waste	50
+		14	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		5	0	waste	50
+	##time_instant_308
+		3	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		16	0	camera	10
+		17	0	waste	50
+		9	0	waste	50
+	##time_instant_309
+		13	0	air	100
+		10	0	waste	50
+		0	0	air	100
+	##time_instant_310
+		7	0	waste	50
+		7	1	waste	50
+		11	0	waste	50
+		3	0	camera	10
+	##time_instant_311
+		17	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		13	0	air	100
+		19	0	waste	50
+	##time_instant_312
+		0	0	air	100
+		13	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		14	0	air	100
+	##time_instant_313
+		7	0	waste	50
+	##time_instant_314
+		12	0	camera	10
+		6	0	waste	50
+		10	0	waste	50
+		15	1	air	100
+	##time_instant_315
+		2	1	waste	50
+		3	0	camera	10
+		17	0	waste	50
+		15	0	air	100
+		11	0	waste	50
+		5	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		18	1	camera	10
+	##time_instant_316
+		15	1	air	100
+		15	0	air	100
+	##time_instant_317
+		17	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		6	0	waste	50
+		5	0	waste	50
+		2	1	waste	50
+		19	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_318
+		6	0	waste	50
+		13	0	air	100
+		4	0	camera	10
+		2	1	waste	50
+		15	1	air	100
+		16	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_319
+		16	0	camera	10
+		0	0	air	100
+		3	0	camera	10
+		9	0	waste	50
+		12	0	camera	10
+		19	0	waste	50
+	##time_instant_320
+		8	1	waste	50
+		15	1	air	100
+		7	1	waste	50
+	##time_instant_321
+		2	0	camera	10
+		2	1	waste	50
+		9	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_322
+		15	1	air	100
+		15	0	air	100
+		13	0	air	100
+		8	1	waste	50
+	##time_instant_323
+		18	1	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		6	0	waste	50
+		13	0	air	100
+		15	0	air	100
+		0	1	waste	50
+		0	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_324
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_325
+		18	0	camera	10
+		18	1	camera	10
+		16	0	camera	10
+		9	0	waste	50
+		17	0	waste	50
+		7	0	waste	50
+		13	0	air	100
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_326
+		15	0	air	100
+		17	0	waste	50
+	##time_instant_327
+		5	0	waste	50
+		16	0	camera	10
+	##time_instant_328
+		3	0	camera	10
+		6	0	waste	50
+		12	0	camera	10
+		1	0	air	100
+		4	0	camera	10
+	##time_instant_329
+		17	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		11	0	waste	50
+		13	0	air	100
+		10	0	waste	50
+		18	1	camera	10
+	##time_instant_330
+		4	0	camera	10
+		5	0	waste	50
+		16	0	camera	10
+		12	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+		17	0	waste	50
+		3	0	camera	10
+	##time_instant_331
+		10	0	waste	50
+		6	0	waste	50
+		13	0	air	100
+		15	0	air	100
+		15	1	air	100
+		11	0	waste	50
+		11	1	camera	10
+		9	0	waste	50
+		17	0	waste	50
+	##time_instant_332
+		5	0	waste	50
+	##time_instant_333
+		16	0	camera	10
+		17	0	waste	50
+		9	0	waste	50
+		13	0	air	100
+		10	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_334
+		5	0	waste	50
+		11	0	waste	50
+		3	0	camera	10
+		0	1	waste	50
+		0	0	air	100
+		6	0	waste	50
+		16	0	camera	10
+		18	1	camera	10
+	##time_instant_335
+		5	0	waste	50
+		6	0	waste	50
+		12	0	camera	10
+	##time_instant_336
+		19	0	waste	50
+		8	1	waste	50
+		16	0	camera	10
+		13	0	air	100
+		5	0	waste	50
+	##time_instant_337
+		2	1	waste	50
+		16	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_338
+		18	0	camera	10
+		18	1	camera	10
+		2	1	waste	50
+		2	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+		7	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		14	0	air	100
+		3	0	camera	10
+		0	1	waste	50
+	##time_instant_339
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_340
+		13	0	air	100
+		1	1	waste	50
+		12	0	camera	10
+		6	0	waste	50
+	##time_instant_341
+		1	1	waste	50
+		12	0	camera	10
+	##time_instant_342
+		18	0	camera	10
+	##time_instant_343
+		15	0	air	100
+		15	1	air	100
+		0	1	waste	50
+		0	0	air	100
+		10	0	waste	50
+	##time_instant_344
+		13	0	air	100
+		6	0	waste	50
+		12	0	camera	10
+	##time_instant_345
+		5	0	waste	50
+		16	0	camera	10
+		7	0	waste	50
+		19	0	waste	50
+		15	0	air	100
+		13	0	air	100
+	##time_instant_346
+		5	0	waste	50
+		16	0	camera	10
+		10	0	waste	50
+		2	1	waste	50
+		11	1	camera	10
+		15	0	air	100
+		3	0	camera	10
+	##time_instant_347
+		15	0	air	100
+		7	1	waste	50
+	##time_instant_348
+		18	1	camera	10
+		18	0	camera	10
+		13	0	air	100
+		5	0	waste	50
+	##time_instant_349
+		0	0	air	100
+		0	1	waste	50
+		12	0	camera	10
+		15	0	air	100
+	##time_instant_350
+		0	1	waste	50
+		0	0	air	100
+		3	0	camera	10
+		9	0	waste	50
+		5	0	waste	50
+		8	1	waste	50
+	##time_instant_351
+		9	0	waste	50
+		16	0	camera	10
+		18	0	camera	10
+		4	0	camera	10
+	##time_instant_352
+		6	0	waste	50
+	##time_instant_353
+		2	1	waste	50
+		2	0	camera	10
+		9	0	waste	50
+		17	0	waste	50
+		3	0	camera	10
+		11	0	waste	50
+		6	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		14	1	air	100
+	##time_instant_354
+		17	0	waste	50
+		4	1	waste	50
+	##time_instant_355
+		14	0	air	100
+		17	0	waste	50
+		6	0	waste	50
+		12	0	camera	10
+	##time_instant_356
+		7	1	waste	50
+		10	0	waste	50
+		4	1	waste	50
+		12	0	camera	10
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_357
+		15	0	air	100
+		0	1	waste	50
+		13	0	air	100
+		8	1	waste	50
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_358
+		1	0	air	100
+		1	1	waste	50
+		14	1	air	100
+		10	0	waste	50
+		19	0	waste	50
+	##time_instant_359
+		3	0	camera	10
+		19	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		14	1	air	100
+		14	0	air	100
+		16	0	camera	10
+		10	0	waste	50
+		11	1	camera	10
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_360
+		5	0	waste	50
+		9	0	waste	50
+		16	0	camera	10
+		13	0	air	100
+		10	0	waste	50
+	##time_instant_361
+		4	0	camera	10
+		4	1	waste	50
+		15	0	air	100
+		15	1	air	100
+		17	0	waste	50
+		16	0	camera	10
+		18	1	camera	10
+		19	0	waste	50
+		6	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		2	0	camera	10
+	##time_instant_362
+		11	0	waste	50
+		6	0	waste	50
+		16	0	camera	10
+		7	1	waste	50
+	##time_instant_363
+		2	1	waste	50
+		2	0	camera	10
+		11	1	camera	10
+		11	0	waste	50
+		1	0	air	100
+		6	0	waste	50
+	##time_instant_364
+		10	0	waste	50
+		4	0	camera	10
+		14	0	air	100
+	##time_instant_365
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		19	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_366
+		0	0	air	100
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_367
+		5	0	waste	50
+		13	0	air	100
+		8	0	waste	50
+		12	0	camera	10
+	##time_instant_368
+		0	1	waste	50
+		0	0	air	100
+		17	0	waste	50
+		7	1	waste	50
+		13	0	air	100
+		9	0	waste	50
+	##time_instant_369
+		4	1	waste	50
+		6	0	waste	50
+		18	1	camera	10
+		15	1	air	100
+		8	1	waste	50
+		13	0	air	100
+	##time_instant_370
+		7	1	waste	50
+		13	0	air	100
+		2	1	waste	50
+		0	1	waste	50
+		0	0	air	100
+		5	0	waste	50
+	##time_instant_371
+		16	0	camera	10
+		18	1	camera	10
+		12	0	camera	10
+		8	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+		11	0	waste	50
+		11	1	camera	10
+		19	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		17	0	waste	50
+	##time_instant_372
+		7	0	waste	50
+		9	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		3	0	camera	10
+		19	0	waste	50
+		13	0	air	100
+	##time_instant_373
+		15	1	air	100
+		15	0	air	100
+		18	1	camera	10
+		10	0	waste	50
+		13	0	air	100
+	##time_instant_374
+		13	0	air	100
+		19	0	waste	50
+		17	0	waste	50
+		11	1	camera	10
+	##time_instant_375
+		5	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		2	1	waste	50
+	##time_instant_376
+		0	1	waste	50
+		16	0	camera	10
+		3	0	camera	10
+		2	1	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		7	1	waste	50
+	##time_instant_377
+		16	0	camera	10
+	##time_instant_378
+		13	0	air	100
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_379
+		10	0	waste	50
+		14	1	air	100
+		13	0	air	100
+		4	1	waste	50
+		5	0	waste	50
+	##time_instant_380
+		4	0	camera	10
+		4	1	waste	50
+		3	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_381
+		19	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_382
+		13	0	air	100
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_383
+		11	0	waste	50
+		11	1	camera	10
+		15	1	air	100
+		9	0	waste	50
+		17	0	waste	50
+	##time_instant_384
+		18	1	camera	10
+		13	0	air	100
+		17	0	waste	50
+		4	1	waste	50
+		10	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		12	0	camera	10
+	##time_instant_385
+		15	1	air	100
+		15	0	air	100
+	##time_instant_386
+		17	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		9	0	waste	50
+		12	0	camera	10
+		18	0	camera	10
+	##time_instant_387
+		2	1	waste	50
+		2	0	camera	10
+		6	0	waste	50
+		13	0	air	100
+		0	0	air	100
+		17	0	waste	50
+	##time_instant_388
+		9	0	waste	50
+		0	1	waste	50
+		5	0	waste	50
+		2	0	camera	10
+		14	1	air	100
+	##time_instant_389
+		16	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		9	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		4	0	camera	10
+		4	1	waste	50
+		19	0	waste	50
+		14	1	air	100
+		14	0	air	100
+	##time_instant_390
+		6	0	waste	50
+		0	1	waste	50
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_391
+		17	0	waste	50
+		18	0	camera	10
+	##time_instant_392
+		17	0	waste	50
+	##time_instant_393
+		8	1	waste	50
+		12	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		9	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		5	0	waste	50
+		2	1	waste	50
+		4	1	waste	50
+		0	1	waste	50
+	##time_instant_394
+		8	0	waste	50
+		8	1	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		14	0	air	100
+		1	1	waste	50
+		1	0	air	100
+		3	0	camera	10
+	##time_instant_395
+		2	0	camera	10
+		4	1	waste	50
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_396
+		18	1	camera	10
+		18	0	camera	10
+		4	0	camera	10
+		11	1	camera	10
+		16	0	camera	10
+	##time_instant_397
+		11	1	camera	10
+		14	1	air	100
+		15	0	air	100
+		15	1	air	100
+		2	0	camera	10
+		0	0	air	100
+		0	1	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		16	0	camera	10
+	##time_instant_398
+		6	0	waste	50
+		8	1	waste	50
+	##time_instant_399
+		11	1	camera	10
+		9	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_400
+		6	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		1	0	air	100
+		17	0	waste	50
+		11	1	camera	10
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_401
+		3	0	camera	10
+		10	0	waste	50
+	##time_instant_402
+		16	0	camera	10
+	##time_instant_403
+		18	0	camera	10
+		6	0	waste	50
+		0	1	waste	50
+		12	0	camera	10
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_404
+		2	0	camera	10
+		18	1	camera	10
+		1	1	waste	50
+		17	0	waste	50
+		9	0	waste	50
+		13	0	air	100
+		12	0	camera	10
+		0	1	waste	50
+	##time_instant_405
+		4	0	camera	10
+		17	0	waste	50
+		19	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+		15	1	air	100
+		15	0	air	100
+		10	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		8	1	waste	50
+		14	1	air	100
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_406
+		9	0	waste	50
+		16	0	camera	10
+	##time_instant_407
+		11	0	waste	50
+		11	1	camera	10
+		16	0	camera	10
+		2	1	waste	50
+	##time_instant_408
+		10	0	waste	50
+		12	0	camera	10
+		3	0	camera	10
+	##time_instant_409
+		17	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_410
+		16	0	camera	10
+		10	0	waste	50
+		17	0	waste	50
+		14	1	air	100
+		14	0	air	100
+	##time_instant_411
+		8	0	waste	50
+		8	1	waste	50
+		0	1	waste	50
+		0	0	air	100
+		6	0	waste	50
+		3	0	camera	10
+		18	1	camera	10
+	##time_instant_412
+		7	1	waste	50
+		12	0	camera	10
+		3	0	camera	10
+		5	0	waste	50
+		17	0	waste	50
+		16	0	camera	10
+	##time_instant_413
+		8	0	waste	50
+		8	1	waste	50
+		18	0	camera	10
+	##time_instant_414
+		18	0	camera	10
+		11	0	waste	50
+		16	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		14	0	air	100
+		19	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_415
+		18	0	camera	10
+	##time_instant_416
+		15	1	air	100
+		4	0	camera	10
+		4	1	waste	50
+		2	1	waste	50
+		0	1	waste	50
+		14	0	air	100
+		14	1	air	100
+		5	0	waste	50
+	##time_instant_417
+		7	1	waste	50
+		12	0	camera	10
+		4	0	camera	10
+		14	0	air	100
+	##time_instant_418
+		1	1	waste	50
+		1	0	air	100
+		15	1	air	100
+		19	0	waste	50
+	##time_instant_419
+		19	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		3	0	camera	10
+	##time_instant_420
+		9	0	waste	50
+	##time_instant_421
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_422
+		14	1	air	100
+		15	0	air	100
+		15	1	air	100
+		0	0	air	100
+		3	0	camera	10
+		1	1	waste	50
+		16	0	camera	10
+	##time_instant_423
+		13	0	air	100
+		0	1	waste	50
+		8	1	waste	50
+		2	1	waste	50
+	##time_instant_424
+		0	1	waste	50
+		9	0	waste	50
+	##time_instant_425
+		16	0	camera	10
+		3	0	camera	10
+		6	0	waste	50
+		5	0	waste	50
+		12	0	camera	10
+		14	1	air	100
+		15	1	air	100
+		9	0	waste	50
+		11	0	waste	50
+		0	0	air	100
+		7	0	waste	50
+		7	1	waste	50
+	##time_instant_426
+		17	0	waste	50
+	##time_instant_427
+		7	1	waste	50
+		14	1	air	100
+		8	1	waste	50
+		8	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		12	0	camera	10
+		13	0	air	100
+		10	0	waste	50
+	##time_instant_428
+		11	0	waste	50
+		18	1	camera	10
+		15	0	air	100
+		3	0	camera	10
+		14	1	air	100
+		14	0	air	100
+	##time_instant_429
+		19	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+		14	1	air	100
+		3	0	camera	10
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_430
+		16	0	camera	10
+		7	1	waste	50
+		19	0	waste	50
+	##time_instant_431
+		10	0	waste	50
+		11	0	waste	50
+		2	1	waste	50
+		6	0	waste	50
+		7	1	waste	50
+		5	0	waste	50
+	##time_instant_432
+		12	0	camera	10
+		5	0	waste	50
+		3	0	camera	10
+	##time_instant_433
+		6	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_434
+		18	0	camera	10
+		18	1	camera	10
+		14	0	air	100
+		14	1	air	100
+	##time_instant_435
+		1	0	air	100
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_436
+		19	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		16	0	camera	10
+	##time_instant_437
+		11	1	camera	10
+		11	0	waste	50
+		4	1	waste	50
+		5	0	waste	50
+	##time_instant_438
+		8	0	waste	50
+		8	1	waste	50
+		13	0	air	100
+		1	1	waste	50
+		1	0	air	100
+		17	0	waste	50
+		19	0	waste	50
+		16	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_439
+		8	1	waste	50
+		9	0	waste	50
+		18	0	camera	10
+		17	0	waste	50
+		4	0	camera	10
+	##time_instant_440
+		13	0	air	100
+	##time_instant_441
+		18	1	camera	10
+		3	0	camera	10
+	##time_instant_442
+		17	0	waste	50
+		10	0	waste	50
+		16	0	camera	10
+	##time_instant_443
+		2	0	camera	10
+		2	1	waste	50
+		11	1	camera	10
+		9	0	waste	50
+		6	0	waste	50
+		7	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		0	1	waste	50
+		19	0	waste	50
+	##time_instant_444
+		1	0	air	100
+		5	0	waste	50
+		15	0	air	100
+	##time_instant_445
+		0	0	air	100
+		0	1	waste	50
+		1	1	waste	50
+		1	0	air	100
+		15	1	air	100
+		13	0	air	100
+	##time_instant_446
+		2	0	camera	10
+		2	1	waste	50
+		13	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_447
+		17	0	waste	50
+		13	0	air	100
+		11	1	camera	10
+		11	0	waste	50
+		12	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+		6	0	waste	50
+		16	0	camera	10
+	##time_instant_448
+		11	1	camera	10
+		17	0	waste	50
+	##time_instant_449
+		0	1	waste	50
+		13	0	air	100
+		16	0	camera	10
+		15	0	air	100
+	##time_instant_450
+		7	0	waste	50
+		19	0	waste	50
+		5	0	waste	50
+		11	0	waste	50
+		9	0	waste	50
+		4	0	camera	10
+	##time_instant_451
+		2	0	camera	10
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		3	0	camera	10
+		9	0	waste	50
+		5	0	waste	50
+		6	0	waste	50
+	##time_instant_452
+		18	0	camera	10
+		18	1	camera	10
+		1	0	air	100
+		1	1	waste	50
+		13	0	air	100
+		16	0	camera	10
+		19	0	waste	50
+		3	0	camera	10
+		17	0	waste	50
+		7	0	waste	50
+	##time_instant_453
+		15	0	air	100
+		15	1	air	100
+		13	0	air	100
+		19	0	waste	50
+		6	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		16	0	camera	10
+		1	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		12	0	camera	10
+	##time_instant_454
+		0	0	air	100
+		9	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+		17	0	waste	50
+		12	0	camera	10
+		2	0	camera	10
+		18	0	camera	10
+		5	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		6	0	waste	50
+	##time_instant_455
+		3	0	camera	10
+		5	0	waste	50
+		12	0	camera	10
+		2	0	camera	10
+	##time_instant_456
+		5	0	waste	50
+		1	1	waste	50
+		15	0	air	100
+		12	0	camera	10
+		17	0	waste	50
+	##time_instant_457
+		2	0	camera	10
+		2	1	waste	50
+		9	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		3	0	camera	10
+		8	0	waste	50
+		14	0	air	100
+		6	0	waste	50
+		16	0	camera	10
+	##time_instant_458
+		3	0	camera	10
+		17	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_459
+		12	0	camera	10
+		5	0	waste	50
+		11	1	camera	10
+		7	1	waste	50
+	##time_instant_460
+		3	0	camera	10
+	##time_instant_461
+		15	1	air	100
+		15	0	air	100
+	##time_instant_462
+		13	0	air	100
+		14	1	air	100
+		14	0	air	100
+		1	0	air	100
+		15	1	air	100
+		17	0	waste	50
+		0	0	air	100
+		11	0	waste	50
+	##time_instant_463
+		17	0	waste	50
+		14	0	air	100
+	##time_instant_464
+		17	0	waste	50
+		5	0	waste	50
+		4	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		14	1	air	100
+		14	0	air	100
+	##time_instant_465
+		4	0	camera	10
+		4	1	waste	50
+		8	0	waste	50
+		7	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		10	0	waste	50
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_466
+		17	0	waste	50
+		1	1	waste	50
+		3	0	camera	10
+		13	0	air	100
+	##time_instant_467
+		6	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_468
+		0	0	air	100
+		14	1	air	100
+		14	0	air	100
+		2	0	camera	10
+		16	0	camera	10
+	##time_instant_469
+		12	0	camera	10
+		10	0	waste	50
+		9	0	waste	50
+	##time_instant_470
+		9	0	waste	50
+		16	0	camera	10
+	##time_instant_471
+		3	0	camera	10
+		9	0	waste	50
+		17	0	waste	50
+		0	0	air	100
+		12	0	camera	10
+	##time_instant_472
+		3	0	camera	10
+		11	0	waste	50
+		2	0	camera	10
+		18	1	camera	10
+	##time_instant_473
+		10	0	waste	50
+		8	1	waste	50
+	##time_instant_474
+		8	0	waste	50
+		4	0	camera	10
+	##time_instant_475
+		5	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		12	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+		9	0	waste	50
+		6	0	waste	50
+	##time_instant_476
+		14	0	air	100
+		17	0	waste	50
+	##time_instant_477
+		2	1	waste	50
+		10	0	waste	50
+		6	0	waste	50
+	##time_instant_478
+		10	0	waste	50
+		3	0	camera	10
+	##time_instant_479
+		5	0	waste	50
+		8	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		12	0	camera	10
+	##time_instant_480
+		12	0	camera	10
+		4	0	camera	10
+		19	0	waste	50
+		5	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_481
+		16	0	camera	10
+		4	1	waste	50
+		3	0	camera	10
+	##time_instant_482
+		10	0	waste	50
+		9	0	waste	50
+		19	0	waste	50
+		7	1	waste	50
+	##time_instant_483
+		15	1	air	100
+		13	0	air	100
+		1	1	waste	50
+	##time_instant_484
+		7	0	waste	50
+		12	0	camera	10
+	##time_instant_485
+		11	1	camera	10
+		0	0	air	100
+		6	0	waste	50
+		16	0	camera	10
+		5	0	waste	50
+		3	0	camera	10
+		17	0	waste	50
+	##time_instant_486
+		16	0	camera	10
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_487
+		18	0	camera	10
+		19	0	waste	50
+		12	0	camera	10
+	##time_instant_488
+		1	0	air	100
+		18	0	camera	10
+		18	1	camera	10
+		12	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		19	0	waste	50
+		13	0	air	100
+		15	0	air	100
+		15	1	air	100
+		14	0	air	100
+		17	0	waste	50
+	##time_instant_489
+		8	0	waste	50
+		15	0	air	100
+		15	1	air	100
+		11	1	camera	10
+		14	0	air	100
+	##time_instant_490
+		7	1	waste	50
+		5	0	waste	50
+		12	0	camera	10
+	##time_instant_491
+		4	1	waste	50
+		4	0	camera	10
+		14	0	air	100
+		14	1	air	100
+	##time_instant_492
+		1	1	waste	50
+		13	0	air	100
+		7	1	waste	50
+		14	0	air	100
+		9	0	waste	50
+		16	0	camera	10
+		12	0	camera	10
+	##time_instant_493
+		0	0	air	100
+		5	0	waste	50
+		16	0	camera	10
+		3	0	camera	10
+		17	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		4	0	camera	10
+		4	1	waste	50
+		6	0	waste	50
+	##time_instant_494
+		3	0	camera	10
+		13	0	air	100
+		17	0	waste	50
+		18	1	camera	10
+	##time_instant_495
+		18	0	camera	10
+		8	0	waste	50
+		8	1	waste	50
+		13	0	air	100
+	##time_instant_496
+		13	0	air	100
+		16	0	camera	10
+		18	1	camera	10
+		1	1	waste	50
+	##time_instant_497
+		17	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		4	0	camera	10
+		15	0	air	100
+		10	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_498
+		4	0	camera	10
+	##time_instant_499
+		18	1	camera	10
+		18	0	camera	10
+		10	0	waste	50
+		16	0	camera	10
+		19	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		4	1	waste	50
+		15	1	air	100
+		5	0	waste	50
+	##time_instant_500
+		10	0	waste	50
+		11	1	camera	10
+		0	1	waste	50
+		2	0	camera	10
+	##time_instant_501
+		8	0	waste	50
+		10	0	waste	50
+		16	0	camera	10
+		12	0	camera	10
+		3	0	camera	10
+		19	0	waste	50
+		5	0	waste	50
+		14	1	air	100
+		18	1	camera	10
+		18	0	camera	10
+		11	1	camera	10
+		6	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_502
+		6	0	waste	50
+		9	0	waste	50
+	##time_instant_503
+		2	1	waste	50
+		14	0	air	100
+		14	1	air	100
+	##time_instant_504
+		5	0	waste	50
+		6	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		3	0	camera	10
+	##time_instant_505
+		3	0	camera	10
+		10	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		2	0	camera	10
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_506
+		6	0	waste	50
+		10	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		14	1	air	100
+		4	1	waste	50
+		11	0	waste	50
+		17	0	waste	50
+	##time_instant_507
+		4	0	camera	10
+		4	1	waste	50
+		7	1	waste	50
+		11	0	waste	50
+		2	0	camera	10
+		16	0	camera	10
+		3	0	camera	10
+	##time_instant_508
+		10	0	waste	50
+		14	1	air	100
+		8	1	waste	50
+		11	1	camera	10
+		16	0	camera	10
+	##time_instant_509
+		13	0	air	100
+	##time_instant_510
+		0	1	waste	50
+		7	1	waste	50
+	##time_instant_511
+		16	0	camera	10
+		5	0	waste	50
+	##time_instant_512
+		11	0	waste	50
+		11	1	camera	10
+		18	0	camera	10
+		14	1	air	100
+		14	0	air	100
+		4	0	camera	10
+		16	0	camera	10
+		5	0	waste	50
+		12	0	camera	10
+	##time_instant_513
+		16	0	camera	10
+		17	0	waste	50
+	##time_instant_514
+		9	0	waste	50
+		0	1	waste	50
+		4	1	waste	50
+	##time_instant_515
+		16	0	camera	10
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_516
+		2	0	camera	10
+		15	0	air	100
+		15	1	air	100
+		18	1	camera	10
+		11	1	camera	10
+		9	0	waste	50
+		6	0	waste	50
+		3	0	camera	10
+		12	0	camera	10
+	##time_instant_517
+		4	0	camera	10
+		4	1	waste	50
+		11	1	camera	10
+		1	1	waste	50
+		16	0	camera	10
+		0	1	waste	50
+		3	0	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		2	0	camera	10
+		7	1	waste	50
+	##time_instant_518
+		7	0	waste	50
+		7	1	waste	50
+		9	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		17	0	waste	50
+		15	1	air	100
+		15	0	air	100
+	##time_instant_519
+		12	0	camera	10
+		13	0	air	100
+		4	1	waste	50
+	##time_instant_520
+		9	0	waste	50
+		16	0	camera	10
+	##time_instant_521
+		9	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		14	1	air	100
+	##time_instant_522
+		1	0	air	100
+		6	0	waste	50
+		5	0	waste	50
+		16	0	camera	10
+	##time_instant_523
+		9	0	waste	50
+		5	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		3	0	camera	10
+		8	1	waste	50
+		7	0	waste	50
+	##time_instant_524
+		16	0	camera	10
+		13	0	air	100
+		3	0	camera	10
+	##time_instant_525
+		18	0	camera	10
+		18	1	camera	10
+		9	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		11	0	waste	50
+	##time_instant_526
+		17	0	waste	50
+		19	0	waste	50
+	##time_instant_527
+		0	1	waste	50
+		0	0	air	100
+		6	0	waste	50
+		17	0	waste	50
+		16	0	camera	10
+		5	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+		9	0	waste	50
+	##time_instant_528
+		10	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		14	1	air	100
+	##time_instant_529
+		19	0	waste	50
+		6	0	waste	50
+		13	0	air	100
+		5	0	waste	50
+		2	0	camera	10
+	##time_instant_530
+		14	1	air	100
+		3	0	camera	10
+		9	0	waste	50
+		7	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_531
+		1	0	air	100
+		19	0	waste	50
+	##time_instant_532
+		5	0	waste	50
+		17	0	waste	50
+		3	0	camera	10
+		8	1	waste	50
+		12	0	camera	10
+	##time_instant_533
+		0	0	air	100
+	##time_instant_534
+		1	0	air	100
+		5	0	waste	50
+		7	0	waste	50
+		11	1	camera	10
+		6	0	waste	50
+		10	0	waste	50
+	##time_instant_535
+		7	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		18	0	camera	10
+		12	0	camera	10
+	##time_instant_536
+		18	1	camera	10
+	##time_instant_537
+		15	1	air	100
+		15	0	air	100
+		17	0	waste	50
+		1	1	waste	50
+	##time_instant_538
+		3	0	camera	10
+		12	0	camera	10
+	##time_instant_539
+		15	0	air	100
+	##time_instant_540
+		7	1	waste	50
+		0	0	air	100
+	##time_instant_541
+		10	0	waste	50
+		1	1	waste	50
+	##time_instant_542
+		3	0	camera	10
+	##time_instant_543
+		11	1	camera	10
+		19	0	waste	50
+		15	1	air	100
+		2	0	camera	10
+		12	0	camera	10
+	##time_instant_544
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_545
+		4	0	camera	10
+		15	1	air	100
+		14	1	air	100
+		17	0	waste	50
+		3	0	camera	10
+		5	0	waste	50
+		13	0	air	100
+		8	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_546
+		8	1	waste	50
+		8	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		10	0	waste	50
+		19	0	waste	50
+	##time_instant_547
+		11	1	camera	10
+		9	0	waste	50
+		17	0	waste	50
+	##time_instant_548
+		6	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		3	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+		15	0	air	100
+		13	0	air	100
+	##time_instant_549
+		5	0	waste	50
+		2	1	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_550
+		15	1	air	100
+		15	0	air	100
+		7	0	waste	50
+		11	0	waste	50
+		6	0	waste	50
+	##time_instant_551
+		13	0	air	100
+	##time_instant_552
+		14	0	air	100
+		14	1	air	100
+	##time_instant_553
+		1	0	air	100
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_554
+		2	1	waste	50
+		2	0	camera	10
+		10	0	waste	50
+		17	0	waste	50
+		13	0	air	100
+	##time_instant_555
+		12	0	camera	10
+		5	0	waste	50
+		13	0	air	100
+	##time_instant_556
+		10	0	waste	50
+		4	1	waste	50
+		13	0	air	100
+	##time_instant_557
+		10	0	waste	50
+		6	0	waste	50
+		11	0	waste	50
+		9	0	waste	50
+		17	0	waste	50
+	##time_instant_558
+		15	0	air	100
+		15	1	air	100
+		6	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		5	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+		11	1	camera	10
+	##time_instant_559
+		4	0	camera	10
+		0	0	air	100
+		0	1	waste	50
+		13	0	air	100
+		17	0	waste	50
+	##time_instant_560
+		10	0	waste	50
+		19	0	waste	50
+		16	0	camera	10
+		3	0	camera	10
+	##time_instant_561
+		6	0	waste	50
+		9	0	waste	50
+		8	0	waste	50
+	##time_instant_562
+		17	0	waste	50
+		12	0	camera	10
+		18	0	camera	10
+		14	1	air	100
+		13	0	air	100
+	##time_instant_563
+		18	1	camera	10
+		18	0	camera	10
+		6	0	waste	50
+		7	1	waste	50
+		0	0	air	100
+		0	1	waste	50
+		10	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_564
+		15	0	air	100
+		10	0	waste	50
+	##time_instant_565
+		0	1	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		7	0	waste	50
+		16	0	camera	10
+		3	0	camera	10
+	##time_instant_566
+		15	0	air	100
+		15	1	air	100
+	##time_instant_567
+		14	0	air	100
+		15	0	air	100
+		2	0	camera	10
+		2	1	waste	50
+		6	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+		17	0	waste	50
+		13	0	air	100
+		12	0	camera	10
+		4	1	waste	50
+	##time_instant_568
+		2	1	waste	50
+	##time_instant_569
+		18	1	camera	10
+		2	0	camera	10
+		6	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		1	0	air	100
+	##time_instant_570
+		17	0	waste	50
+		10	0	waste	50
+	##time_instant_571
+		3	0	camera	10
+		5	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		16	0	camera	10
+		17	0	waste	50
+		4	0	camera	10
+		15	1	air	100
+		11	0	waste	50
+		11	1	camera	10
+		9	0	waste	50
+	##time_instant_572
+		3	0	camera	10
+		13	0	air	100
+		7	0	waste	50
+		7	1	waste	50
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_573
+		16	0	camera	10
+		17	0	waste	50
+		12	0	camera	10
+		9	0	waste	50
+	##time_instant_574
+		18	0	camera	10
+		3	0	camera	10
+		10	0	waste	50
+		13	0	air	100
+	##time_instant_575
+		2	1	waste	50
+		7	1	waste	50
+		5	0	waste	50
+		17	0	waste	50
+		16	0	camera	10
+	##time_instant_576
+		17	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_577
+		0	0	air	100
+		0	1	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		13	0	air	100
+	##time_instant_578
+		4	0	camera	10
+		3	0	camera	10
+		16	0	camera	10
+		18	1	camera	10
+	##time_instant_579
+		18	1	camera	10
+		9	0	waste	50
+		13	0	air	100
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_580
+		19	0	waste	50
+	##time_instant_581
+		6	0	waste	50
+		14	1	air	100
+		13	0	air	100
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_582
+		5	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		18	1	camera	10
+		18	0	camera	10
+		13	0	air	100
+		9	0	waste	50
+		16	0	camera	10
+		15	1	air	100
+		15	0	air	100
+	##time_instant_583
+		19	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		12	0	camera	10
+		5	0	waste	50
+		8	0	waste	50
+		11	0	waste	50
+	##time_instant_584
+		13	0	air	100
+		8	1	waste	50
+		7	0	waste	50
+		7	1	waste	50
+	##time_instant_585
+		5	0	waste	50
+		3	0	camera	10
+		7	0	waste	50
+		19	0	waste	50
+	##time_instant_586
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_587
+		3	0	camera	10
+		0	0	air	100
+		4	1	waste	50
+		4	0	camera	10
+		8	0	waste	50
+	##time_instant_588
+		0	1	waste	50
+		0	0	air	100
+		14	1	air	100
+		14	0	air	100
+	##time_instant_589
+		17	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		16	0	camera	10
+		14	1	air	100
+		14	0	air	100
+		4	1	waste	50
+		4	0	camera	10
+		8	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_590
+		11	0	waste	50
+		11	1	camera	10
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_591
+		5	0	waste	50
+		4	1	waste	50
+		2	0	camera	10
+	##time_instant_592
+		12	0	camera	10
+		19	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		2	0	camera	10
+		6	0	waste	50
+		17	0	waste	50
+		0	1	waste	50
+	##time_instant_593
+		15	0	air	100
+		15	1	air	100
+		8	0	waste	50
+	##time_instant_594
+		3	0	camera	10
+		18	1	camera	10
+		18	0	camera	10
+		10	0	waste	50
+	##time_instant_595
+		3	0	camera	10
+		14	1	air	100
+		2	1	waste	50
+		12	0	camera	10
+		19	0	waste	50
+		8	0	waste	50
+		6	0	waste	50
+	##time_instant_596
+		7	0	waste	50
+		7	1	waste	50
+		19	0	waste	50
+	##time_instant_597
+		11	1	camera	10
+		16	0	camera	10
+		7	1	waste	50
+		17	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_598
+		5	0	waste	50
+		17	0	waste	50
+	##time_instant_599
+		0	0	air	100
+		19	0	waste	50
+		10	0	waste	50
+		17	0	waste	50
+	##time_instant_600
+		19	0	waste	50
+		15	0	air	100
+		5	0	waste	50
+		14	0	air	100
+		2	1	waste	50
+	##time_instant_601
+		11	0	waste	50
+		19	0	waste	50
+	##time_instant_602
+		5	0	waste	50
+		0	1	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		13	0	air	100
+		9	0	waste	50
+	##time_instant_603
+		9	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		13	0	air	100
+		4	0	camera	10
+		5	0	waste	50
+		17	0	waste	50
+		1	0	air	100
+		19	0	waste	50
+		15	1	air	100
+		15	0	air	100
+	##time_instant_604
+		14	0	air	100
+		14	1	air	100
+		13	0	air	100
+		11	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		16	0	camera	10
+	##time_instant_605
+		15	0	air	100
+		15	1	air	100
+		14	1	air	100
+		14	0	air	100
+		3	0	camera	10
+	##time_instant_606
+		3	0	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		16	0	camera	10
+		19	0	waste	50
+	##time_instant_607
+		13	0	air	100
+		11	1	camera	10
+		11	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+		4	0	camera	10
+		19	0	waste	50
+		7	0	waste	50
+	##time_instant_608
+		0	0	air	100
+		0	1	waste	50
+		15	1	air	100
+	##time_instant_609
+		12	0	camera	10
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_610
+		12	0	camera	10
+		18	1	camera	10
+		9	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_611
+		3	0	camera	10
+		9	0	waste	50
+		18	0	camera	10
+		17	0	waste	50
+		7	1	waste	50
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_612
+		9	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		5	0	waste	50
+		10	0	waste	50
+		19	0	waste	50
+		8	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		1	1	waste	50
+	##time_instant_613
+		19	0	waste	50
+		14	0	air	100
+		12	0	camera	10
+		1	0	air	100
+		5	0	waste	50
+		13	0	air	100
+		11	0	waste	50
+		18	0	camera	10
+	##time_instant_614
+		4	0	camera	10
+		4	1	waste	50
+		2	1	waste	50
+	##time_instant_615
+		8	0	waste	50
+		8	1	waste	50
+		14	1	air	100
+		17	0	waste	50
+		16	0	camera	10
+		6	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_616
+		3	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		16	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		10	0	waste	50
+		1	0	air	100
+		4	1	waste	50
+	##time_instant_617
+		18	1	camera	10
+		12	0	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		7	0	waste	50
+		6	0	waste	50
+		13	0	air	100
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_618
+		3	0	camera	10
+		7	0	waste	50
+		4	1	waste	50
+	##time_instant_619
+		6	0	waste	50
+		15	1	air	100
+		13	0	air	100
+	##time_instant_620
+		2	1	waste	50
+		2	0	camera	10
+		13	0	air	100
+		0	1	waste	50
+		17	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_621
+		15	0	air	100
+		15	1	air	100
+		2	1	waste	50
+		2	0	camera	10
+		11	0	waste	50
+	##time_instant_622
+		15	0	air	100
+		13	0	air	100
+		3	0	camera	10
+	##time_instant_623
+		6	0	waste	50
+		14	1	air	100
+		1	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		13	0	air	100
+	##time_instant_624
+		6	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_625
+		9	0	waste	50
+	##time_instant_626
+		14	1	air	100
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_627
+		9	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_628
+		17	0	waste	50
+		0	0	air	100
+		9	0	waste	50
+	##time_instant_629
+		15	1	air	100
+		12	0	camera	10
+		4	0	camera	10
+		1	0	air	100
+		5	0	waste	50
+		8	1	waste	50
+	##time_instant_630
+		8	0	waste	50
+		8	1	waste	50
+		0	1	waste	50
+		9	0	waste	50
+		16	0	camera	10
+		7	0	waste	50
+		1	1	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		6	0	waste	50
+	##time_instant_631
+		10	0	waste	50
+		12	0	camera	10
+		11	1	camera	10
+		3	0	camera	10
+		6	0	waste	50
+	##time_instant_632
+		11	0	waste	50
+		3	0	camera	10
+		14	0	air	100
+		12	0	camera	10
+	##time_instant_633
+		10	0	waste	50
+		18	1	camera	10
+		3	0	camera	10
+		14	1	air	100
+		14	0	air	100
+	##time_instant_634
+		11	1	camera	10
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_635
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_636
+		2	1	waste	50
+		5	0	waste	50
+	##time_instant_637
+		7	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_638
+		13	0	air	100
+	##time_instant_639
+		6	0	waste	50
+		10	0	waste	50
+		2	1	waste	50
+	##time_instant_640
+		8	1	waste	50
+		8	0	waste	50
+		15	0	air	100
+		16	0	camera	10
+		14	0	air	100
+	##time_instant_641
+		11	1	camera	10
+		11	0	waste	50
+		9	0	waste	50
+		7	0	waste	50
+		3	0	camera	10
+		1	0	air	100
+		1	1	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		10	0	waste	50
+		12	0	camera	10
+		0	1	waste	50
+	##time_instant_642
+		19	0	waste	50
+		15	0	air	100
+		12	0	camera	10
+		10	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		17	0	waste	50
+		14	1	air	100
+	##time_instant_643
+		11	1	camera	10
+		15	1	air	100
+		15	0	air	100
+		8	0	waste	50
+	##time_instant_644
+		17	0	waste	50
+		9	0	waste	50
+		4	0	camera	10
+		18	0	camera	10
+		11	0	waste	50
+	##time_instant_645
+		11	0	waste	50
+		11	1	camera	10
+		15	0	air	100
+	##time_instant_646
+		12	0	camera	10
+		18	1	camera	10
+		1	1	waste	50
+		1	0	air	100
+		13	0	air	100
+		8	0	waste	50
+		8	1	waste	50
+		19	0	waste	50
+		5	0	waste	50
+		10	0	waste	50
+		7	0	waste	50
+		7	1	waste	50
+	##time_instant_647
+		2	1	waste	50
+		17	0	waste	50
+		6	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		3	0	camera	10
+		10	0	waste	50
+		0	1	waste	50
+	##time_instant_648
+		19	0	waste	50
+		15	0	air	100
+		15	1	air	100
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_649
+		2	1	waste	50
+		2	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_650
+		6	0	waste	50
+		10	0	waste	50
+		2	0	camera	10
+		12	0	camera	10
+		4	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		18	1	camera	10
+		18	0	camera	10
+		5	0	waste	50
+	##time_instant_651
+		7	1	waste	50
+		6	0	waste	50
+	##time_instant_652
+		2	1	waste	50
+		1	0	air	100
+		0	1	waste	50
+		0	0	air	100
+		19	0	waste	50
+		18	1	camera	10
+		17	0	waste	50
+		16	0	camera	10
+	##time_instant_653
+		2	0	camera	10
+		2	1	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		13	0	air	100
+	##time_instant_654
+		15	1	air	100
+		1	1	waste	50
+		1	0	air	100
+		7	0	waste	50
+		7	1	waste	50
+	##time_instant_655
+		17	0	waste	50
+		16	0	camera	10
+		18	0	camera	10
+		5	0	waste	50
+		3	0	camera	10
+	##time_instant_656
+		16	0	camera	10
+		5	0	waste	50
+		12	0	camera	10
+		14	1	air	100
+		15	1	air	100
+		15	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		4	1	waste	50
+		17	0	waste	50
+		19	0	waste	50
+		10	0	waste	50
+		13	0	air	100
+		11	1	camera	10
+	##time_instant_657
+		2	0	camera	10
+		9	0	waste	50
+		16	0	camera	10
+		19	0	waste	50
+		15	0	air	100
+		5	0	waste	50
+		13	0	air	100
+		14	1	air	100
+	##time_instant_658
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_659
+		7	0	waste	50
+		1	1	waste	50
+		17	0	waste	50
+		2	0	camera	10
+		2	1	waste	50
+		19	0	waste	50
+		16	0	camera	10
+		10	0	waste	50
+	##time_instant_660
+		13	0	air	100
+		11	0	waste	50
+		17	0	waste	50
+		10	0	waste	50
+		5	0	waste	50
+	##time_instant_661
+		17	0	waste	50
+		13	0	air	100
+		16	0	camera	10
+		2	1	waste	50
+		10	0	waste	50
+		12	0	camera	10
+		9	0	waste	50
+		19	0	waste	50
+		5	0	waste	50
+	##time_instant_662
+		7	0	waste	50
+		7	1	waste	50
+		2	1	waste	50
+		8	1	waste	50
+		0	1	waste	50
+		5	0	waste	50
+		16	0	camera	10
+		11	0	waste	50
+	##time_instant_663
+		15	1	air	100
+	##time_instant_664
+		19	0	waste	50
+		11	0	waste	50
+		7	0	waste	50
+	##time_instant_665
+		12	0	camera	10
+		18	0	camera	10
+		6	0	waste	50
+		17	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		15	1	air	100
+		15	0	air	100
+		2	1	waste	50
+	##time_instant_666
+		7	1	waste	50
+		0	1	waste	50
+		0	0	air	100
+		11	1	camera	10
+		13	0	air	100
+	##time_instant_667
+		8	1	waste	50
+		8	0	waste	50
+		1	1	waste	50
+		13	0	air	100
+		9	0	waste	50
+		17	0	waste	50
+		14	1	air	100
+		14	0	air	100
+	##time_instant_668
+		4	0	camera	10
+		18	1	camera	10
+		5	0	waste	50
+	##time_instant_669
+		3	0	camera	10
+		2	1	waste	50
+		6	0	waste	50
+		11	0	waste	50
+		12	0	camera	10
+		10	0	waste	50
+		5	0	waste	50
+		17	0	waste	50
+	##time_instant_670
+		17	0	waste	50
+		6	0	waste	50
+	##time_instant_671
+		19	0	waste	50
+		15	0	air	100
+	##time_instant_672
+		13	0	air	100
+		10	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		1	1	waste	50
+		2	1	waste	50
+		12	0	camera	10
+	##time_instant_673
+		8	1	waste	50
+		8	0	waste	50
+		12	0	camera	10
+		17	0	waste	50
+		18	1	camera	10
+		7	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+	##time_instant_674
+		8	1	waste	50
+		8	0	waste	50
+		9	0	waste	50
+		17	0	waste	50
+		1	0	air	100
+	##time_instant_675
+		13	0	air	100
+		10	0	waste	50
+	##time_instant_676
+		11	1	camera	10
+		17	0	waste	50
+		15	1	air	100
+		14	0	air	100
+		14	1	air	100
+	##time_instant_677
+		1	0	air	100
+		17	0	waste	50
+		12	0	camera	10
+		8	1	waste	50
+		0	1	waste	50
+	##time_instant_678
+		11	0	waste	50
+		12	0	camera	10
+		18	1	camera	10
+		5	0	waste	50
+		14	0	air	100
+	##time_instant_679
+		8	0	waste	50
+		8	1	waste	50
+		3	0	camera	10
+		6	0	waste	50
+		17	0	waste	50
+		15	1	air	100
+		2	1	waste	50
+	##time_instant_680
+		2	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+		4	0	camera	10
+		4	1	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_681
+		14	1	air	100
+		14	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+		13	0	air	100
+		2	0	camera	10
+		18	0	camera	10
+		9	0	waste	50
+		3	0	camera	10
+		16	0	camera	10
+		19	0	waste	50
+	##time_instant_682
+		13	0	air	100
+	##time_instant_683
+		15	1	air	100
+		15	0	air	100
+		14	0	air	100
+	##time_instant_684
+		1	1	waste	50
+	##time_instant_685
+		11	1	camera	10
+		17	0	waste	50
+		13	0	air	100
+		18	0	camera	10
+		9	0	waste	50
+	##time_instant_686
+		17	0	waste	50
+		15	0	air	100
+		15	1	air	100
+		0	0	air	100
+		8	0	waste	50
+		4	0	camera	10
+	##time_instant_687
+		4	1	waste	50
+		1	0	air	100
+		8	0	waste	50
+		16	0	camera	10
+		17	0	waste	50
+		14	0	air	100
+		14	1	air	100
+	##time_instant_688
+		14	0	air	100
+		14	1	air	100
+		7	0	waste	50
+		1	1	waste	50
+	##time_instant_689
+		8	0	waste	50
+		12	0	camera	10
+		4	0	camera	10
+		0	1	waste	50
+		3	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_690
+		19	0	waste	50
+		12	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		6	0	waste	50
+	##time_instant_691
+		16	0	camera	10
+		2	0	camera	10
+	##time_instant_692
+		6	0	waste	50
+		16	0	camera	10
+	##time_instant_693
+		1	0	air	100
+		13	0	air	100
+	##time_instant_694
+		18	1	camera	10
+		3	0	camera	10
+		16	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+		12	0	camera	10
+		0	1	waste	50
+	##time_instant_695
+		9	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_696
+		5	0	waste	50
+		19	0	waste	50
+	##time_instant_697
+		7	1	waste	50
+		7	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_698
+		6	0	waste	50
+		9	0	waste	50
+	##time_instant_699
+		14	1	air	100
+		14	0	air	100
+	##time_instant_700
+		2	1	waste	50
+		6	0	waste	50
+		16	0	camera	10
+		11	0	waste	50
+		0	1	waste	50
+		19	0	waste	50
+	##time_instant_701
+		15	1	air	100
+		14	0	air	100
+	##time_instant_702
+		8	0	waste	50
+		8	1	waste	50
+		18	0	camera	10
+	##time_instant_703
+		0	0	air	100
+		0	1	waste	50
+		14	1	air	100
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_704
+		12	0	camera	10
+		19	0	waste	50
+		8	1	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		13	0	air	100
+		14	1	air	100
+	##time_instant_705
+		14	0	air	100
+		12	0	camera	10
+	##time_instant_706
+		15	1	air	100
+		10	0	waste	50
+		9	0	waste	50
+		14	0	air	100
+	##time_instant_707
+		5	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		19	0	waste	50
+		9	0	waste	50
+		4	0	camera	10
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_708
+		15	1	air	100
+		11	0	waste	50
+		16	0	camera	10
+		10	0	waste	50
+		3	0	camera	10
+	##time_instant_709
+		16	0	camera	10
+		17	0	waste	50
+		9	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		1	0	air	100
+		1	1	waste	50
+		14	0	air	100
+		14	1	air	100
+	##time_instant_710
+		14	1	air	100
+		1	0	air	100
+		1	1	waste	50
+		9	0	waste	50
+	##time_instant_711
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_712
+		15	0	air	100
+		15	1	air	100
+		0	1	waste	50
+		16	0	camera	10
+		11	0	waste	50
+		19	0	waste	50
+		13	0	air	100
+	##time_instant_713
+		5	0	waste	50
+		12	0	camera	10
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_714
+		12	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		6	0	waste	50
+	##time_instant_715
+		3	0	camera	10
+		2	1	waste	50
+		1	1	waste	50
+		9	0	waste	50
+		8	1	waste	50
+	##time_instant_716
+		12	0	camera	10
+		7	0	waste	50
+	##time_instant_717
+		8	0	waste	50
+	##time_instant_718
+		4	0	camera	10
+		3	0	camera	10
+		0	0	air	100
+		1	0	air	100
+	##time_instant_719
+		4	1	waste	50
+	##time_instant_720
+		13	0	air	100
+		2	0	camera	10
+		2	1	waste	50
+		8	1	waste	50
+		4	1	waste	50
+		4	0	camera	10
+		11	1	camera	10
+		9	0	waste	50
+		19	0	waste	50
+		16	0	camera	10
+	##time_instant_721
+		13	0	air	100
+		4	0	camera	10
+		5	0	waste	50
+		7	0	waste	50
+		12	0	camera	10
+		3	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		10	0	waste	50
+	##time_instant_722
+		5	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		6	0	waste	50
+	##time_instant_723
+		12	0	camera	10
+		15	0	air	100
+		9	0	waste	50
+		17	0	waste	50
+	##time_instant_724
+		7	1	waste	50
+		10	0	waste	50
+		3	0	camera	10
+		0	0	air	100
+		0	1	waste	50
+		18	1	camera	10
+		11	0	waste	50
+		19	0	waste	50
+	##time_instant_725
+		17	0	waste	50
+		2	1	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		13	0	air	100
+	##time_instant_726
+		4	0	camera	10
+		5	0	waste	50
+		6	0	waste	50
+		16	0	camera	10
+	##time_instant_727
+		11	0	waste	50
+		11	1	camera	10
+		10	0	waste	50
+		3	0	camera	10
+		13	0	air	100
+		5	0	waste	50
+	##time_instant_728
+		15	0	air	100
+		19	0	waste	50
+		9	0	waste	50
+		4	0	camera	10
+	##time_instant_729
+		7	1	waste	50
+		7	0	waste	50
+		13	0	air	100
+		18	0	camera	10
+		18	1	camera	10
+		3	0	camera	10
+		6	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		12	0	camera	10
+	##time_instant_730
+		5	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		4	0	camera	10
+		15	1	air	100
+		7	1	waste	50
+		7	0	waste	50
+		18	1	camera	10
+		6	0	waste	50
+		19	0	waste	50
+		1	1	waste	50
+	##time_instant_731
+		13	0	air	100
+		2	1	waste	50
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_732
+		5	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_733
+		19	0	waste	50
+		18	0	camera	10
+	##time_instant_734
+		13	0	air	100
+		0	1	waste	50
+	##time_instant_735
+		14	1	air	100
+		5	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		1	1	waste	50
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_736
+		14	0	air	100
+		14	1	air	100
+		19	0	waste	50
+		15	1	air	100
+	##time_instant_737
+		9	0	waste	50
+		6	0	waste	50
+	##time_instant_738
+		0	1	waste	50
+		0	0	air	100
+		11	1	camera	10
+	##time_instant_739
+		16	0	camera	10
+	##time_instant_740
+		16	0	camera	10
+		19	0	waste	50
+		10	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+		13	0	air	100
+		14	0	air	100
+	##time_instant_741
+		18	1	camera	10
+		18	0	camera	10
+		5	0	waste	50
+		12	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		14	1	air	100
+		14	0	air	100
+	##time_instant_742
+		19	0	waste	50
+		3	0	camera	10
+		17	0	waste	50
+		6	0	waste	50
+		18	1	camera	10
+		13	0	air	100
+	##time_instant_743
+		0	1	waste	50
+		15	0	air	100
+	##time_instant_744
+		6	0	waste	50
+		8	0	waste	50
+	##time_instant_745
+		14	0	air	100
+		14	1	air	100
+		8	0	waste	50
+	##time_instant_746
+		8	0	waste	50
+		8	1	waste	50
+		3	0	camera	10
+	##time_instant_747
+		17	0	waste	50
+		10	0	waste	50
+		14	0	air	100
+		16	0	camera	10
+		19	0	waste	50
+		12	0	camera	10
+		4	0	camera	10
+	##time_instant_748
+		7	1	waste	50
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_749
+		1	1	waste	50
+		1	0	air	100
+		13	0	air	100
+		14	1	air	100
+		2	1	waste	50
+		7	1	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_750
+		8	0	waste	50
+		18	1	camera	10
+	##time_instant_751
+		3	0	camera	10
+		6	0	waste	50
+		11	0	waste	50
+	##time_instant_752
+		7	1	waste	50
+		15	0	air	100
+		16	0	camera	10
+		1	1	waste	50
+		13	0	air	100
+		10	0	waste	50
+	##time_instant_753
+		3	0	camera	10
+		0	1	waste	50
+	##time_instant_754
+		4	1	waste	50
+		11	0	waste	50
+		16	0	camera	10
+		7	0	waste	50
+		6	0	waste	50
+		13	0	air	100
+		17	0	waste	50
+		9	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		12	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+		3	0	camera	10
+	##time_instant_755
+		13	0	air	100
+		3	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		14	1	air	100
+	##time_instant_756
+		18	0	camera	10
+		1	1	waste	50
+		9	0	waste	50
+	##time_instant_757
+		9	0	waste	50
+	##time_instant_758
+		9	0	waste	50
+		19	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		13	0	air	100
+		10	0	waste	50
+		3	0	camera	10
+		17	0	waste	50
+		12	0	camera	10
+		11	1	camera	10
+		2	1	waste	50
+		6	0	waste	50
+	##time_instant_759
+		19	0	waste	50
+		15	1	air	100
+	##time_instant_760
+		15	1	air	100
+		15	0	air	100
+		5	0	waste	50
+		12	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		10	0	waste	50
+	##time_instant_761
+		15	1	air	100
+		16	0	camera	10
+	##time_instant_762
+		15	0	air	100
+		5	0	waste	50
+		0	1	waste	50
+		19	0	waste	50
+		12	0	camera	10
+		10	0	waste	50
+		9	0	waste	50
+	##time_instant_763
+		9	0	waste	50
+		6	0	waste	50
+		10	0	waste	50
+		13	0	air	100
+		4	0	camera	10
+		15	0	air	100
+		16	0	camera	10
+	##time_instant_764
+		2	1	waste	50
+	##time_instant_765
+		16	0	camera	10
+		12	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		1	1	waste	50
+	##time_instant_766
+		3	0	camera	10
+		12	0	camera	10
+	##time_instant_767
+		6	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		14	0	air	100
+	##time_instant_768
+		8	1	waste	50
+		8	0	waste	50
+		19	0	waste	50
+		17	0	waste	50
+		9	0	waste	50
+		12	0	camera	10
+		14	1	air	100
+		14	0	air	100
+		10	0	waste	50
+		4	1	waste	50
+	##time_instant_769
+		7	1	waste	50
+		7	0	waste	50
+		9	0	waste	50
+	##time_instant_770
+		2	1	waste	50
+		2	0	camera	10
+		10	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_771
+		10	0	waste	50
+		16	0	camera	10
+		3	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		2	1	waste	50
+		2	0	camera	10
+	##time_instant_772
+		19	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		17	0	waste	50
+		8	1	waste	50
+	##time_instant_773
+		6	0	waste	50
+		7	1	waste	50
+		9	0	waste	50
+		18	1	camera	10
+		17	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		12	0	camera	10
+	##time_instant_774
+		0	1	waste	50
+		15	0	air	100
+		15	1	air	100
+		2	0	camera	10
+		1	0	air	100
+	##time_instant_775
+		13	0	air	100
+	##time_instant_776
+		8	1	waste	50
+		9	0	waste	50
+		12	0	camera	10
+		11	1	camera	10
+		11	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		19	0	waste	50
+	##time_instant_777
+		12	0	camera	10
+		18	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		6	0	waste	50
+		16	0	camera	10
+	##time_instant_778
+		5	0	waste	50
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_779
+		15	1	air	100
+		15	0	air	100
+		10	0	waste	50
+	##time_instant_780
+		18	1	camera	10
+		1	1	waste	50
+	##time_instant_781
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_782
+		6	0	waste	50
+		15	1	air	100
+		19	0	waste	50
+	##time_instant_783
+		0	1	waste	50
+		0	0	air	100
+		14	0	air	100
+		14	1	air	100
+		15	1	air	100
+	##time_instant_784
+		1	1	waste	50
+		0	1	waste	50
+		8	1	waste	50
+		16	0	camera	10
+		6	0	waste	50
+	##time_instant_785
+		18	0	camera	10
+		18	1	camera	10
+		4	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		12	0	camera	10
+		5	0	waste	50
+		9	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		16	0	camera	10
+		3	0	camera	10
+	##time_instant_786
+		19	0	waste	50
+		17	0	waste	50
+	##time_instant_787
+		1	1	waste	50
+		1	0	air	100
+		4	1	waste	50
+		4	0	camera	10
+		5	0	waste	50
+		16	0	camera	10
+		9	0	waste	50
+		18	1	camera	10
+	##time_instant_788
+		7	1	waste	50
+		7	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		16	0	camera	10
+		3	0	camera	10
+	##time_instant_789
+		6	0	waste	50
+		13	0	air	100
+		11	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_790
+		3	0	camera	10
+	##time_instant_791
+		18	1	camera	10
+		18	0	camera	10
+		0	1	waste	50
+		0	0	air	100
+		4	1	waste	50
+		2	0	camera	10
+	##time_instant_792
+		17	0	waste	50
+		16	0	camera	10
+		14	0	air	100
+		9	0	waste	50
+	##time_instant_793
+		14	0	air	100
+		14	1	air	100
+		0	0	air	100
+		0	1	waste	50
+		7	0	waste	50
+		7	1	waste	50
+		16	0	camera	10
+		3	0	camera	10
+		6	0	waste	50
+		13	0	air	100
+		15	0	air	100
+		15	1	air	100
+		10	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		18	1	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		19	0	waste	50
+	##time_instant_794
+		0	0	air	100
+		16	0	camera	10
+		11	1	camera	10
+		11	0	waste	50
+		15	1	air	100
+		14	1	air	100
+		1	1	waste	50
+		1	0	air	100
+		18	0	camera	10
+	##time_instant_795
+		13	0	air	100
+		3	0	camera	10
+		19	0	waste	50
+		17	0	waste	50
+		16	0	camera	10
+		6	0	waste	50
+	##time_instant_796
+		0	1	waste	50
+		0	0	air	100
+		11	0	waste	50
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_797
+		13	0	air	100
+		10	0	waste	50
+		12	0	camera	10
+		1	1	waste	50
+		8	0	waste	50
+	##time_instant_798
+		1	1	waste	50
+		1	0	air	100
+		17	0	waste	50
+		3	0	camera	10
+		8	0	waste	50
+	##time_instant_799
+		10	0	waste	50
+		12	0	camera	10
+		18	0	camera	10
+		0	0	air	100
+		19	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+		13	0	air	100
+	##time_instant_800
+		13	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+		19	0	waste	50
+		16	0	camera	10
+		5	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_801
+		17	0	waste	50
+		11	0	waste	50
+	##time_instant_802
+		18	0	camera	10
+		18	1	camera	10
+		4	0	camera	10
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_803
+		6	0	waste	50
+		10	0	waste	50
+		14	0	air	100
+		5	0	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		17	0	waste	50
+	##time_instant_804
+		4	0	camera	10
+		4	1	waste	50
+		3	0	camera	10
+		5	0	waste	50
+		9	0	waste	50
+	##time_instant_805
+		11	1	camera	10
+	##time_instant_806
+		14	0	air	100
+		9	0	waste	50
+	##time_instant_807
+		0	0	air	100
+		0	1	waste	50
+		2	0	camera	10
+		17	0	waste	50
+		18	1	camera	10
+		8	1	waste	50
+		19	0	waste	50
+	##time_instant_808
+		16	0	camera	10
+	##time_instant_809
+		11	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+		9	0	waste	50
+		2	0	camera	10
+		2	1	waste	50
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_810
+		3	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		15	1	air	100
+		15	0	air	100
+	##time_instant_811
+		18	1	camera	10
+		17	0	waste	50
+		15	0	air	100
+	##time_instant_812
+		3	0	camera	10
+		12	0	camera	10
+		6	0	waste	50
+		15	0	air	100
+		16	0	camera	10
+		19	0	waste	50
+		10	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_813
+		10	0	waste	50
+		13	0	air	100
+		11	1	camera	10
+		3	0	camera	10
+		19	0	waste	50
+	##time_instant_814
+		15	1	air	100
+		5	0	waste	50
+		6	0	waste	50
+		19	0	waste	50
+		16	0	camera	10
+	##time_instant_815
+		19	0	waste	50
+		7	0	waste	50
+		9	0	waste	50
+		13	0	air	100
+	##time_instant_816
+		1	1	waste	50
+		0	1	waste	50
+		19	0	waste	50
+		5	0	waste	50
+	##time_instant_817
+		18	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		8	0	waste	50
+		15	1	air	100
+		15	0	air	100
+	##time_instant_818
+		18	1	camera	10
+		18	0	camera	10
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_819
+		13	0	air	100
+		12	0	camera	10
+		9	0	waste	50
+		0	0	air	100
+		15	1	air	100
+		15	0	air	100
+	##time_instant_820
+		5	0	waste	50
+		1	1	waste	50
+		9	0	waste	50
+		16	0	camera	10
+		6	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		10	0	waste	50
+		0	1	waste	50
+		2	0	camera	10
+	##time_instant_821
+		6	0	waste	50
+		4	0	camera	10
+		2	1	waste	50
+		14	1	air	100
+		9	0	waste	50
+		19	0	waste	50
+	##time_instant_822
+		14	0	air	100
+		2	1	waste	50
+		6	0	waste	50
+		10	0	waste	50
+		12	0	camera	10
+		17	0	waste	50
+	##time_instant_823
+		9	0	waste	50
+		3	0	camera	10
+	##time_instant_824
+		6	0	waste	50
+		15	1	air	100
+		13	0	air	100
+	##time_instant_825
+		17	0	waste	50
+	##time_instant_826
+		3	0	camera	10
+		0	1	waste	50
+		5	0	waste	50
+		8	1	waste	50
+	##time_instant_827
+		9	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		14	0	air	100
+		17	0	waste	50
+	##time_instant_828
+		8	0	waste	50
+		6	0	waste	50
+		3	0	camera	10
+		18	0	camera	10
+		18	1	camera	10
+		2	0	camera	10
+		1	1	waste	50
+	##time_instant_829
+		17	0	waste	50
+		13	0	air	100
+		7	0	waste	50
+	##time_instant_830
+		4	1	waste	50
+		6	0	waste	50
+	##time_instant_831
+		13	0	air	100
+		14	1	air	100
+		14	0	air	100
+		3	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		1	1	waste	50
+		1	0	air	100
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_832
+		16	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		5	0	waste	50
+		13	0	air	100
+		17	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		18	1	camera	10
+	##time_instant_833
+		19	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		16	0	camera	10
+		13	0	air	100
+	##time_instant_834
+		18	0	camera	10
+		18	1	camera	10
+		10	0	waste	50
+	##time_instant_835
+		3	0	camera	10
+		17	0	waste	50
+		15	0	air	100
+		5	0	waste	50
+		0	0	air	100
+		11	1	camera	10
+	##time_instant_836
+		2	1	waste	50
+		16	0	camera	10
+		5	0	waste	50
+	##time_instant_837
+		0	1	waste	50
+		0	0	air	100
+		7	0	waste	50
+		13	0	air	100
+		10	0	waste	50
+		12	0	camera	10
+		8	1	waste	50
+		5	0	waste	50
+		2	1	waste	50
+		18	0	camera	10
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_838
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_839
+		0	1	waste	50
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_840
+		16	0	camera	10
+		17	0	waste	50
+		4	1	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		0	0	air	100
+	##time_instant_841
+		5	0	waste	50
+		17	0	waste	50
+		16	0	camera	10
+		8	0	waste	50
+	##time_instant_842
+		0	0	air	100
+		4	1	waste	50
+	##time_instant_843
+		7	0	waste	50
+		11	0	waste	50
+		13	0	air	100
+		5	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		10	0	waste	50
+		2	1	waste	50
+		14	1	air	100
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_844
+		4	1	waste	50
+		5	0	waste	50
+		11	1	camera	10
+	##time_instant_845
+		2	0	camera	10
+		2	1	waste	50
+		15	0	air	100
+		15	1	air	100
+		16	0	camera	10
+	##time_instant_846
+		18	1	camera	10
+		18	0	camera	10
+		3	0	camera	10
+		16	0	camera	10
+		13	0	air	100
+		7	0	waste	50
+		19	0	waste	50
+	##time_instant_847
+		1	1	waste	50
+		1	0	air	100
+		5	0	waste	50
+		10	0	waste	50
+		18	1	camera	10
+	##time_instant_848
+		12	0	camera	10
+		5	0	waste	50
+		0	1	waste	50
+		7	1	waste	50
+		3	0	camera	10
+		13	0	air	100
+		2	0	camera	10
+		2	1	waste	50
+	##time_instant_849
+		9	0	waste	50
+		5	0	waste	50
+		18	1	camera	10
+	##time_instant_850
+		17	0	waste	50
+		3	0	camera	10
+		8	1	waste	50
+		6	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		15	0	air	100
+		15	1	air	100
+		7	0	waste	50
+		7	1	waste	50
+		13	0	air	100
+		12	0	camera	10
+		14	1	air	100
+	##time_instant_851
+		17	0	waste	50
+	##time_instant_852
+		13	0	air	100
+		12	0	camera	10
+		4	0	camera	10
+		17	0	waste	50
+		3	0	camera	10
+	##time_instant_853
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_854
+		14	0	air	100
+		14	1	air	100
+		2	1	waste	50
+		17	0	waste	50
+		12	0	camera	10
+		11	1	camera	10
+		19	0	waste	50
+		6	0	waste	50
+	##time_instant_855
+		11	0	waste	50
+		16	0	camera	10
+		14	0	air	100
+		3	0	camera	10
+		0	1	waste	50
+	##time_instant_856
+		11	1	camera	10
+		11	0	waste	50
+		3	0	camera	10
+		6	0	waste	50
+		7	0	waste	50
+	##time_instant_857
+		4	0	camera	10
+		4	1	waste	50
+		9	0	waste	50
+		5	0	waste	50
+		16	0	camera	10
+		6	0	waste	50
+		1	1	waste	50
+		10	0	waste	50
+	##time_instant_858
+		17	0	waste	50
+		10	0	waste	50
+		7	1	waste	50
+		13	0	air	100
+	##time_instant_859
+		3	0	camera	10
+		1	1	waste	50
+		1	0	air	100
+		4	0	camera	10
+	##time_instant_860
+		15	0	air	100
+		12	0	camera	10
+	##time_instant_861
+		15	1	air	100
+		15	0	air	100
+	##time_instant_862
+		10	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		9	0	waste	50
+	##time_instant_863
+		1	0	air	100
+		10	0	waste	50
+		2	0	camera	10
+		3	0	camera	10
+		15	0	air	100
+		14	0	air	100
+		17	0	waste	50
+	##time_instant_864
+		5	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_865
+		15	0	air	100
+	##time_instant_866
+		13	0	air	100
+		7	1	waste	50
+		19	0	waste	50
+		9	0	waste	50
+	##time_instant_867
+		3	0	camera	10
+		11	1	camera	10
+		11	0	waste	50
+		2	0	camera	10
+	##time_instant_868
+		16	0	camera	10
+		18	0	camera	10
+		8	0	waste	50
+		15	0	air	100
+		15	1	air	100
+		11	1	camera	10
+		2	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		17	0	waste	50
+	##time_instant_869
+		4	1	waste	50
+		4	0	camera	10
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_870
+		3	0	camera	10
+		13	0	air	100
+		2	1	waste	50
+		12	0	camera	10
+	##time_instant_871
+		3	0	camera	10
+		17	0	waste	50
+	##time_instant_872
+		1	0	air	100
+	##time_instant_873
+		16	0	camera	10
+		14	1	air	100
+		17	0	waste	50
+		9	0	waste	50
+	##time_instant_874
+		17	0	waste	50
+	##time_instant_875
+		18	0	camera	10
+		18	1	camera	10
+		12	0	camera	10
+		16	0	camera	10
+		10	0	waste	50
+	##time_instant_876
+		4	0	camera	10
+		4	1	waste	50
+		15	0	air	100
+		9	0	waste	50
+		8	1	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		6	0	waste	50
+		18	0	camera	10
+		13	0	air	100
+		1	1	waste	50
+	##time_instant_877
+		9	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+		19	0	waste	50
+	##time_instant_878
+		5	0	waste	50
+		4	1	waste	50
+		3	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		16	0	camera	10
+		12	0	camera	10
+		13	0	air	100
+	##time_instant_879
+		15	0	air	100
+		18	0	camera	10
+		8	1	waste	50
+		19	0	waste	50
+		6	0	waste	50
+	##time_instant_880
+		17	0	waste	50
+	##time_instant_881
+		9	0	waste	50
+		12	0	camera	10
+		10	0	waste	50
+		0	0	air	100
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_882
+		8	1	waste	50
+		12	0	camera	10
+	##time_instant_883
+		5	0	waste	50
+		15	0	air	100
+		6	0	waste	50
+		1	1	waste	50
+		1	0	air	100
+		7	1	waste	50
+		16	0	camera	10
+	##time_instant_884
+		17	0	waste	50
+	##time_instant_885
+		7	0	waste	50
+		3	0	camera	10
+		12	0	camera	10
+		9	0	waste	50
+	##time_instant_886
+		6	0	waste	50
+		15	1	air	100
+		7	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+	##time_instant_887
+		10	0	waste	50
+		8	1	waste	50
+		9	0	waste	50
+	##time_instant_888
+		9	0	waste	50
+		12	0	camera	10
+		6	0	waste	50
+		5	0	waste	50
+	##time_instant_889
+		13	0	air	100
+		1	1	waste	50
+	##time_instant_890
+		8	0	waste	50
+		8	1	waste	50
+		5	0	waste	50
+		16	0	camera	10
+		15	0	air	100
+		15	1	air	100
+	##time_instant_891
+		17	0	waste	50
+		19	0	waste	50
+		13	0	air	100
+		6	0	waste	50
+		0	0	air	100
+		4	1	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		3	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		16	0	camera	10
+	##time_instant_892
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_893
+		12	0	camera	10
+		3	0	camera	10
+		17	0	waste	50
+		5	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		9	0	waste	50
+	##time_instant_894
+		7	1	waste	50
+		7	0	waste	50
+		2	0	camera	10
+		15	1	air	100
+		1	1	waste	50
+		1	0	air	100
+	##time_instant_895
+		12	0	camera	10
+		14	1	air	100
+		10	0	waste	50
+		5	0	waste	50
+		13	0	air	100
+		7	1	waste	50
+		8	0	waste	50
+		9	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+	##time_instant_896
+		12	0	camera	10
+		17	0	waste	50
+		13	0	air	100
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_897
+		9	0	waste	50
+		10	0	waste	50
+		2	1	waste	50
+		12	0	camera	10
+		1	1	waste	50
+		1	0	air	100
+		8	0	waste	50
+	##time_instant_898
+		1	1	waste	50
+		1	0	air	100
+		19	0	waste	50
+		9	0	waste	50
+	##time_instant_899
+		1	1	waste	50
+		1	0	air	100
+		4	0	camera	10
+		4	1	waste	50
+		14	1	air	100
+		14	0	air	100
+		7	1	waste	50
+		7	0	waste	50
+		9	0	waste	50
+		12	0	camera	10
+		0	1	waste	50
+		0	0	air	100
+		10	0	waste	50
+	##time_instant_900
+		15	0	air	100
+		15	1	air	100
+		6	0	waste	50
+		9	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		17	0	waste	50
+		12	0	camera	10
+	##time_instant_901
+		2	1	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_902
+		19	0	waste	50
+		1	0	air	100
+		1	1	waste	50
+		8	0	waste	50
+		8	1	waste	50
+		5	0	waste	50
+		17	0	waste	50
+	##time_instant_903
+		17	0	waste	50
+		16	0	camera	10
+		6	0	waste	50
+	##time_instant_904
+		16	0	camera	10
+		8	0	waste	50
+		3	0	camera	10
+		7	1	waste	50
+		17	0	waste	50
+		15	0	air	100
+	##time_instant_905
+		2	0	camera	10
+		13	0	air	100
+	##time_instant_906
+		15	1	air	100
+		11	1	camera	10
+		11	0	waste	50
+		8	0	waste	50
+		9	0	waste	50
+		16	0	camera	10
+		7	1	waste	50
+		7	0	waste	50
+		17	0	waste	50
+		12	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		1	1	waste	50
+		19	0	waste	50
+	##time_instant_907
+		1	0	air	100
+	##time_instant_908
+		19	0	waste	50
+		12	0	camera	10
+		14	1	air	100
+		14	0	air	100
+		1	1	waste	50
+		5	0	waste	50
+	##time_instant_909
+		13	0	air	100
+		1	1	waste	50
+		0	0	air	100
+		0	1	waste	50
+		15	0	air	100
+	##time_instant_910
+		7	0	waste	50
+		10	0	waste	50
+		0	0	air	100
+		0	1	waste	50
+		6	0	waste	50
+		14	1	air	100
+	##time_instant_911
+		7	0	waste	50
+		7	1	waste	50
+		9	0	waste	50
+		11	0	waste	50
+		4	0	camera	10
+		4	1	waste	50
+	##time_instant_912
+		17	0	waste	50
+	##time_instant_913
+		0	0	air	100
+		8	0	waste	50
+		8	1	waste	50
+		16	0	camera	10
+	##time_instant_914
+		10	0	waste	50
+		0	1	waste	50
+		19	0	waste	50
+	##time_instant_915
+		12	0	camera	10
+		2	0	camera	10
+		2	1	waste	50
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		17	0	waste	50
+	##time_instant_916
+		11	1	camera	10
+		19	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		10	0	waste	50
+	##time_instant_917
+		18	1	camera	10
+		18	0	camera	10
+		14	0	air	100
+		19	0	waste	50
+	##time_instant_918
+		14	1	air	100
+		3	0	camera	10
+		2	1	waste	50
+		18	1	camera	10
+		15	1	air	100
+		7	0	waste	50
+		7	1	waste	50
+		1	0	air	100
+		9	0	waste	50
+	##time_instant_919
+		11	1	camera	10
+		6	0	waste	50
+	##time_instant_920
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		2	0	camera	10
+		3	0	camera	10
+		15	1	air	100
+		19	0	waste	50
+		7	1	waste	50
+	##time_instant_921
+		3	0	camera	10
+		11	1	camera	10
+		4	0	camera	10
+		1	0	air	100
+		12	0	camera	10
+	##time_instant_922
+		14	1	air	100
+		14	0	air	100
+		2	0	camera	10
+		10	0	waste	50
+		9	0	waste	50
+		15	0	air	100
+		12	0	camera	10
+	##time_instant_923
+		11	1	camera	10
+		11	0	waste	50
+		1	1	waste	50
+	##time_instant_924
+		17	0	waste	50
+		3	0	camera	10
+		2	1	waste	50
+		2	0	camera	10
+		4	0	camera	10
+		4	1	waste	50
+		6	0	waste	50
+		12	0	camera	10
+	##time_instant_925
+		3	0	camera	10
+		10	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		0	0	air	100
+		0	1	waste	50
+		15	1	air	100
+	##time_instant_926
+		3	0	camera	10
+		9	0	waste	50
+		10	0	waste	50
+		0	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_927
+		7	1	waste	50
+	##time_instant_928
+		7	1	waste	50
+	##time_instant_929
+		10	0	waste	50
+	##time_instant_930
+		11	0	waste	50
+	##time_instant_931
+		7	1	waste	50
+		16	0	camera	10
+		19	0	waste	50
+		17	0	waste	50
+	##time_instant_932
+		16	0	camera	10
+		14	1	air	100
+		15	0	air	100
+		11	1	camera	10
+		8	0	waste	50
+		8	1	waste	50
+		18	1	camera	10
+		18	0	camera	10
+		12	0	camera	10
+	##time_instant_933
+		16	0	camera	10
+		4	1	waste	50
+		4	0	camera	10
+		6	0	waste	50
+		19	0	waste	50
+		17	0	waste	50
+		9	0	waste	50
+		10	0	waste	50
+	##time_instant_934
+		17	0	waste	50
+		5	0	waste	50
+		11	1	camera	10
+		11	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		16	0	camera	10
+		14	0	air	100
+		14	1	air	100
+		12	0	camera	10
+		0	0	air	100
+		8	1	waste	50
+		8	0	waste	50
+		4	0	camera	10
+	##time_instant_935
+		5	0	waste	50
+		2	1	waste	50
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_936
+		16	0	camera	10
+		15	0	air	100
+		15	1	air	100
+		2	0	camera	10
+		18	1	camera	10
+		18	0	camera	10
+	##time_instant_937
+		4	0	camera	10
+		4	1	waste	50
+		6	0	waste	50
+		10	0	waste	50
+		16	0	camera	10
+	##time_instant_938
+		8	0	waste	50
+		12	0	camera	10
+		15	0	air	100
+		3	0	camera	10
+	##time_instant_939
+		19	0	waste	50
+		16	0	camera	10
+		2	0	camera	10
+		0	0	air	100
+		6	0	waste	50
+		5	0	waste	50
+	##time_instant_940
+		18	0	camera	10
+		18	1	camera	10
+		11	1	camera	10
+		11	0	waste	50
+		2	1	waste	50
+		16	0	camera	10
+		6	0	waste	50
+		14	0	air	100
+		14	1	air	100
+		8	1	waste	50
+		15	1	air	100
+		19	0	waste	50
+		0	0	air	100
+		5	0	waste	50
+		3	0	camera	10
+	##time_instant_941
+		3	0	camera	10
+	##time_instant_942
+		17	0	waste	50
+		12	0	camera	10
+		1	0	air	100
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_943
+		0	0	air	100
+		0	1	waste	50
+		12	0	camera	10
+		5	0	waste	50
+		3	0	camera	10
+	##time_instant_944
+		19	0	waste	50
+	##time_instant_945
+		4	1	waste	50
+	##time_instant_946
+		9	0	waste	50
+		7	1	waste	50
+		6	0	waste	50
+		8	0	waste	50
+	##time_instant_947
+		17	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		6	0	waste	50
+	##time_instant_948
+		2	0	camera	10
+		2	1	waste	50
+		0	0	air	100
+		17	0	waste	50
+		9	0	waste	50
+		5	0	waste	50
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_949
+		1	1	waste	50
+		1	0	air	100
+		13	0	air	100
+		7	0	waste	50
+		8	1	waste	50
+		8	0	waste	50
+	##time_instant_950
+		17	0	waste	50
+		12	0	camera	10
+	##time_instant_951
+		16	0	camera	10
+		14	1	air	100
+		14	0	air	100
+		3	0	camera	10
+		10	0	waste	50
+		5	0	waste	50
+	##time_instant_952
+		19	0	waste	50
+		14	1	air	100
+		14	0	air	100
+		17	0	waste	50
+	##time_instant_953
+		14	0	air	100
+		8	0	waste	50
+		8	1	waste	50
+		9	0	waste	50
+		16	0	camera	10
+		17	0	waste	50
+	##time_instant_954
+		2	1	waste	50
+		2	0	camera	10
+		10	0	waste	50
+		7	0	waste	50
+		1	1	waste	50
+	##time_instant_955
+		11	1	camera	10
+	##time_instant_956
+		19	0	waste	50
+		18	0	camera	10
+		18	1	camera	10
+		12	0	camera	10
+		4	1	waste	50
+		17	0	waste	50
+		15	1	air	100
+	##time_instant_957
+		11	1	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		9	0	waste	50
+	##time_instant_958
+		15	0	air	100
+		15	1	air	100
+		12	0	camera	10
+		14	1	air	100
+		14	0	air	100
+		19	0	waste	50
+	##time_instant_959
+		1	0	air	100
+		18	1	camera	10
+		18	0	camera	10
+		7	1	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		9	0	waste	50
+		3	0	camera	10
+		5	0	waste	50
+	##time_instant_960
+		14	0	air	100
+		14	1	air	100
+		1	1	waste	50
+		12	0	camera	10
+		5	0	waste	50
+		17	0	waste	50
+	##time_instant_961
+		4	1	waste	50
+		4	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+	##time_instant_962
+		15	1	air	100
+		9	0	waste	50
+		16	0	camera	10
+		5	0	waste	50
+	##time_instant_963
+		2	1	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		5	0	waste	50
+		6	0	waste	50
+		1	1	waste	50
+		16	0	camera	10
+	##time_instant_964
+		8	1	waste	50
+		8	0	waste	50
+		5	0	waste	50
+		15	0	air	100
+	##time_instant_965
+		4	0	camera	10
+		9	0	waste	50
+		16	0	camera	10
+	##time_instant_966
+		8	0	waste	50
+		8	1	waste	50
+		1	0	air	100
+		1	1	waste	50
+		13	0	air	100
+		16	0	camera	10
+	##time_instant_967
+		6	0	waste	50
+		17	0	waste	50
+	##time_instant_968
+		10	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		15	1	air	100
+		9	0	waste	50
+		6	0	waste	50
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_969
+		15	1	air	100
+		3	0	camera	10
+	##time_instant_970
+		0	0	air	100
+		13	0	air	100
+		1	1	waste	50
+		17	0	waste	50
+	##time_instant_971
+		16	0	camera	10
+		2	0	camera	10
+	##time_instant_972
+		16	0	camera	10
+		11	1	camera	10
+		11	0	waste	50
+		7	0	waste	50
+		5	0	waste	50
+		15	1	air	100
+		15	0	air	100
+		17	0	waste	50
+	##time_instant_973
+		13	0	air	100
+		10	0	waste	50
+		14	1	air	100
+		8	0	waste	50
+	##time_instant_974
+		18	0	camera	10
+		3	0	camera	10
+	##time_instant_975
+		13	0	air	100
+		17	0	waste	50
+		8	0	waste	50
+		18	0	camera	10
+		14	1	air	100
+		15	0	air	100
+		15	1	air	100
+	##time_instant_976
+		15	1	air	100
+		15	0	air	100
+		3	0	camera	10
+		11	0	waste	50
+		11	1	camera	10
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_977
+		2	0	camera	10
+		15	0	air	100
+		10	0	waste	50
+		0	1	waste	50
+		0	0	air	100
+		7	0	waste	50
+		7	1	waste	50
+		12	0	camera	10
+	##time_instant_978
+		3	0	camera	10
+		15	0	air	100
+		2	0	camera	10
+		5	0	waste	50
+	##time_instant_979
+		2	1	waste	50
+		9	0	waste	50
+	##time_instant_980
+		9	0	waste	50
+		0	0	air	100
+		15	1	air	100
+		15	0	air	100
+		8	0	waste	50
+	##time_instant_981
+		9	0	waste	50
+		3	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		10	0	waste	50
+	##time_instant_982
+		2	0	camera	10
+		10	0	waste	50
+		6	0	waste	50
+		0	1	waste	50
+	##time_instant_983
+		10	0	waste	50
+		16	0	camera	10
+	##time_instant_984
+		15	1	air	100
+		2	0	camera	10
+		8	1	waste	50
+		8	0	waste	50
+		18	1	camera	10
+		10	0	waste	50
+		14	1	air	100
+		11	0	waste	50
+		11	1	camera	10
+		3	0	camera	10
+	##time_instant_985
+		4	0	camera	10
+		5	0	waste	50
+		2	1	waste	50
+		2	0	camera	10
+		15	1	air	100
+		15	0	air	100
+		10	0	waste	50
+		7	1	waste	50
+	##time_instant_986
+		4	1	waste	50
+		3	0	camera	10
+		5	0	waste	50
+	##time_instant_987
+		3	0	camera	10
+		12	0	camera	10
+		19	0	waste	50
+		2	0	camera	10
+		2	1	waste	50
+		7	0	waste	50
+		8	0	waste	50
+		0	0	air	100
+	##time_instant_988
+		15	0	air	100
+		9	0	waste	50
+		18	1	camera	10
+		0	0	air	100
+		0	1	waste	50
+	##time_instant_989
+		3	0	camera	10
+		7	0	waste	50
+		7	1	waste	50
+		19	0	waste	50
+		2	1	waste	50
+		18	1	camera	10
+		14	0	air	100
+		1	0	air	100
+		15	1	air	100
+		15	0	air	100
+		16	0	camera	10
+	##time_instant_990
+		17	0	waste	50
+	##time_instant_991
+		3	0	camera	10
+		6	0	waste	50
+		7	0	waste	50
+	##time_instant_992
+		11	0	waste	50
+		11	1	camera	10
+	##time_instant_993
+		4	1	waste	50
+		4	0	camera	10
+	##time_instant_994
+		8	0	waste	50
+		6	0	waste	50
+		2	1	waste	50
+		9	0	waste	50
+		4	1	waste	50
+		11	0	waste	50
+		5	0	waste	50
+		17	0	waste	50
+		10	0	waste	50
+	##time_instant_995
+		18	0	camera	10
+		18	1	camera	10
+	##time_instant_996
+		14	1	air	100
+		14	0	air	100
+		2	0	camera	10
+		2	1	waste	50
+		4	0	camera	10
+	##time_instant_997
+		16	0	camera	10
+		12	0	camera	10
+		5	0	waste	50
+		15	0	air	100
+		15	1	air	100
+		17	0	waste	50
+		8	0	waste	50
+		8	1	waste	50
+	##time_instant_998
+		18	0	camera	10
+		8	0	waste	50
+		10	0	waste	50
+		13	0	air	100
+		0	0	air	100
+		0	1	waste	50
+		4	0	camera	10
+		4	1	waste	50
+		7	1	waste	50
+		7	0	waste	50
+	##time_instant_999
+		19	0	waste	50
+		15	0	air	100
+		10	0	waste	50
+		18	1	camera	10
+		4	0	camera	10
+	##time_instant_1000
+		4	1	waste	50
+		19	0	waste	50
+		17	0	waste	50
+#end_requests

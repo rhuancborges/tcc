@@ -1,5 +1,5 @@
 from lerInstancia import run
-import os
+import os, logging
 from estruturas import Grafo, Sensor, FogNode, CloudNode, Request, Service
 
 
@@ -83,7 +83,7 @@ def processar_caminho(caminho, requisicao, dist, grafo):
 # Chamada para cada instância gerada
 # index - índice das instâncias e também dos arquivos de log e mapa
     # Facilita a correspondência entre os arquivos
-def run(grafo, requisicoes, fogs, index):
+def run(grafo, requisicoes, oracle, index, usaOraculo):
     # Estrutura para controlar a disponibilidade de Processamento e Memória para os nós fog
     # i: (v,p,m) - Ao instante "i", uma quantidade "p" de processamento e "m" de memória volta a estar disponível no nó "v"
     temporal = {i: [] for i in range(1, 1001)}
@@ -101,9 +101,7 @@ def run(grafo, requisicoes, fogs, index):
     # Chama a função Floyd-Warshall para já deixar pré-processado todos os caminhos do grafo
     dist, prev = floyd_warshall(grafo)
 
-    # Abre o arquivo log pela primeira vez e adiciona ium cabeçalho
-    with open(f"log_{index}.txt", "w", encoding="utf-8") as l:
-        l.write(f"COMECANDO LOG DA INSTÂNCIA {index}.txt\n")
+    logger.info(f"CMC - Iniciando processamento da instância {index} com {len(requisicoes)} requisições...")
 
     # Começa a ler as requisições
     for req in requisicoes: 
@@ -115,10 +113,11 @@ def run(grafo, requisicoes, fogs, index):
         for aresta, band in temporal_arestas[instante]:
             aresta.largura_banda += band
 
-        log_req = "" # String para armazenar no arquivo de log
+       
         tot_req += 1
         sensor = req.sensor
-        log_req += f"Requisicao {tot_req} | Sensor {sensor} | "
+        logger.info(f"CMC - Processando requisição {tot_req} do instante {instante}...")
+        
 
         # Para um dado sensor, seleciona todos os possíveis Nós fog a serem alcançados, ordenados crescentemente pelo tempo de alcance
         tempo_dict = dist[sensor]
@@ -126,17 +125,22 @@ def run(grafo, requisicoes, fogs, index):
         quant_testados = 1 # Variável para contar o número de caminhos testados até processar uma requisição
         candidatos += sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, CloudNode)], key=lambda x: x[1])
         
+        if usaOraculo:
+            candidatos = [oracle[sensor][req.service.id]] + candidatos
+            logger.info("CMC - Adicionando previsão do oráculo como primeira tentativa de destino")
+        else:
+            logger.info("CMC - Segue apenas com o Caminho Mais Curto")
 
         # Varre a lista de Nós Fog candidatos, selecionando um por vez como destino do caminho
         for destino, _ in candidatos:
 
             if (index <= 15):
                 if (quant_testados > 3):
-                    log_req += f"Testou-se o limite de 3 caminhos\n"
+                    logger.info(f"CMC - Testou-se o limite de 3 caminhos\n")
                     destino = candidatos[-3][0]
             else:
                 if (quant_testados > 6):
-                    log_req += f"Testou-se o limite de 6 caminhos\n"
+                    logger.info(f"CMC - Testou-se o limite de 6 caminhos\n")
                     destino = candidatos[-3][0]
 
             # Reconstrói o caminho
@@ -147,7 +151,7 @@ def run(grafo, requisicoes, fogs, index):
 
             # Entra no if apenas se a requisicao foi processada no caminho passado como parâmetro
             if processou:
-                log_req += f"{quant_testados} caminhos testados | Caminho selecionado: {caminho} | Nó selecionado: {selecionado}\n"
+                logger.info(f"{quant_testados} caminhos testados | Caminho selecionado: {caminho} | Nó selecionado: {selecionado}\n")
                 
                 if(isinstance(selecionado, FogNode)):
                     quant_req += 1  # Número de requisicoes incrementado
@@ -171,24 +175,19 @@ def run(grafo, requisicoes, fogs, index):
 
                 break # Uma vez processada a requisição, não se testa outros caminhos
             else:
-                log_req += f"{motivo}\n"
+                logger.info(f"Requisicao {tot_req} foi rejeitada porque {motivo}\n")
                 if(isinstance(destino, CloudNode)):
                     break
 
             quant_testados+=1 # Se não foi processada, incrementa a quantidade de caminhos testada
 
-
-            with open(f"log_{index}.txt", "a", encoding="utf-8") as l:
-                l.write(log_req)
-
     set_arcos = set(set_arcos)
-    quant_arcos = len(set_arcos)
-    print(f"Total de requisições: {tot_req}\n % de requisições processadas: {(quant_req/tot_req)*100.0}% ({quant_req} processadas)\n % de arcos usados: {(quant_arcos/grafo.n_arestas)*100.0}%\n Largura de banda usada: {quant_band}\n Custo gasto: {quant_custo}\n")
-
-   
+    quant_arcos = len(set_arcos)   
     return (quant_req/tot_req)*100.0, (quant_arcos/grafo.n_arestas)*100.0, quant_band, quant_custo
 
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 if __name__=="__main__":
     instance_file = "0.txt"
