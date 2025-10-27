@@ -125,17 +125,17 @@ if __name__=="__main__":
     training_requests = []
     logger.info("Iniciando geração de instâncias de treinamento para o RKO...")
     if not os.path.exists(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl")):
-        for i in range(10):
-            instance_ID = str(i) + "_training"
+        for i in range(1, 11):
+            instance_ID = f"{i}_training_{n_sensores}"
             if not os.path.exists(os.path.join(pasta_rko, f"{instance_ID}.txt")):
                 subprocess.run(["python", "gerarInstancia.py", str(n_sensores), instance_ID, pasta_rko])
             logger.info(f"Instância {instance_ID} gerada.")
 
-        for i in range(10):
-            instance_ID = str(i) + "_training"
+        for i in range(1, 11):
+            instance_ID = f"{i}_training_{n_sensores}"
             grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join(pasta_rko, f"{instance_ID}.txt"))
             logger.info(f"Instância {instance_ID} carregada com {len(requisicoes)} requisições.")
-            reqs = construirAmostra(int(1000/(len(requisicoes)*0.01)), requisicoes)
+            reqs = construirAmostra(int(1000/(len(requisicoes)*0.001)),requisicoes)
             logger.info(f"Instância {instance_ID} reduzida para {len(reqs)} requisições para treinamento.")
             logger.info(f"Executando RKO na instância {instance_ID}...")
             predictor = oraculo.run(grafo, reqs, fogs)
@@ -150,7 +150,6 @@ if __name__=="__main__":
         with open(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl"), "rb") as f:
             oracle = pickle.load(f)
 
-    sys.exit(0)
     
     # PARTE 2 - GERAR INSTÂNCIAS DE TESTE
     for i in range(k, k+3):
@@ -161,6 +160,8 @@ if __name__=="__main__":
         else:
             logger.info(f"Instância {instance_ID} já existe.")
 
+    
+
     # PARTE 3 - EXECUTAR INSTÂNCIAS E GERAR GRÁFICOS E HEATMAPS
     percent_requisicoes_processadas = []
     percent_arcos_usados = []
@@ -169,14 +170,14 @@ if __name__=="__main__":
    
     os.makedirs("heatmaps", exist_ok=True)
 
-    index = 0
+    index = 10
     instance_file = f"{index}.txt"
     grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
     logger.info(f"Instância {index} carregada com {len(requisicoes)} requisições, {len(fogs)} nós fog e {len(sensores)} sensores.")
 
-    req, arc, band, c = CMC.run(grafo, requisicoes, oracle, index)
+    req, arc, band, c = CMC.run(grafo, requisicoes, oracle, index, usaOraculo=False)
     logger.info(f"Instância {index} processada: \n\t{len(requisicoes)} requisições (total)\n\t{req:.2f}% requisições processadas\n\t{arc}% arcos\n\t{band} Gbps\n\tUS$ {c}.")
-    
+    sys.exit(0)
     criarHeatMap(fogs, sensores, index, grafo)
     logger.info(f"Heatmap salvo como heatmaps/mapa_calor_{index}.html")
     

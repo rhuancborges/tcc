@@ -101,3 +101,7 @@ class Service:
         self.memory_demand = memory_demand
         self.number_of_bits = number_of_bits
         self.lifetime = lifetime
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.id})"
+    

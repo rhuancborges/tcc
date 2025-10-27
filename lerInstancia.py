@@ -116,8 +116,13 @@ def run(pathfile):
                 requisicoes.append(Request(i, sensores[int(linha[0])], servicos[linha[2]], instante))
                 linha = f.readline().strip()
         # Fim da leitura do arquivo
+
+        #print(fogs)
+        #print(sensores)
+        #print(servicos)
+        #print(requisicoes)
         return grafo, requisicoes, fogs, sensores
     
 if __name__ == "__main__":
-    instance_file = "0.txt"
+    instance_file = "1.txt"
     grafo, requisicoes, fogs, sensores = run(os.path.join("instances", instance_file))

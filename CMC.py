@@ -1,6 +1,8 @@
+import sys
 from lerInstancia import run
 import os, logging
 from estruturas import Grafo, Sensor, FogNode, CloudNode, Request, Service
+import lerInstancia
 
 
 # FUNÇÃO FLOYD-WARSHALL - Função para calcular todos os caminhos do grafo, considerando o tempo como peso
@@ -37,7 +39,7 @@ def reconstruir_caminho(prev, origem, destino):
 
 # FUNÇÃO PROCESSAR CAMINHO
 # Dado um caminho no grafo e uma requisição, essa função tenta alocar a requisição em algum nó Fog do caminho
-def processar_caminho(caminho, requisicao, dist, grafo):
+def processar_caminho(caminho, requisicao, dist):
     arcos = []
     band_tot = 0
     custo = 0
@@ -83,7 +85,9 @@ def processar_caminho(caminho, requisicao, dist, grafo):
 # Chamada para cada instância gerada
 # index - índice das instâncias e também dos arquivos de log e mapa
     # Facilita a correspondência entre os arquivos
-def run(grafo, requisicoes, oracle, index, usaOraculo):
+def run(g, requisicoes, oracle, index, usaOraculo):
+    global grafo
+    grafo = g
     # Estrutura para controlar a disponibilidade de Processamento e Memória para os nós fog
     # i: (v,p,m) - Ao instante "i", uma quantidade "p" de processamento e "m" de memória volta a estar disponível no nó "v"
     temporal = {i: [] for i in range(1, 1001)}
@@ -126,7 +130,8 @@ def run(grafo, requisicoes, oracle, index, usaOraculo):
         candidatos += sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, CloudNode)], key=lambda x: x[1])
         
         if usaOraculo:
-            candidatos = [oracle[sensor][req.service.id]] + candidatos
+            fog_oracle = oracle[sensor][req.service.id]
+            candidatos = [(fog_oracle, dist[sensor][fog_oracle])] + candidatos
             logger.info("CMC - Adicionando previsão do oráculo como primeira tentativa de destino")
         else:
             logger.info("CMC - Segue apenas com o Caminho Mais Curto")
@@ -147,10 +152,12 @@ def run(grafo, requisicoes, oracle, index, usaOraculo):
             caminho = reconstruir_caminho(prev, sensor, destino)
 
             # Tenta processar o caminho
-            selecionado, processou, arcos, band, c, motivo = processar_caminho(caminho, req.service, dist, grafo)
+            selecionado, processou, arcos, band, c, motivo = processar_caminho(caminho, req.service, dist)
 
             # Entra no if apenas se a requisicao foi processada no caminho passado como parâmetro
             if processou:
+                if quant_testados == 1:
+                    logger.info(f"Requisicao {tot_req} processada no primeiro caminho testado!\n")
                 logger.info(f"{quant_testados} caminhos testados | Caminho selecionado: {caminho} | Nó selecionado: {selecionado}\n")
                 
                 if(isinstance(selecionado, FogNode)):
@@ -190,9 +197,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 if __name__=="__main__":
-    instance_file = "0.txt"
-    grafo, requisicoes, fogs, sensores = run(os.path.join("instances", instance_file))
-    perc_req, perc_arcos, largura_banda, custo = run(grafo, requisicoes, fogs, 0)
+    instance_file = "7.txt"
+    grafo, requisicoes, fogs, sensores =  lerInstancia.run(os.path.join("instances", instance_file))
+    perc_req, perc_arcos, largura_banda, custo = run(grafo, requisicoes, None, 7, False)
     print(f"Percentual de requisições processadas: {perc_req}%")
     print(f"Percentual de arcos usados: {perc_arcos}%")
     print(f"Largura de banda total usada: {largura_banda} Gbps")

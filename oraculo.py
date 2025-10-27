@@ -93,7 +93,7 @@ def run(grafo, requisicoes, fogs):
     #keys = np.random.random(env.tam_solucao)
     #print(env.decoder(keys))
     solver = RKO.RKO(env, True)
-    cost, solution, time = solver.solve(time_total=120, brkga=1, lns=1, vns=1, ils=1, sa=1, pso=0, ga=0)
+    cost, solution, time = solver.solve(time_total=300, brkga=2, ils=2, vns=1, runs=10)
     return env.decoder(solution)
    
 if __name__ == "__main__":

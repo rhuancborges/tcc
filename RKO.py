@@ -1273,7 +1273,7 @@ class RKO:
                 return True
         return False
 
-    def solve(self, time_total, brkga=1, ms=0, sa=1, vns=1, ils=1, lns=1, pso=0, ga=1, restart=1, runs=1):
+    def solve(self, time_total, brkga=0, ms=0, sa=0, vns=0, ils=0, lns=0, pso=0, ga=0, restart=1, runs=1):
         """
         Main execution method to run the RKO framework with parallel metaheuristics.
 
@@ -1405,8 +1405,12 @@ class RKO:
             solutions.append(solution)
             costs.append(round(cost, 2))
             times.append(round(-1 * time_elapsed, 2))
-            
-            
+
+        solutions.sort(key=lambda x: self.env.cost(self.env.decoder(x)))
+        cost = self.env.cost(self.env.decoder(solutions[0]))
+        solution = solutions[0]
+        time_elapsed = sum(times) / len(times)
+        
         if self.save_directory is not None:
             directory = os.path.dirname(self.save_directory)
             if directory:
