@@ -91,6 +91,7 @@ def run(g, requisicoes, oracle, index, usaOraculo):
     # Estrutura para controlar a disponibilidade de Processamento e Memória para os nós fog
     # i: (v,p,m) - Ao instante "i", uma quantidade "p" de processamento e "m" de memória volta a estar disponível no nó "v"
     temporal = {i: [] for i in range(1, 1001)}
+    
 
     # Estrutura para controlar a disponibilidade de largura de banda para as arestas
     # i: (aresta, band) - Ao instante i, uma quantidade "band" de largura de banda volta a estar disponível na aresta "aresta"
@@ -106,17 +107,21 @@ def run(g, requisicoes, oracle, index, usaOraculo):
     dist, prev = floyd_warshall(grafo)
 
     logger.info(f"CMC - Iniciando processamento da instância {index} com {len(requisicoes)} requisições...")
-
+    trocouInstante = False
+    instante_anterior = -1
     # Começa a ler as requisições
     for req in requisicoes: 
         instante = req.instante
-        # Faz as atualizações no grafo
+
+        # Faz as atualizações no grafo uma vez por instante
         for (v, p, m) in temporal[instante]:
             v.processing_capacity += p
             v.memory_capacity += m
         for aresta, band in temporal_arestas[instante]:
             aresta.largura_banda += band
 
+        temporal[instante] = []
+        temporal_arestas[instante] = []
        
         tot_req += 1
         sensor = req.sensor
@@ -151,6 +156,7 @@ def run(g, requisicoes, oracle, index, usaOraculo):
             # Reconstrói o caminho
             caminho = reconstruir_caminho(prev, sensor, destino)
 
+            
             # Tenta processar o caminho
             selecionado, processou, arcos, band, c, motivo = processar_caminho(caminho, req.service, dist)
 

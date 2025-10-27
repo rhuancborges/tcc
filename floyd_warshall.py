@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1bVhQ-zBjTNegL-AjDj578ek5U31swpVT
 """
 
+import sys
 import folium
 from folium.plugins import HeatMap
 import matplotlib.pyplot as plt
@@ -174,7 +175,7 @@ def processar_caminho(caminho, requisicao, instante, temporal_arestas, dist):
 # index - índice das instâncias e também dos arquivos de log e mapa
     # Facilita a correspondência entre os arquivos
 def main(index):
-    with open(f"{index}.txt", "r", encoding="utf-8") as f:
+    with open(f"instances/{index}.txt", "r", encoding="utf-8") as f:
 
         # Primeiras 7 linhas do arquivo de instância ignoradas
         for i in range(7):
@@ -434,9 +435,10 @@ largura_banda_total = []
 if __name__=="__main__":
     #grafo = Grafo()
     #req, arc, band, c = main(0)
-    i = 10
+    i = 7
     grafo =  Grafo()
     req, arc, band, c = main(i)
+    sys.exit(0)
     percent_requisicoes_processadas.append(req)
     percent_arcos_usados.append(arc)
     custo_total.append(c)
