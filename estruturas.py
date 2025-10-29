@@ -70,6 +70,7 @@ class Grafo:
     def add_aresta(self, u, v, largura_banda, custo, dist_H):
         self.add_vertice(u)
         self.add_vertice(v)
+
         # Em uma aresta, o atributo tempo significa o tempo de propagação dos dados nessa aresta
         # O tempo é definido como o tempo de atraso (numero de bits/velocidade de transmissão) somado ao tempo de propagação (distância Harvesine/velocidade de propagação)
             # O tempo de atraso para cada tipo de requisição, para a tecnologia 4G, é:
@@ -77,10 +78,12 @@ class Grafo:
                 # camera: 0.0012
                 # air: 0.0000744
             # Média aritmética: 0.0004346
-        tempo = 0.001 + float(dist_H)/(2*10**8)
+       
+        tempo = 0.0004 + float(dist_H)/(2*10**8) # tempo em s
+        
         self.adj[u].append((v, largura_banda, custo, tempo))
         aresta = Aresta(u, v, largura_banda, custo, tempo)
-        #aresta.largura_banda = float(largura_banda)
+        
         self.adj_[f"({u},{v})"] = aresta
         self.n_arestas += 1
 

@@ -32,9 +32,9 @@ services	3
 1 2 0 50	0.083 341134.1749410754
 #end_cloud
 #begin_service
-waste	2	5	1000000000	5	0.01
-camera	2	3	5000000000	1	0.01
-air	4	6	2000000000	10	0.01
+waste	2	5	1000000	5	0.01
+camera	2	3	5000000	1	0.01
+air	4	6	2000000	3	0.01
 #end_service
 #begin_requests
 ##time_instant_1

@@ -56,6 +56,8 @@ def criarHeatMap(fogs, sensores, index, grafo):
     mapa.save(f"heatmaps/mapa_calor_{index}.html")
     
 def gerarGraficos(path):
+
+    image_path = os.makedirs("graficos", exist_ok=True)
     # Carrega os resultados
     df = pd.read_csv(path)
 
@@ -73,7 +75,7 @@ def gerarGraficos(path):
     plt.ylabel("% Requisições processadas")
     plt.title("Percentual de Requisições Processadas x Instância")
     plt.legend()
-    plt.savefig("reqProcessadas.png")
+    plt.savefig(os.path.join(image_path, "reqProcessadas.png"))
     #plt.show()
 
     # 2) Percentual de arcos utilizados x Instância
@@ -87,7 +89,7 @@ def gerarGraficos(path):
     plt.ylabel("% Arcos utilizados")
     plt.title("Percentual de Arcos Utilizados x Instância")
     plt.legend()
-    plt.savefig("arcosUtilizados.png")
+    plt.savefig(os.path.join(image_path, "arcosUtilizados.png"))
     #plt.show()
 
     # 3) Largura de banda total gasta x Instância
@@ -101,7 +103,7 @@ def gerarGraficos(path):
     plt.ylabel("Largura de banda total (Gbps)")
     plt.title("Largura de Banda Total Gasta x Instância")
     plt.legend()
-    plt.savefig("larguraBandaTotal.png")
+    plt.savefig(os.path.join(image_path, "larguraBandaTotal.png"))
     #plt.show()
 
     # 4) Custo total gasto x Instância
@@ -115,7 +117,7 @@ def gerarGraficos(path):
     plt.ylabel("Custo total (US$)")
     plt.title("Custo Total Gasto x Instância")
     plt.legend()
-    plt.savefig("custoTotalGasto.png")
+    plt.savefig(os.path.join(image_path, "custoTotalGasto.png"))
     #plt.show()
 
 def construirAmostra(taxa, requisicoes):
@@ -185,7 +187,7 @@ if __name__=="__main__":
                 grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join(pasta_rko, f"{instance_ID}.txt"))
                 logger.info(f"Instância {instance_ID} carregada com {len(requisicoes)} requisições.")
                 if n_sensores <= 100:
-                    percent = 0.1
+                    percent = 0.01
                 else:
                     percent = 0.001
                 reqs = construirAmostra(int(1000/(len(requisicoes)*percent)),requisicoes)

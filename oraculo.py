@@ -81,32 +81,20 @@ class FogEnv(RKOEnvAbstract):
                 continue  # Não processa se não há caminho
             # Chama função externa para tentar processar a requisição
             #selecionado, False, arcos, band_tot, custo, motivo
-            processed = self.processar_caminho(path, req.service)
+            processed = self.processavel(path, req.service, srv)
             if processed:
                 processed_count += 1
         # Como o RKO minimiza, retornamos o negativo do número de processadas
         return -processed_count
     
-    def processar_caminho(self, caminho, requisicao):
-        selecionado = None
+    def processavel(self, caminho, requisicao, fog):
         tempo = 0
         for i in range(len(caminho)-1):
             vertice_atual = caminho[i] 
             vizinho = caminho[i+1]
-            gasto_req = requisicao.number_of_bits/(10**9)
             tempo += self.dist[vertice_atual][vizinho]
-            if (gasto_req <= self.grafo.adj_[f"({vertice_atual},{vizinho})"].largura_banda):
-                if(tempo <= requisicao.lifetime):
-                    selecionado = vizinho
-
-            # Se não encontrou vizinho válido
-            if selecionado is None:
-                return False
-
-            # Testa se o vizinho selecionado é apto para processar a requisicao, com base na capacidade de processamento e de memória do Nó Fog
-            if(requisicao.processing_demand <= selecionado.processing_capacity) and (requisicao.memory_demand <= selecionado.memory_capacity):
-                   return True
-            
+            if(tempo <= requisicao.lifetime) and (vizinho == fog):
+                return True            
         return False
 
 def run(grafo, requisicoes, fogs):

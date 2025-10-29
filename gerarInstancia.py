@@ -538,9 +538,9 @@ while(not nx.is_connected(G)):
 
 service_dictionary = {
     # ID: [processing_demand, memory_demand, number_of_bits, lifetime]
-    'waste': [0.2125, 0.375, 296, 50],
-    'camera': [0.35, 0.475, 12000, 10],
-    'air': [0.25, 0.3125, 744, 100]
+    'waste': [0.2125, 0.375, 1000000, 5],
+    'camera': [0.35, 0.475, 5000000, 1],
+    'air': [0.25, 0.3125, 2000000, 3]
 }
 
 n_sensor_per_region = int(n_sensors/n_regions)
