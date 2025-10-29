@@ -1,7 +1,8 @@
+import sys
 import numpy as np
 from Environment import RKOEnvAbstract
 import os 
-from CMC import reconstruir_caminho, processar_caminho, floyd_warshall
+from CMC import reconstruir_caminho, floyd_warshall
 import RKO, lerInstancia
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,7 +21,6 @@ class FogEnv(RKOEnvAbstract):
         self.grafo = grafo
         self.requisicoes = requisicoes
         self.servers = servers
-        self.processar_caminho = processar_caminho  # Callable
         self.dist, self.prev = floyd_warshall(self.grafo)
         self.reconstruir_caminho = reconstruir_caminho  # Callable
         self.tam_solucao = len(self.requisicoes) + len(self.servers)
@@ -77,27 +77,46 @@ class FogEnv(RKOEnvAbstract):
         processed_count = 0
         for req, srv in solution:
             path = self.reconstruir_caminho(self.prev, req.sensor, srv)
-            if path is None:
+            if (path is None) or (path[0] != req.sensor):
                 continue  # Não processa se não há caminho
             # Chama função externa para tentar processar a requisição
             #selecionado, False, arcos, band_tot, custo, motivo
-            _, processed, _, _, _ , _ = self.processar_caminho(path, req.service, self.dist, self.grafo)
+            processed = self.processar_caminho(path, req.service)
             if processed:
                 processed_count += 1
         # Como o RKO minimiza, retornamos o negativo do número de processadas
         return -processed_count
+    
+    def processar_caminho(self, caminho, requisicao):
+        selecionado = None
+        tempo = 0
+        for i in range(len(caminho)-1):
+            vertice_atual = caminho[i] 
+            vizinho = caminho[i+1]
+            gasto_req = requisicao.number_of_bits/(10**9)
+            tempo += self.dist[vertice_atual][vizinho]
+            if (gasto_req <= self.grafo.adj_[f"({vertice_atual},{vizinho})"].largura_banda):
+                if(tempo <= requisicao.lifetime):
+                    selecionado = vizinho
+
+            # Se não encontrou vizinho válido
+            if selecionado is None:
+                return False
+
+            # Testa se o vizinho selecionado é apto para processar a requisicao, com base na capacidade de processamento e de memória do Nó Fog
+            if(requisicao.processing_demand <= selecionado.processing_capacity) and (requisicao.memory_demand <= selecionado.memory_capacity):
+                   return True
+            
+        return False
 
 def run(grafo, requisicoes, fogs):
-    ###
     env = FogEnv(grafo, requisicoes, fogs)
-    #keys = np.random.random(env.tam_solucao)
-    #print(env.decoder(keys))
     solver = RKO.RKO(env, True)
-    cost, solution, time = solver.solve(time_total=300, brkga=2, ils=2, vns=1, runs=10)
+    cost, solution, time = solver.solve(time_total=300, brkga=1, vns=1, ms=1, runs=10)
     return env.decoder(solution)
    
 if __name__ == "__main__":
-    print('Running oraculo.py main...')
-    '''instance_file = "0.txt"
+    instance_file = "0.txt"
     grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
-    run(grafo, requisicoes, fogs)'''
+    solution= run(grafo, requisicoes, fogs)
+    print("Solução encontrada:")

@@ -49,9 +49,10 @@ class SolutionPool:
         """
         fitness = entry_tuple[0]
         keys = entry_tuple[1]
-
+        
         with self.lock:
             if fitness < self.best_pair[0]:
+                
                 self.best_pair[0] = fitness
                 self.best_pair[1] = list(keys)
                 self.best_pair[2] = round(self.start_time - time.time(), 2)
@@ -1401,12 +1402,15 @@ class RKO:
             cost = shared.pool.best_pair[0]
             solution = shared.pool.best_pair[1]
             time_elapsed = shared.pool.best_pair[2]
-
+           
             solutions.append(solution)
             costs.append(round(cost, 2))
             times.append(round(-1 * time_elapsed, 2))
+            
 
+        
         solutions.sort(key=lambda x: self.env.cost(self.env.decoder(x)))
+        
         cost = self.env.cost(self.env.decoder(solutions[0]))
         solution = solutions[0]
         time_elapsed = sum(times) / len(times)

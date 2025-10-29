@@ -196,7 +196,7 @@ def run(g, requisicoes, oracle, index, usaOraculo):
 
     set_arcos = set(set_arcos)
     quant_arcos = len(set_arcos)   
-    return (quant_req/tot_req)*100.0, (quant_arcos/grafo.n_arestas)*100.0, quant_band, quant_custo
+    return quant_req, (quant_req/tot_req)*100.0, (quant_arcos/grafo.n_arestas)*100.0, quant_band, quant_custo, grafo
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

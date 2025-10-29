@@ -4,6 +4,8 @@ from estruturas import CloudNode, FogNode
 from folium.plugins import HeatMap
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+import time
 
 def criarHeatMap(fogs, sensores, index, grafo):
     # Inicializa o mapa centralizado na média das coordenadas
@@ -53,38 +55,68 @@ def criarHeatMap(fogs, sensores, index, grafo):
     # Salvar como HTML interativo
     mapa.save(f"heatmaps/mapa_calor_{index}.html")
     
-def gerarGraficos(instancias, percent_requisicoes_processadas, percent_arcos_usados, custo_total, largura_banda_total):
-     # Figura geral com 2x2 subplots
-    fig, axs = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle("Análise Comparativa entre Instâncias", fontsize=16, fontweight='bold')
+def gerarGraficos(path):
+    # Carrega os resultados
+    df = pd.read_csv(path)
 
-    # Gráfico 1: % Requisições Processadas
-    axs[0, 0].bar(instancias, percent_requisicoes_processadas, color='mediumseagreen')
-    axs[0, 0].set_title('% Requisições Processadas')
-    axs[0, 0].set_ylabel('%')
-    axs[0, 0].set_ylim(0, 100)
+    # Define as cores das abordagens
+    cores = {"Sem oráculo": "steelblue", "Com oráculo": "orange"}
 
-    # Gráfico 2: % Arcos Usados
-    axs[0, 1].bar(instancias, percent_arcos_usados, color='steelblue')
-    axs[0, 1].set_title('% Arcos Utilizados')
-    axs[0, 1].set_ylabel('%')
-    axs[0, 1].set_ylim(0, 100)
+    # 1) Percentual de requisições processadas x Instância
+    plt.figure()
+    for abordagem in df["Abordagem"].unique():
+        dados = df[df["Abordagem"] == abordagem]
+        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2),
+                dados["% Requisições processadas"],
+                width=0.4, label=abordagem, color=cores[abordagem])
+    plt.xlabel("Instância")
+    plt.ylabel("% Requisições processadas")
+    plt.title("Percentual de Requisições Processadas x Instância")
+    plt.legend()
+    plt.savefig("reqProcessadas.png")
+    #plt.show()
 
-    # Gráfico 3: Custo Total
-    axs[1, 0].plot(instancias, custo_total, marker='o', linestyle='-', color='indianred')
-    axs[1, 0].set_title('Custo Total Gasto')
-    axs[1, 0].set_ylabel('US$')
-    axs[1, 0].grid(True)
+    # 2) Percentual de arcos utilizados x Instância
+    plt.figure()
+    for abordagem in df["Abordagem"].unique():
+        dados = df[df["Abordagem"] == abordagem]
+        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2),
+                dados["% Arcos utilizados"],
+                width=0.4, label=abordagem, color=cores[abordagem])
+    plt.xlabel("Instância")
+    plt.ylabel("% Arcos utilizados")
+    plt.title("Percentual de Arcos Utilizados x Instância")
+    plt.legend()
+    plt.savefig("arcosUtilizados.png")
+    #plt.show()
 
-    # Gráfico 4: Largura de Banda Total
-    axs[1, 1].plot(instancias, largura_banda_total, marker='s', linestyle='--', color='darkorange')
-    axs[1, 1].set_title('Largura de Banda Total Gasta')
-    axs[1, 1].set_ylabel('Gbps')
-    axs[1, 1].grid(True)
+    # 3) Largura de banda total gasta x Instância
+    plt.figure()
+    for abordagem in df["Abordagem"].unique():
+        dados = df[df["Abordagem"] == abordagem]
+        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2), 
+                 dados["Largura de banda total (Gbps)"],
+                width=0.4, label=abordagem, color=cores[abordagem])
+    plt.xlabel("Instância")
+    plt.ylabel("Largura de banda total (Gbps)")
+    plt.title("Largura de Banda Total Gasta x Instância")
+    plt.legend()
+    plt.savefig("larguraBandaTotal.png")
+    #plt.show()
 
-    # Ajustar layout
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
-    plt.show()
+    # 4) Custo total gasto x Instância
+    plt.figure()
+    for abordagem in df["Abordagem"].unique():
+        dados = df[df["Abordagem"] == abordagem]
+        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2), 
+                 dados["Custo total (US$)"],
+                width=0.4, label=abordagem, color=cores[abordagem])
+    plt.xlabel("Instância")
+    plt.ylabel("Custo total (US$)")
+    plt.title("Custo Total Gasto x Instância")
+    plt.legend()
+    plt.savefig("custoTotalGasto.png")
+    #plt.show()
 
 def construirAmostra(taxa, requisicoes):
     rebuilt_requests = []
@@ -114,79 +146,105 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 if __name__=="__main__":
-    n_sensores = int(sys.argv[1])
-    k = int(sys.argv[2])  # Índice inicial para geração de instâncias de teste
+    n_sensores_list = [20, 40, 60, 100, 250, 500]
+    k = 1
+    # Estrutura de dados
+    colunas = [
+        "Instância",
+        "Abordagem",
+        "Tempo de execução (s)",
+        "Nº de sensores",
+        "Nº de servidores",
+        "Total de requisições",
+        "Requisições processadas",
+        "% Requisições processadas",
+        "% Arcos utilizados",
+        "Largura de banda total (Gbps)",
+        "Custo total (US$)"
+    ]
 
+    if not os.path.exists("resultados.csv"):
+        pd.DataFrame(columns=colunas).to_csv("resultados.csv", index=False)
 
-    # PARTE 1 - Treinar o RKO
-    pasta_rko = os.path.join(pasta_saida, "rko_training")
-    os.makedirs(pasta_rko, exist_ok=True)
+    for n_sensores in n_sensores_list:
+        # PARTE 1 - Treinar o RKO
+        pasta_rko = os.path.join(pasta_saida, "rko_training")
+        os.makedirs(pasta_rko, exist_ok=True)
 
-    training_requests = []
-    logger.info("Iniciando geração de instâncias de treinamento para o RKO...")
-    if not os.path.exists(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl")):
-        for i in range(1, 11):
-            instance_ID = f"{i}_training_{n_sensores}"
-            if not os.path.exists(os.path.join(pasta_rko, f"{instance_ID}.txt")):
-                subprocess.run(["python", "gerarInstancia.py", str(n_sensores), instance_ID, pasta_rko])
-            logger.info(f"Instância {instance_ID} gerada.")
+        training_requests = []
+        logger.info("Iniciando geração de instâncias de treinamento para o RKO...")
+        if not os.path.exists(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl")):
+            for i in range(1, 11):
+                instance_ID = f"{i}_training_{n_sensores}"
+                if not os.path.exists(os.path.join(pasta_rko, f"{instance_ID}.txt")):
+                    subprocess.run(["python", "gerarInstancia.py", str(n_sensores), instance_ID, pasta_rko])
+                logger.info(f"Instância {instance_ID} gerada.")
 
-        for i in range(1, 11):
-            instance_ID = f"{i}_training_{n_sensores}"
-            grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join(pasta_rko, f"{instance_ID}.txt"))
-            logger.info(f"Instância {instance_ID} carregada com {len(requisicoes)} requisições.")
-            reqs = construirAmostra(int(1000/(len(requisicoes)*0.001)),requisicoes)
-            logger.info(f"Instância {instance_ID} reduzida para {len(reqs)} requisições para treinamento.")
-            logger.info(f"Executando RKO na instância {instance_ID}...")
-            predictor = oraculo.run(grafo, reqs, fogs)
-            training_requests.extend(predictor)
+            for i in range(1, 11):
+                instance_ID = f"{i}_training_{n_sensores}"
+                grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join(pasta_rko, f"{instance_ID}.txt"))
+                logger.info(f"Instância {instance_ID} carregada com {len(requisicoes)} requisições.")
+                if n_sensores <= 100:
+                    percent = 0.1
+                else:
+                    percent = 0.001
+                reqs = construirAmostra(int(1000/(len(requisicoes)*percent)),requisicoes)
+                logger.info(f"Instância {instance_ID} reduzida para {len(reqs)} requisições para treinamento.")
+                logger.info(f"Executando RKO na instância {instance_ID}...")
+                predictor = oraculo.run(grafo, reqs, fogs)
+                training_requests.extend(predictor)
 
-        oracle = construirOraculoED(training_requests, sensores, fogs)
-        with open(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl"), "wb") as f:
-            pickle.dump(oracle, f)
-        logger.info(f"Oráculo construído e salvo em {os.path.join(pasta_rko, f'oracle_{n_sensores}_sensors.pkl')}.")
-    else:
-        logger.info(f"Oráculo já existe em {os.path.join(pasta_rko, f'oracle_{n_sensores}_sensors.pkl')}. Carregando oráculo...")
-        with open(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl"), "rb") as f:
-            oracle = pickle.load(f)
-
-    
-    # PARTE 2 - GERAR INSTÂNCIAS DE TESTE
-    for i in range(k, k+3):
-        instance_ID = str(i)
-        if not os.path.exists(os.path.join(pasta_saida, f"{instance_ID}.txt")):
-            subprocess.run(["python", "gerarInstancia.py", str(n_sensores), instance_ID, pasta_saida])
-            logger.info(f"Instância {instance_ID} gerada.")
+            oracle = construirOraculoED(training_requests, sensores, fogs)
+            with open(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl"), "wb") as f:
+                pickle.dump(oracle, f)
+            logger.info(f"Oráculo construído e salvo em {os.path.join(pasta_rko, f'oracle_{n_sensores}_sensors.pkl')}.")
         else:
-            logger.info(f"Instância {instance_ID} já existe.")
+            logger.info(f"Oráculo já existe em {os.path.join(pasta_rko, f'oracle_{n_sensores}_sensors.pkl')}. Carregando oráculo...")
+            with open(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl"), "rb") as f:
+                oracle = pickle.load(f)
 
+        continue
     
+        # PARTE 2 - GERAR INSTÂNCIAS DE TESTE
+        for i in range(k, k+3):
+            instance_ID = str(i)
+            if not os.path.exists(os.path.join(pasta_saida, f"{instance_ID}.txt")):
+                subprocess.run(["python", "gerarInstancia.py", str(n_sensores), instance_ID, pasta_saida])
+                logger.info(f"Instância {instance_ID} gerada.")
+            else:
+                logger.info(f"Instância {instance_ID} já existe.")
 
-    # PARTE 3 - EXECUTAR INSTÂNCIAS E GERAR GRÁFICOS E HEATMAPS
-    percent_requisicoes_processadas = []
-    percent_arcos_usados = []
-    custo_total = []
-    largura_banda_total = []
-   
-    os.makedirs("heatmaps", exist_ok=True)
+        # PARTE 3 - EXECUTAR INSTÂNCIAS E GERAR GRÁFICOS E HEATMAPS
+            
+        # Exemplo de inserção de dados após rodar uma instância
+        for i in range(k, k+3):
+            instance_file = f"{i}.txt"
+            for abordagem in ["Sem oráculo", "Com oráculo"]:
+                grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
+                inicio = time.time()
+                if abordagem == "Sem oráculo":
+                    req, req_p, arc, band, c, grafo = CMC.run(grafo, requisicoes, oracle, i, usaOraculo=False)
+                else:
+                    req, req_p, arc, band, c, grafo = CMC.run(grafo, requisicoes, oracle, i, usaOraculo=True)
+                fim = time.time()
+                criarHeatMap(fogs, sensores, i, grafo)
+                logger.info(f"Heatmap para a instância {i} criado.")
+                resultados = [
+                    i,
+                    abordagem,
+                    round(fim - inicio, 3),
+                    len(sensores),  # Exemplo: número de sensores
+                    len(fogs),   # Exemplo: número de servidores
+                    len(requisicoes), # Total de requisições
+                    req, # Processadas
+                    req_p, # Processadas
+                    arc,
+                    band,
+                    c
+                ]
+                df = pd.DataFrame([resultados], columns=colunas)
+                df.to_csv("resultados.csv", mode='a', header=False, index=False)
+                logger.info(f"Resultados para a instância {i} com abordagem '{abordagem}' salvos.")
+        k += 3  # Incrementa o índice para evitar sobrescrever as instâncias geradas anteriormente
+    ##gerarGraficos("resultados.csv")
 
-    index = 10
-    instance_file = f"{index}.txt"
-    grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
-    logger.info(f"Instância {index} carregada com {len(requisicoes)} requisições, {len(fogs)} nós fog e {len(sensores)} sensores.")
-
-    req, arc, band, c = CMC.run(grafo, requisicoes, oracle, index, usaOraculo=False)
-    logger.info(f"Instância {index} processada: \n\t{len(requisicoes)} requisições (total)\n\t{req:.2f}% requisições processadas\n\t{arc}% arcos\n\t{band} Gbps\n\tUS$ {c}.")
-    sys.exit(0)
-    criarHeatMap(fogs, sensores, index, grafo)
-    logger.info(f"Heatmap salvo como heatmaps/mapa_calor_{index}.html")
-    
-    percent_requisicoes_processadas.append(req)
-    percent_arcos_usados.append(arc)
-    largura_banda_total.append(band)
-    custo_total.append(c)
-
-    #instancias = [f"Inst {i}" for i in range(1, 19)]
-    instancias = [f"Inst {index}"]
-    gerarGraficos(instancias, percent_requisicoes_processadas, percent_arcos_usados, custo_total, largura_banda_total)
-    logger.info("Gráficos gerados.")
