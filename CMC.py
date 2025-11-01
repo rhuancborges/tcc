@@ -1,3 +1,4 @@
+import pickle
 import sys
 from lerInstancia import run
 import os, logging
@@ -38,8 +39,8 @@ def reconstruir_caminho(prev, origem, destino):
     return caminho
 
 # FUNÇÃO PROCESSAR CAMINHO
-# Dado um caminho no grafo e uma requisição, essa função tenta alocar a requisição em algum nó Fog do caminho
-def processar_caminho(caminho, requisicao, dist, fog):
+# Dado um caminho no grafo e uma requisição, essa função tenta alocar a requisição no nó Fog destino
+def processar_caminho(caminho, requisicao, dist, fog, grafo):
     arcos = []
     band_tot = 0
     custo = 0
@@ -51,58 +52,54 @@ def processar_caminho(caminho, requisicao, dist, fog):
     for i in range(len(caminho)-1):
         vertice_atual = caminho[i]
         vizinho = caminho[i+1]
-        gasto_req = requisicao.number_of_bits/(10**9) # Converte de bits para Gbits
+        gasto_req = requisicao.number_of_bits/((10**9)*grafo.adj_[f"({vertice_atual},{vizinho})"].tempo) # Converte de bits para Gbps
         tempo += dist[vertice_atual][vizinho]
-        print(f"Largura de banda aresta ({vertice_atual},{vizinho}): {grafo.adj_[f'({vertice_atual},{vizinho})'].largura_banda} Gbps")
-        print(f"Gasto requisição: {gasto_req} Gbits")
+        #print(f"Largura de banda aresta ({vertice_atual},{vizinho}): {grafo.adj_[f'({vertice_atual},{vizinho})'].largura_banda} Gbps")
+        #print(f"Gasto requisição: {gasto_req} Gbits")
         if (gasto_req <= grafo.adj_[f"({vertice_atual},{vizinho})"].largura_banda):
           if(tempo <= requisicao.lifetime):
             selecionado = vizinho
-            # Largura de banda gasta: number_of_bits/tempo de transmissão
-            largura_banda = gasto_req/dist[vertice_atual][vizinho]
-            band_tot += largura_banda
-            arcos.append((f"({vertice_atual},{selecionado})", largura_banda))
-            custo += largura_banda*grafo.adj_[f"({vertice_atual},{selecionado})"].custo
+            band_tot += gasto_req
+            arcos.append((f"({vertice_atual},{selecionado})", gasto_req))
+            custo += gasto_req*grafo.adj_[f"({vertice_atual},{selecionado})"].custo
           else:
-            motivo += f"Requisição estourou o tempo de vida em {vizinho}"
+            motivo += f"Requisição estourou o tempo de vida em {vizinho}\n"
         else:
-            motivo += f"Requisição estourou a largura de banda indo de {vertice_atual} para {vizinho}"
+            motivo += f"Requisição estourou a largura de banda indo de {vertice_atual} para {vizinho}\n"
 
-        # Se não encontrou vizinho válido
-        if selecionado is None:
-            return selecionado, False, arcos, band_tot, custo, motivo
+    # Se não encontrou vizinho válido
+    if selecionado is None:
+        return selecionado, False, arcos, band_tot, custo, motivo
 
-        # Testa se o vizinho selecionado é apto para processar a requisicao, com base na capacidade de processamento e de memória do Nó Fog
-        if (selecionado == fog):
-            if(requisicao.processing_demand <= selecionado.processing_capacity):
-                if (requisicao.memory_demand <= selecionado.memory_capacity):
-                    selecionado.processing_capacity -= requisicao.processing_demand
-                    selecionado.memory_capacity -= requisicao.memory_demand
-                    selecionado.requisicoes += 1
-                    if(isinstance(selecionado, FogNode)): 
-                        return selecionado, True, arcos, band_tot, custo, motivo
-                    else:
-                        motivo += "Requisição foi processada no CloudNode"
-                        return selecionado, False, arcos, band_tot, custo, motivo
+    # Testa se o vizinho selecionado é apto para processar a requisicao, com base na capacidade de processamento e de memória do Nó Fog
+    if (selecionado == fog):
+        if(requisicao.processing_demand <= selecionado.processing_capacity):
+            if (requisicao.memory_demand <= selecionado.memory_capacity):
+                selecionado.processing_capacity -= requisicao.processing_demand
+                selecionado.memory_capacity -= requisicao.memory_demand
+                selecionado.requisicoes += 1
+                if(isinstance(selecionado, FogNode)): 
+                    return selecionado, True, arcos, band_tot, custo, motivo
                 else:
-                    motivo += f"Requisição estourou a memória em {selecionado}"
+                    motivo += "Requisição foi processada no CloudNode\n"
+                    return selecionado, False, arcos, band_tot, custo, motivo
             else:
-                motivo += f"Requisição estourou o processamento em {selecionado}"
+                motivo += f"Requisição estourou a memória em {selecionado}\n"
         else:
-            motivo += f"Requisição não processada em {selecionado}, pois não é o nó destino"
-        if isinstance(fog, CloudNode):
-            motivo += "Nó destino é CloudNode. "
-            return fog, False, arcos, band_tot, custo, motivo
-    motivo += "Requisição percorreu todo o caminho e não foi processada"
+            motivo += f"Requisição estourou o processamento em {selecionado}\n"
+    else:
+        motivo += f"Requisição não processada em {selecionado}, pois não é o nó destino\n"
+    if isinstance(fog, CloudNode):
+        motivo += "Nó destino é CloudNode.\n"
+        return fog, False, arcos, band_tot, custo, motivo
+    motivo += "Requisição percorreu todo o caminho e não foi processada\n"
     return selecionado, False, arcos, band_tot, custo, motivo
 
 # FUNÇÃO LER INSTÂNCIA
 # Chamada para cada instância gerada
 # index - índice das instâncias e também dos arquivos de log e mapa
     # Facilita a correspondência entre os arquivos
-def run(g, requisicoes, oracle, index, usaOraculo):
-    global grafo
-    grafo = g
+def run(grafo, requisicoes, oracle, index, usaOraculo):
     # Estrutura para controlar a disponibilidade de Processamento e Memória para os nós fog
     # i: (v,p,m) - Ao instante "i", uma quantidade "p" de processamento e "m" de memória volta a estar disponível no nó "v"
     temporal = {i: [] for i in range(1, 1001)}
@@ -145,15 +142,16 @@ def run(g, requisicoes, oracle, index, usaOraculo):
 
         # Para um dado sensor, seleciona todos os possíveis Nós fog a serem alcançados, ordenados crescentemente pelo tempo de alcance
         tempo_dict = dist[sensor]
-        candidatos = sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, FogNode)], key=lambda x: x[1])
+        candidatos = sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, FogNode) and (t != float('inf'))], key=lambda x: x[1])
         
         quant_testados = 1 # Variável para contar o número de caminhos testados até processar uma requisição
-        candidatos += sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, CloudNode)], key=lambda x: x[1])
+        candidatos += sorted([(v, t) for v, t in tempo_dict.items() if isinstance(v, CloudNode) and (t != float('inf'))], key=lambda x: x[1])
         
         if usaOraculo:
             fog_oracle = oracle[sensor][req.service.id]
             candidatos = [(fog_oracle, dist[sensor][fog_oracle])] + candidatos
             logger.info("CMC - Adicionando previsão do oráculo como primeira tentativa de destino")
+            quant_testados -= 1
         else:
             logger.info("CMC - Segue apenas com o Caminho Mais Curto")
 
@@ -163,18 +161,17 @@ def run(g, requisicoes, oracle, index, usaOraculo):
             if (index <= 15):
                 if (quant_testados > 3):
                     logger.info(f"CMC - Testou-se o limite de 3 caminhos\n")
-                    destino = candidatos[-2][0]
+                    destino = candidatos[-3][0]
             else:
                 if (quant_testados > 6):
                     logger.info(f"CMC - Testou-se o limite de 6 caminhos\n")
-                    destino = candidatos[-2][0]
+                    destino = candidatos[-3][0]
 
             # Reconstrói o caminho
             caminho = reconstruir_caminho(prev, sensor, destino)
-
             
             # Tenta processar o caminho
-            selecionado, processou, arcos, band, c, motivo = processar_caminho(caminho, req.service, dist, destino)
+            selecionado, processou, arcos, band, c, motivo = processar_caminho(caminho, req.service, dist, destino, grafo)
 
             # Entra no if apenas se a requisicao foi processada no caminho passado como parâmetro
             if processou:
@@ -219,12 +216,33 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 if __name__=="__main__":
-    instance_file = "0.txt"
-    grafo, requisicoes, fogs, sensores =  lerInstancia.run(os.path.join("instances", instance_file))
-    req, perc_req, perc_arcos, largura_banda, custo, _ = run(grafo, requisicoes, None, 1, False)
+    instance_file = "1_training_250.txt"
+    grafo, requisicoes, fogs, sensores =  lerInstancia.run(os.path.join("instances", "rko_training", instance_file))
+    """  with open(os.path.join("instances", "rko_training",  f"oracle_{20}_sensors.pkl"), "rb") as f:
+            oracle = pickle.load(f)
+    print(oracle)  
+    for fog in fogs:
+        caminho = reconstruir_caminho(floyd_warshall(grafo)[1], sensores[1], fog)
+        print(f"{caminho} -> {caminho[0] == sensores[0]}")
+    sys.exit(0) 
+    """
+    
+    
+    #req, perc_req, perc_arcos, largura_banda, custo, _ = run(grafo, requisicoes, None, 1, False)
+    with open(os.path.join("instances", "rko_training",  f"oracle_{500}_sensors.pkl"), "rb") as f:
+           oracle = pickle.load(f)
+   
+    #req1, perc_req1, perc_arcos1, largura_banda1, custo1, _ = run(grafo, requisicoes, oracle, 1, True)
+    print("SEM ORÁCULO")
     print(f"Número de requisições processadas: {req}")
     print(f"Percentual de requisições processadas: {perc_req}%")
     print(f"Percentual de arcos usados: {perc_arcos}%")
     print(f"Largura de banda total usada: {largura_banda} Gbps")
     print(f"Custo total: US$ {custo}")
+    print("\nCOM ORÁCULO")
+    print(f"Número de requisições processadas: {req1}")
+    print(f"Percentual de requisições processadas: {perc_req1}%")
+    print(f"Percentual de arcos usados: {perc_arcos1}%")
+    print(f"Largura de banda total usada: {largura_banda1} Gbps")
+    print(f"Custo total: US$ {custo1}")
    

@@ -57,7 +57,9 @@ def criarHeatMap(fogs, sensores, index, grafo):
     
 def gerarGraficos(path):
 
-    image_path = os.makedirs("graficos", exist_ok=True)
+    os.makedirs("graficos", exist_ok=True)
+    image_path = "graficos"
+
     # Carrega os resultados
     df = pd.read_csv(path)
 
@@ -68,12 +70,21 @@ def gerarGraficos(path):
     plt.figure()
     for abordagem in df["Abordagem"].unique():
         dados = df[df["Abordagem"] == abordagem]
-        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2),
+        barras = plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2),
                 dados["% Requisições processadas"],
                 width=0.4, label=abordagem, color=cores[abordagem])
+        for bar in barras:
+            altura = bar.get_height()
+            plt.text(
+                bar.get_x() + bar.get_width() / 2,  # centro da barra
+                altura,  # posição vertical no topo da barra
+                f"{altura:.1f}",  # texto (1 casa decimal)
+                ha='center', va='bottom', fontsize=6
+            )
     plt.xlabel("Instância")
     plt.ylabel("% Requisições processadas")
     plt.title("Percentual de Requisições Processadas x Instância")
+    plt.xticks(ticks=range(1, 19), labels=[str(i) for i in range(1, 19)])
     plt.legend()
     plt.savefig(os.path.join(image_path, "reqProcessadas.png"))
     #plt.show()
@@ -82,12 +93,21 @@ def gerarGraficos(path):
     plt.figure()
     for abordagem in df["Abordagem"].unique():
         dados = df[df["Abordagem"] == abordagem]
-        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2),
+        barras = plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2),
                 dados["% Arcos utilizados"],
                 width=0.4, label=abordagem, color=cores[abordagem])
+        for bar in barras:
+            altura = bar.get_height()
+            plt.text(
+                bar.get_x() + bar.get_width() / 2,  # centro da barra
+                altura,  # posição vertical no topo da barra
+                f"{altura:.1f}",  # texto (1 casa decimal)
+                ha='center', va='bottom', fontsize=6
+            )
     plt.xlabel("Instância")
     plt.ylabel("% Arcos utilizados")
     plt.title("Percentual de Arcos Utilizados x Instância")
+    plt.xticks(ticks=range(1, 19), labels=[str(i) for i in range(1, 19)])
     plt.legend()
     plt.savefig(os.path.join(image_path, "arcosUtilizados.png"))
     #plt.show()
@@ -96,12 +116,21 @@ def gerarGraficos(path):
     plt.figure()
     for abordagem in df["Abordagem"].unique():
         dados = df[df["Abordagem"] == abordagem]
-        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2), 
+        barras = plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2), 
                  dados["Largura de banda total (Gbps)"],
                 width=0.4, label=abordagem, color=cores[abordagem])
+        for bar in barras:
+            altura = bar.get_height()
+            plt.text(
+                bar.get_x() + bar.get_width() / 2,  # centro da barra
+                altura,  # posição vertical no topo da barra
+                f"{altura:.1f}",  # texto (1 casa decimal)
+                ha='center', va='bottom', fontsize=6
+            )
     plt.xlabel("Instância")
     plt.ylabel("Largura de banda total (Gbps)")
     plt.title("Largura de Banda Total Gasta x Instância")
+    plt.xticks(ticks=range(1, 19), labels=[str(i) for i in range(1, 19)])
     plt.legend()
     plt.savefig(os.path.join(image_path, "larguraBandaTotal.png"))
     #plt.show()
@@ -110,12 +139,21 @@ def gerarGraficos(path):
     plt.figure()
     for abordagem in df["Abordagem"].unique():
         dados = df[df["Abordagem"] == abordagem]
-        plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2), 
+        barras = plt.bar(dados["Instância"] + (0.2 if abordagem == "Com oráculo" else -0.2), 
                  dados["Custo total (US$)"],
                 width=0.4, label=abordagem, color=cores[abordagem])
+        for bar in barras:
+            altura = bar.get_height()
+            plt.text(
+                bar.get_x() + bar.get_width() / 2,  # centro da barra
+                altura,  # posição vertical no topo da barra
+                f"{altura:.1f}",  # texto (1 casa decimal)
+                ha='center', va='bottom', fontsize=6
+            )
     plt.xlabel("Instância")
     plt.ylabel("Custo total (US$)")
     plt.title("Custo Total Gasto x Instância")
+    plt.xticks(ticks=range(1, 19), labels=[str(i) for i in range(1, 19)])
     plt.legend()
     plt.savefig(os.path.join(image_path, "custoTotalGasto.png"))
     #plt.show()
@@ -148,8 +186,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 if __name__=="__main__":
-    n_sensores_list = [20, 40, 60, 100, 250, 500]
-    k = 1
+    #n_sensores_list = [20, 40, 60, 100, 250, 500]
+    n_sensores_list = [500]
+    k = 17
     # Estrutura de dados
     colunas = [
         "Instância",
@@ -205,10 +244,9 @@ if __name__=="__main__":
             with open(os.path.join(pasta_rko, f"oracle_{n_sensores}_sensors.pkl"), "rb") as f:
                 oracle = pickle.load(f)
 
-        continue
     
         # PARTE 2 - GERAR INSTÂNCIAS DE TESTE
-        for i in range(k, k+3):
+        for i in range(k, k+2):
             instance_ID = str(i)
             if not os.path.exists(os.path.join(pasta_saida, f"{instance_ID}.txt")):
                 subprocess.run(["python", "gerarInstancia.py", str(n_sensores), instance_ID, pasta_saida])
@@ -219,7 +257,7 @@ if __name__=="__main__":
         # PARTE 3 - EXECUTAR INSTÂNCIAS E GERAR GRÁFICOS E HEATMAPS
             
         # Exemplo de inserção de dados após rodar uma instância
-        for i in range(k, k+3):
+        for i in range(k, k+2):
             instance_file = f"{i}.txt"
             for abordagem in ["Sem oráculo", "Com oráculo"]:
                 grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
@@ -248,5 +286,5 @@ if __name__=="__main__":
                 df.to_csv("resultados.csv", mode='a', header=False, index=False)
                 logger.info(f"Resultados para a instância {i} com abordagem '{abordagem}' salvos.")
         k += 3  # Incrementa o índice para evitar sobrescrever as instâncias geradas anteriormente
-    ##gerarGraficos("resultados.csv")
+    gerarGraficos("resultados.csv")
 

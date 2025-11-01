@@ -78,12 +78,12 @@ class Grafo:
                 # camera: 0.0012
                 # air: 0.0000744
             # Média aritmética: 0.0004346
-       
-        tempo = 0.0004 + float(dist_H)/(2*10**8) # tempo em s
-        
+
+        tempo_transmissao = float(dist_H)/(2*10**8)
+        tempo = 0.0004 + tempo_transmissao # tempo de atraso em s
+
         self.adj[u].append((v, largura_banda, custo, tempo))
         aresta = Aresta(u, v, largura_banda, custo, tempo)
-        
         self.adj_[f"({u},{v})"] = aresta
         self.n_arestas += 1
 

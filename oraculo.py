@@ -75,17 +75,19 @@ class FogEnv(RKOEnvAbstract):
         Retorna o negativo do número de requisições processadas (minimização no RKO).
         """
         processed_count = 0
+        penalty = 0
         for req, srv in solution:
             path = self.reconstruir_caminho(self.prev, req.sensor, srv)
-            if (path is None) or (path[0] != req.sensor):
+            if (path is None) or (path[0] != req.sensor) or (len(path) < 2):
+                penalty += 1
                 continue  # Não processa se não há caminho
             # Chama função externa para tentar processar a requisição
-            #selecionado, False, arcos, band_tot, custo, motivo
+            
             processed = self.processavel(path, req.service, srv)
             if processed:
                 processed_count += 1
         # Como o RKO minimiza, retornamos o negativo do número de processadas
-        return -processed_count
+        return -(processed_count-penalty)
     
     def processavel(self, caminho, requisicao, fog):
         tempo = 0
@@ -104,7 +106,7 @@ def run(grafo, requisicoes, fogs):
     return env.decoder(solution)
    
 if __name__ == "__main__":
-    instance_file = "0.txt"
+    instance_file = "1.txt"
     grafo, requisicoes, fogs, sensores = lerInstancia.run(os.path.join("instances", instance_file))
     solution= run(grafo, requisicoes, fogs)
     print("Solução encontrada:")
